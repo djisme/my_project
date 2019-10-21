@@ -1,0 +1,353 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<include file="public:meta" />
+	<link href="../public/css/personal/common.css" rel="stylesheet" type="text/css" />
+	<link href="../public/css/personal/personal_user.css" rel="stylesheet" type="text/css" />
+	<link href="../public/css/personal/personal_ajax_dialog.css" rel="stylesheet" type="text/css" />
+	<script src="../public/js/personal/jquery.common.js" type="text/javascript" language="javascript"></script>
+    <qscms:load type="category" search="1"/>
+</head>
+<body>
+<include file="public:header_other" />
+<div class="us-top">
+    <div class="us-main">
+        <div class="us-top-box">
+            <form id="ajax_search_location" action="{:U('ajaxCommon/ajax_search_location',array('type'=>'QS_jobslist'))}" method="get">
+                <div class="input-box"><input type="text" name="key" data-original="请输入关键字" value="" placeholder="请输入关键字" autocomplete="off"></div>
+                <div class="se-btn"><input type="submit" value="搜 索"></div>
+                <div class="clear"></div>
+            </form>
+        </div>
+    </div>
+</div>
+	<div class="user_main">
+		<include file="index_left_nav" />
+	  	<div class="mainbox">
+			<!--职位切换卡 -->
+			<div class="tab">
+				<a class="li select">账号安全</a>
+				<a class="li J_hoverbut" href="{:U('personal/user_avatar')}" >我的头像</a>
+				<a class="li J_hoverbut" href="{:U('personal/resume_privacy')}">屏蔽企业</a>
+				<a class="li J_hoverbut" href="{:U('personal/user_loginlog')}">登录日志</a>
+			  	<div class="clear"></div>
+			</div>
+			<!--切换卡结束 -->
+			<div class="userprofile J_focus">
+		    	<div class="uleft">
+		    		<form id="" class="" action="{:U('personal/user_info')}" method="post">
+				 		<div class="td1"><span>&nbsp;</span>姓名：</div>
+						<div class="td2">
+			 				<div class="input_245_34_div2 J_tooltip J_listitme_parent">
+								<input name="realname" id="realname" type="text"  dir="no_focus" class="inputst" value="{$userprofile.realname}"/>
+								<div class="righttxt J_listitme_text">
+									<switch name="userprofile['display_name']">
+										<case value="1">
+											完全公开
+										</case>
+										<case value="2">
+											显示编号
+										</case>
+										<case value="3">
+											隐藏名字
+										</case>
+									</switch>
+								</div>
+								<div class="dropdowbox3 J_tooltip_menu">
+									<div class="dropdow_inner16">
+										<ul class="nav_box">
+											<li><a class="J_listitme" href="javascript:;" data-code="1">完全公开</a></li>
+											<li><a class="J_listitme" href="javascript:;" data-code="2">显示编号</a></li>
+											<li><a class="J_listitme" href="javascript:;" data-code="3">隐藏名字</a></li>
+										</ul>
+									</div>
+								</div>
+								<input class="J_listitme_code" name="display_name" id="display_name" type="hidden"  value="{$userprofile.display_name}"/>
+							</div>
+						</div>
+						<div class="td1"><span>&nbsp;</span>性别：</div>
+						<div class="td2">
+					 		<div class="sex_radio_list J_radioitme_parent">
+								<div class="n <if condition="$userprofile['sex'] eq 1">checked</if> J_radioitme" data-code="1">男</div>
+								<div class="w <if condition="$userprofile['sex'] eq 2">checked</if> J_radioitme" data-code="2">女</div>
+								<div class="clear"></div>
+								<input class="J_radioitme_code" name="sex" id="sex" type="hidden" value="{$userprofile.sex}" />
+							</div>
+						</div>
+						<div class="td1"><span>&nbsp;</span>出生年份：</div>
+						<div class="td2">
+						 	<div class="input_245_34_div J_hoverinput J_dropdown J_listitme_parent">
+								<span class="J_listitme_text">{$userprofile.birthday|default='请选择'}</span>
+								<div class="dropdowbox5 J_dropdown_menu">
+						            <div class="dropdow_inner5">
+						                <ul class="nav_box J_birthdy">
+						                	<div class="J_birthday_box active"></div>
+						                	<div class="J_birthday_box"></div>
+						                	<div class="J_birthday_box"></div>
+						                </ul>
+					                	<a href="javascript:;" class="prev J_birthday_prev"></a>
+					                	<a href="javascript:;" class="next J_birthday_next"></a>
+						            </div>
+						        </div>
+								<input class="J_listitme_code" name="birthday" id="birthday" type="hidden" value="{$userprofile.birthday}" />
+							</div>
+						</div>
+						<div class="td1">现居住地：</div>
+						<div class="td2">
+						 	<input name="residence" id="residence" type="text" class="input_245_34" value="{$userprofile.residence}"/>
+						</div>
+						<div class="td1"><span>&nbsp;</span>最高学历：</div>
+						<div class="td2">
+					 		<div class="input_245_34_div J_hoverinput J_dropdown J_listitme_parent">
+								<span class="J_listitme_text">{$userprofile.education_cn|default='请选择'}</span>
+								<div class="dropdowbox4 J_dropdown_menu">
+						            <div class="dropdow_inner4">
+						                <ul class="nav_box">
+						                	<volist name="education" id="education">
+						                		<li><a class="J_listitme" href="javascript:;" data-code="{$key}">{$education}</a></li>
+											</volist>
+						                </ul>
+						            </div>
+						        </div>
+								<input class="J_listitme_code" name="education" id="education" type="hidden" value="{$userprofile.education}" />
+							</div>
+						</div>
+						<div class="td1"> 所学专业：</div>
+						<div class="td2">
+					 		<div class="input_245_34_div1 J_hoverinput" id="J_showmodal_major" data-title="请选择所学专业" data-multiple="false" data-maxnum="3" data-width="520">
+					 			<span title="" class="result J_resuletitle_major">{$userprofile.major_cn|default='请选择'}</span>
+					 			<input class="J_resultcode_major" name="major" id="major" type="hidden" value="{$userprofile.major}" />
+					 			<div class="clear"></div>
+					 		</div>
+						</div>
+						<div class="td1"><span>&nbsp;</span>工作经验：</div>
+						<div class="td2">
+						 	<div class="input_245_34_div J_hoverinput J_dropdown J_listitme_parent">
+								<span class="J_listitme_text">{$userprofile.experience_cn|default='请选择'}</span>
+								<div class="dropdowbox4 J_dropdown_menu">
+									<div class="dropdow_inner4">
+										<ul class="nav_box">
+											<volist name="experience" id="experience">
+												<li><a class="J_listitme" href="javascript:;" data-code="{$key}">{$experience}</a></li>
+											</volist>
+										</ul>
+									</div>
+								</div>
+								<input class="J_listitme_code" name="experience" id="experience" type="hidden" value="{$userprofile.experience}" />
+							</div>
+						</div>
+						<div class="td1"><span>&nbsp;</span>手机：</div>
+						<div class="td2">
+							<if condition="$visitor['mobile_audit']">
+								<input disabled name="phone" id="phone" type="text" class="input_245_34" value="{$visitor.mobile}"/>
+								<span class="link_blue"><a id="J_auth_mobile" href="javascript:;">修改</a></span>
+							<else/>
+								<input name="phone" id="phone" type="text" class="input_245_34" value="{$userprofile.phone}"/>
+							</if>
+						</div>
+						<div class="td1"><span>&nbsp;</span>邮箱：</div>
+						<div class="td2">
+					 		<if condition="$visitor['email_audit']">
+								<input disabled name="email" id="email" type="text" class="input_245_34" value="{$visitor.email}"/>
+								<span class="link_blue"><a id="J_auth_email" href="javascript:;">修改</a></span>
+							<else/>
+								<div class="reg-form-content">
+									<input name="email" id="email" type="text" value="{$userprofile.email}" class="input_245_34 inputElem" />
+								</div>
+							</if>
+						</div>
+						<div class="td1">身高：</div>
+						<div class="td2">
+							<div class="input_245_34_div3">
+								<input name="height" id="height" type="text"  dir="no_focus" class="inputst" value="<if condition="$userprofile['height'] gt 0">{$userprofile.height}</if>"/>
+								<div class="righttxt">CM</div>
+							</div>
+						</div>
+						<div class="td1">籍贯：</div>
+						<div class="td2">
+						 	<input name="householdaddress" id="householdaddress" type="text" class="input_245_34" value="{$userprofile.householdaddress}"/>
+						</div>
+						<div class="td1">婚姻状况：</div>
+						<div class="td2">
+					 		<div class="radio_list J_radioitme_parent">
+								<div class="rli J_radioitme <if condition="$userprofile['marriage'] eq 1">checked</if>" data-code="1">未婚</div>
+								<div class="rli J_radioitme <if condition="$userprofile['marriage'] eq 2">checked</if>" data-code="2">已婚</div>
+								<div class="rli J_radioitme <if condition="$userprofile['marriage'] eq 3">checked</if>" data-code="3">保密</div>
+								<div class="clear"></div>
+								<input class="J_radioitme_code" name="marriage" id="marriage" type="hidden" value="{$userprofile.marriage}" />
+					    	</div>
+						</div>
+						<div class="td1">QQ：</div>
+						<div class="td2">
+						 	<input name="qq" id="qq" type="text" class="input_245_34" value="{$userprofile.qq}"/>
+						</div>
+						<div class="td1">微信号：</div>
+						<div class="td2">
+						 	<input name="weixin" id="weixin" type="text" class="input_245_34" value="{$userprofile.weixin}"/>
+						</div>
+						<div class="clear"></div>
+						<div class="butbox"><input type="button" id="J_savebase" class="but_blue_245 J_hoverbut" value="保存" /></div>
+					</form>
+				</div>
+				<div class="uright">
+				  <div class="photobox">
+						<div class="photo" onclick="javascript:location.href='{:U('personal/user_avatar')}'"><img border="0"  width="150" width="150" src="{$userprofile['avatar']}?{:time()}"></div>
+				        <div class="txt"><label><input name="photo_display" id="photo_display" type="checkbox" value="2" <if condition="$userprofile['photo_display'] eq 2">checked="checked"</if>/>&nbsp;头像不公开</label></div>
+				  </div>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<include file="index_footer" />
+	<script type="text/javascript" src="../public/js/jquery.modal.userselectlayer.js"></script>
+	<script type="text/javascript" src="../public/js/emailAutoComplete.js"></script>
+	<script type="text/javascript">
+		// 保存基本信息
+		var regularMobile = qscms.regularMobile; // 验证手机号正则
+		var regularEmail = /^[_\.0-9a-zA-Z-]+[_0-9a-zA-Z-]@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,3}$/; // 验证邮箱正则
+		$('#J_savebase').live('click', function(event) {
+			var realnameValue = $.trim($('#realname').val());
+			var displaynameValue = $.trim($('#display_name').val());
+			var sexValue = $.trim($('#sex').val());
+			var birthdayValue = $.trim($('#birthday').val());
+			var residenceValue = $.trim($('#residence').val());
+			var educationValue = $.trim($('#education').val());
+			var experienceValue = $.trim($('#experience').val());
+			var telephoneValue = $.trim($('#phone').val());
+			var emailValue = $.trim($('#email').val());
+			var majorValue = $.trim($('#major').val());
+			var heightValue = $.trim($('#height').val());
+			var householdaddressValue = $.trim($('#householdaddress').val());
+			var marriageValue = $.trim($('#marriage').val());
+			var photodisplayValue = $('#photo_display').is(":checked")?2:1;
+			var qq = $.trim($('#qq').val());
+			var weixin = $.trim($('#weixin').val());
+			if (realnameValue == "") {
+				disapperTooltip("remind", "请填写姓名");
+				return false;
+			}
+			if (displaynameValue == "") {
+				disapperTooltip("remind", "请选择简历保密方式");
+				return false;
+			}
+			if (sexValue == "") {
+				disapperTooltip("remind", "请选择性别");
+				return false;
+			}
+			if (birthdayValue == "") {
+				disapperTooltip("remind", "请选择出生年份ss");
+				return false;
+			}
+			if (educationValue == "") {
+				disapperTooltip("remind", "请选择学历");
+				return false;
+			}
+			if (experienceValue == "") {
+				disapperTooltip("remind", "请选择工作经验");
+				return false;
+			}
+			if (telephoneValue == "") {
+				disapperTooltip("remind", "请填写手机");
+				return false;
+			}
+			if (telephoneValue != "" && !regularMobile.test(telephoneValue)) {
+				disapperTooltip("remind", "手机号码格式不正确");
+				return false;
+			}
+			if (emailValue == "") {
+				disapperTooltip("remind", "请填写邮箱");
+				return false;
+			}
+			if (emailValue != "" && !regularEmail.test(emailValue)) {
+				disapperTooltip("remind", "邮箱格式不正确");
+				return false;
+			}
+
+			// 提交表单
+			$.ajax({
+				url: "{:U('Personal/user_info')}",
+				type: 'POST',
+				dataType: 'json',
+				data: {realname: realnameValue, display_name: displaynameValue, sex: sexValue, birthday: birthdayValue, residence: residenceValue, education: educationValue, experience: experienceValue, phone: telephoneValue, email: emailValue, major: majorValue, height: heightValue, householdaddress: householdaddressValue, marriage: marriageValue, photo_display: photodisplayValue,qq:qq,weixin:weixin},
+				success : function(result){
+					if(result.status == 1){
+						disapperTooltip("success", result.msg);
+					}else{
+						disapperTooltip("remind", result.msg);
+					}
+				}
+			})
+			.done(function(data) {
+				if (parseInt(data.status)) {
+					// window.location.href = data.data.url;
+				} else {
+					disapperTooltip("remind", data.msg);
+				}
+			})
+			.fail(function() {
+				disapperTooltip("remind", "更新失败请重新提交");
+			});
+		});
+		$('#J_auth_mobile').click(function(){
+			var f = $(this);
+			var qsDialog = $(this).dialog({
+        		title: '修改已认证手机',
+				loading: true,
+				showFooter: false,
+				yes: function() {
+					var verifycode  = $.trim($('#J_mobileWrap input[name="verifycode"]').val());
+					if(!verifycode){
+						disapperTooltip("remind", "请填写验证码！");
+						return !1;
+					}
+					$.post("{:U('Members/verify_mobile_code')}",{verifycode:verifycode},function(result){
+						if(result.status == 1){
+							f.prev().find('input').val(result.data.mobile);
+							if(result.data.points){
+								disapperTooltip("goldremind", '验证手机号增加'+result.data.points+'{:C('qscms_points_byname')}<span class="point">+'+result.data.points+'</span>');
+							}else{
+								disapperTooltip('success',result.msg);
+							}
+						}else{
+							disapperTooltip('remind',result.msg);
+						}
+					},'json');
+				}
+			});
+			$.getJSON("{:U('Members/user_mobile')}",function(result){
+	    		if(result.status == 1){
+	    			qsDialog.setContent(result.data);
+        			qsDialog.showFooter(true);
+	    		}else{
+	    			qsDialog.setContent('<div class="confirm">' + result.msg + '</div>');
+	    		}
+	    	});
+		});
+		$('#J_auth_email').click(function(){
+			var f = $(this);
+			var qsDialog = $(this).dialog({
+	    		loading: true,
+				footer: false,
+				header: false,
+				border: false,
+				backdrop: false
+			});
+			$.getJSON("{:U('Members/user_email')}",function(result){
+	    		if(result.status == 1){
+	    			qsDialog.hide();
+					var qsDialogSon = $(this).dialog({
+			    		title: '修改已认证邮箱',
+						content: result.data,
+						footer: false
+					});
+	    		}else{
+	    			qsDialog.hide();
+	    			disapperTooltip('remind',result.msg);
+	    		}
+	    	});
+		});
+	</script>
+</body>
+</html>

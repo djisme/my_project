@@ -1,0 +1,49 @@
+<div class="modify_user_dialog">
+	<div class="tip">
+		邮件到达需要2-3分钟，请耐心等待！
+	</div>
+	<div id="J_emailVerifyWrap" class="content">
+        <div class="err J_errbox"></div>
+		<div class="td1"><span class="asterisk"></span>&nbsp;您的邮箱：</div>
+		<div class="td2">
+			<input type="text" value="{$members_info.email}" class="input_245_34" name="email" placeholder="请输入您的常用邮箱">
+		</div>
+		<div class="clear"></div>
+        <div class="default td1">&nbsp;</div>
+        <div class="default td2">
+            <div id="J_emailVerifyCode" class="btn_verficode J_hoverbut btn_100_32">发送验证邮件</div>
+        </div>
+        <div class="clear"></div>
+	</div>
+</div>
+<div class="email_send_success">
+     <div class="result_info">
+        <div class="top_txt">验证邮件已发送至 </div>
+        <div class="email_info_box"></div>
+        <div class="down_txt">请在24小时内登录邮箱激活验证邮件</div>
+    </div>
+    <div class="btn_group"><a target="_blank" href="" class="btn_blue jump">立即登录邮箱激活</a></div>
+</div>
+<script type="text/javascript">
+    $('#J_emailVerifyCode').click(function(){
+        $('#J_emailVerifyCode').text('发送中...').addClass('disabled').prop('disabled', !0);
+        var email = $('#J_emailVerifyWrap input[name="email"]').val();
+        if(email == ''){
+            $('#J_emailVerifyWrap .J_errbox').text('邮箱不能不空！').show();
+            return false;
+        }
+        $.post("{:U('Members/send_email_varify_url')}",{email:email},function(result){
+            if(result.status == 1){
+                $('.modify_user_dialog').hide();
+                $('.email_send_success').show();
+                $('.email_info_box').html(email);
+                var jump_url = email.substring(email.indexOf('@'));
+                jump_url = 'http://mail.'+jump_url.replace(/@/,"");
+                $('.jump').attr('href',jump_url);
+            } else {
+                disapperTooltip('remind',result.msg);
+                $('#J_emailVerifyCode').text('发送验证邮箱').removeClass('disabled').prop('disabled', 0);
+            }
+        },'json');
+    });
+</script>

@@ -1,0 +1,49 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{$page_seo.title}</title>
+<meta name="keywords" content="{$page_seo.keywords}"/>
+<meta name="description" content="{$page_seo.description}"/>
+<meta name="author" content="骑士CMS"/>
+<meta name="copyright" content="74cms.com"/>
+<if condition="$apply['Subsite']">
+	<base href="{:C('SUBSITE_DOMAIN')}"/>
+</if>
+<link rel="shortcut icon" href="{:C('qscms_site_dir')}favicon.ico"/>
+<script src="{:C('TPL_HOME_PUBLIC_DIR')}/js/jquery.min.js"></script>
+<script src="{:C('TPL_HOME_PUBLIC_DIR')}/js/htmlspecialchars.js"></script>
+<script src="http://static.geetest.com/static/tools/gt.js"></script>
+<script type="text/javascript">
+	var app_spell = "<?php echo APP_SPELL;?>";
+	var qscms = {
+		base : "{:C('SUBSITE_DOMAIN')}",
+		keyUrlencode:"{:C('qscms_key_urlencode')}",
+		domain : "http://{$_SERVER['HTTP_HOST']}",
+		root : "__ROOT__/index.php",
+		companyRepeat:"{:C('qscms_company_repeat')}",
+		regularMobile: /^13[0-9]{9}$|14[0-9]{9}$|15[0-9]{9}$|18[0-9]{9}$|17[0-9]{9}$|16[0-9]{9}$|19[0-9]{9}$/,
+		is_subsite : <if condition="$apply['Subsite'] and C('SUBSITE_VAL.s_id') gt 0">1<else/>0</if>,
+		subsite_level : "<if condition="$apply['Subsite'] and C('SUBSITE_VAL.s_id') gt 0">{:C('SUBSITE_VAL.s_level')}<else/>{:C('qscms_category_district_level')}</if>",
+		smsTatus: "{:C('qscms_sms_open')}",
+		captcha_open:"{:C('qscms_captcha_open')}",
+		varify_mobile:"{:C('qscms_captcha_config.varify_mobile')}",
+		varify_suggest:"{:C('qscms_captcha_config.varify_suggest')}",
+        varify_user_login:"{$verify_userlogin}",
+		is_login:"<if condition="$visitor">1<else/>0</if>",
+		default_district : "<if condition="$apply['Subsite'] and C('SUBSITE_VAL.s_id') gt 0">{:C('SUBSITE_VAL.s_default_district')}<else/>{:C('qscms_default_district')}</if>",
+		default_district_spell : "<if condition="$apply['Subsite'] and C('SUBSITE_VAL.s_id') gt 0">{:C('SUBSITE_VAL.s_default_district_spell')}<else/>{:C('qscms_default_district_spell')}</if>"
+	};
+	$(function(){
+		$.getJSON("{:U('Home/AjaxCommon/get_header_min')}",function(result){
+			if(result.status == 1){
+				$('#J_header').html(result.data.html);
+			}
+		});
+	})
+</script>
+{$synlogin}
+{$synsitegroupregister}
+{$synsitegroupunbindmobile}
+{$synsitegroupedit}
+{$synsitegroup}

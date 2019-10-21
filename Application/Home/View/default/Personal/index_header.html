@@ -1,0 +1,35 @@
+<include file="public:header_min" />
+<div class="user_head link_white" id="header">
+ <div class="insidebox">
+ 	<div class="logobox"><a href="__ROOT__/"><img src="<if condition="C('qscms_logo_user')">{:attach(C('qscms_logo_user'),'resource')}<else/>__HOMEPUBLIC__/images/logo_user.png</if>"    border="0"/></a></div>
+	<div class="usertopso">
+	  <div class="sobox">
+	  <form id="ajax_search_location" action="{:U('ajaxCommon/ajax_search_location',array('type'=>'QS_jobslist'))}" method="get">
+	  	<input type="text" name="key" class="soinput" placeholder="请输入关键字" />
+	  	<input type="hidden" name="search_type" value="<if condition="C('qscms_jobsearch_key_first_choice') eq 1">jobs<else />full</if>" />
+	    <input type="submit" class="sobtn" value=""/>
+	  </form>
+	  </div>
+	  </div>
+	<div class="clear"></div>
+	 
+ </div>
+</div>
+<script type="text/javascript">
+	$('#ajax_search_location').submit(function(){
+		var input_key = $('input[name="key"]');
+		var nowKeyValue = $.trim(input_key.val());
+		input_key.val(htmlspecialchars(nowKeyValue));
+		var post_data = $(this).serialize();
+		if(qscms.keyUrlencode==1){
+			post_data = encodeURI(post_data);
+		}
+		var new_tab=window.open('about:blank');
+		$.post($(this).attr('action'),post_data,function(result){
+			//window.location.href=result.data;
+			//window.open(result.data,"_blank");
+			new_tab.location.href=result.data;
+		},'json');
+		return false;
+	});
+</script>

@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<include file="public:meta" />
+	<link href="../public/css/members/common.css" rel="stylesheet" type="text/css" />
+	<link href="../public/css/personal/personal_ajax_dialog.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<include file="header" />
+	<div class="reg_com">
+		<form class="J_passwordalert_group" id="registerForm" action="{:U('members/register')}" method="post" onkeydown="if(event.keyCode==13){return false;}">
+			<input type="hidden" name="incode" value="{$Think.get.incode}">
+			<div class="rl J_focus">
+				<div class="switch_title link_blue"><a href="{:U('members/register',array('utype'=>2))}">切换为个人注册>></a></div>
+				<div class="regtit">企业信息</div>
+				<div class="J_validate_group">
+					<div class="td1">
+						<input class="input_295_34" name="companyname" id="companyname" type="text" placeholder="请输入企业名称" autocomplete="off" />
+					</div>
+					<div class="td2 J_showtip_box"></div>
+				</div>
+				<div class="J_validate_group">
+					<div class="td1">
+						<input class="input_295_34" name="contact" id="contact" type="text" placeholder="请输入企业联系人" autocomplete="off" />
+					</div>
+					<div class="td2 J_showtip_box"></div>
+				</div>
+				<div class="J_validate_group">
+					<div class="td1">
+						<div class="tel_td1">
+							<input class="input_295_34" name="landline_tel_first" id="landline_tel_first" type="text" placeholder="区号"/>
+						</div>
+						<div class="tel_td2">
+							<input class="input_295_34" name="landline_tel_next" id="landline_tel_next" type="text" placeholder="固定电话"/>
+						</div>
+						<div class="tel_td3">
+							<input class="input_295_34" name="landline_tel_last" id="landline_tel_last" type="text" placeholder="分机号"/>
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="td2 J_showtip_box"></div>
+				</div>
+				<div class="J_validate_group">
+					<div class="td1">
+						<input class="input_295_34" name="mobile" id="telephone" type="text" placeholder="请输入手机号" autocomplete="off" />
+					</div>
+					<div class="td2 J_showtip_box"></div>
+				</div>
+				<div class="clear"></div>
+				<div class="tips_td">固定电话和手机号码至少填写一项</div>
+				<div class="regtit">账户信息<span>(用于登录{:C('qscms_site_name')})</span></div>
+				<div class="J_validate_group">
+					<div class="td1">
+						<input class="input_295_34" name="username" id="username" type="text" placeholder="请输入用户名" autocomplete="off" />
+					</div>
+					<div class="td2 J_showtip_box"></div>
+				</div>
+				<div class="J_validate_group">
+					<div class="td1">
+						<div class="reg-form-content">
+							<input class="input_295_34 inputElem" name="email" id="email" type="text" placeholder="请输入常用邮箱" autocomplete="off" />
+						</div>
+					</div>
+					<div class="td2 J_showtip_box"></div>
+				</div>
+				<div class="J_validate_group">
+					<div class="td1">
+						<input class="input_295_34 J_passwordalert" name="cpassword" id="cpassword" type="password" placeholder="请输入账户密码" autocomplete="off" />
+					</div>
+					<div class="td2 J_showtip_box"></div>
+				</div>
+				<div class="clear"></div>
+				<div class="safety">
+					<div class="slist t1">危险</div>
+					<div class="slist t2">一般</div>
+					<div class="slist t3">安全</div>
+					<div class="clear"></div>
+				</div>
+				<div class="J_validate_group">
+					<div class="td1">
+						<input class="input_295_34" name="cpasswordVerify" id="cpasswordVerify" type="password" placeholder="请确认账户密码" autocomplete="off" />
+					</div>
+					<div class="td2 J_showtip_box"></div>
+				</div>
+				<div class="clear"></div>
+				<div class="agreement link_blue"><label><input name="agreement" type="checkbox" value="1" checked="checked" />
+				我已阅读并同意<a href="javascript:;" id="reg_agreement">《{:C('qscms_site_name')}用户服务协议》</a></label></div>
+				<div class="btnbox">
+					<input name="utype" type="hidden" value="{$utype}">
+					<input type="hidden" name="reg_type" value="2">
+					<input type="hidden" name="landline_tel" id="landline_tel" value="">
+					<input name="" id="btnRegister" type="submit" value="注册" class="btn_reg J_hoverbut" />
+				</div>
+			</div>
+			<!-- -->
+			
+			<div class="rr">
+				<div class="tittxt">已经有{:C('qscms_site_name')}账号:</div>
+				
+				<div class="logintxt"><a href="{:U('members/login')}" class=" J_hoverbut btn_blue btn_inline">直接登录</a></div>
+				<div class="tittxt">使用以下帐号直接登录:</div>
+				
+				<div class="loginappimg">
+					<volist name="oauth_list" id="oauth">
+				  		<a href="{:U('callback/index',array('mod'=>$key,'type'=>'login'))}" class="imgli {$key} J_hoverbut" title="{$oauth.name}账号登录">&nbsp;</a>
+			  		</volist>
+				  <div class="clear"></div>
+				  </div>
+			</div>
+			<!-- -->
+			<div class="clear"></div>
+			<div id="popupCaptcha"></div>
+			<input type="hidden" id="verifyRegCompany">
+            <input type="hidden" name="geetest_challenge" class="J_gee_cha" value="">
+            <input type="hidden" name="geetest_validate" class="J_gee_val" value="">
+            <input type="hidden" name="geetest_seccode" class="J_gee_sec" value="">
+		</form>
+	</div>
+    <input type="hidden" id="J_captcha_open" value="{:C('qscms_captcha_open')}" />
+	<!--下方阴影 -->
+	<div class="reg_com_bg">
+		<div class="bl"></div>
+		<div class="br"></div>
+		<div class="clear"></div>
+	</div>
+	<qscms:text 列表名="agreement" 类型="agreement" />
+	<include file="public:footer_min" />
+	<script type="text/javascript" src="../public/js/jquery.validate.js"></script>
+	<script type="text/javascript" src="../public/js/members/jquery.pwdalert.js"></script>
+	<script type="text/javascript" src="../public/js/members/jquery.validate.regcompany.js"></script>
+	<script type="text/javascript" src="../public/js/jquery.modal.dialog.js"></script>
+	<script type="text/javascript" src="../public/js/emailAutoComplete.js"></script>
+	<script type="text/javascript" src="../public/js/jquery.placeholder.min.js"></script>
+	<script src="http://static.geetest.com/static/tools/gt.js"></script>
+	<script src="../public/js/members/jquery.common.js" type="text/javascript" language="javascript"></script>
+	<script type="text/javascript">
+		$('input').placeholder();
+	  	//注册协议弹框
+	  	$("#reg_agreement").click(function(){
+			var qsDialog = $(this).dialog({
+        		title: "{:C('qscms_site_name')}注册协议",
+				backdrop: false
+			});
+			$.getJSON("{:U('Home/Members/agreement')}",function(result){
+				if(result.status==1){
+					qsDialog.setContent(result.data);
+				}
+			});
+		});
+		// 默认第一项获得焦点
+		$('#companyname').focus().addClass('input_focus');
+		// 是否同意注册协议
+		$('input[name="agreement"]').die().live('click', function() {
+			if ($(this).is(':checked')) {
+				$('#btnRegister').prop('disabled', 0).removeClass('btn_disabled');
+			} else {
+				$('#btnRegister').prop('disabled', !0).addClass('btn_disabled');
+			}
+		})
+
+	</script>
+</body>
+</html>

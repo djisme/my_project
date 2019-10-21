@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<include file="public:meta" />
+	<link href="{:C('TPL_PUBLIC_DIR')}/css/common.css" rel="stylesheet" type="text/css" />
+	<link href="../public/css/members/common.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<include file="header" />
+	<div class="ban_box">
+		<div class="banner_list banner_list2"></div>
+		<div class="banner_list banner_list3"></div>
+		<div class="banner_list banner_list1"></div>
+		<div class="maind">
+			<div class="login">
+				<!--用户名密码登录 -->
+				<div class="mob j_mob_show">
+  					<div class="tit">
+  						<span class="switch_txt active">会员登录</span>
+  						<if condition="C('qscms_sms_open') eq 1"><span class="switch_txt">手机动态码登录</span></if>
+  						<div id="forAccountLogin" class="switch_account link_blue" data-index="0"><a href="javascript:;">切换为账号登录</a></div>
+  					</div>
+					<div class="type_box active">
+				    	<div class="err J_errbox"></div>
+				        <div class="inputbox J_focus">
+							<div class="imgbg"></div>
+				        	<input type="text" class="input_login" name="username" id="username" placeholder="手机号/会员名/邮箱"/> 
+				        </div>
+						<div class="inputbox J_focus">
+						    <div class="imgbg pwd"></div>
+							<input type="password" class="input_login pwd J_loginword" name="password" id="password" placeholder="请输入密码"  />
+						</div>
+						<div class="txtbox link_gray6">
+							<div class="td1"><label><input name="expire" class="J_expire" checked="checked" type="checkbox" value="1" /> 下次自动登录</label></div>
+							<div class="td2"><a href="{:U('members/user_getpass')}">忘记密码?</a></div>
+						</div>
+		 		        <div class="btnbox">
+		 		        	<input class="btn_login J_hoverbut" type="button" id="J_dologin" value="登录" />
+		 		        </div>
+	        			<div class="qqbox">
+						  	<div class="qtit">
+							  		<div class="qtit_left">
+										<notempty name="oauth_list">
+											使用合作账号登录
+										</notempty>
+									</div>
+								<if condition="C('qscms_sms_open') eq 1">
+							  		<div class="qtit_right link_blue"><a id="forMobileLogin" href="javascript:;" data-index="1">使用手机动态码登录</a></div>
+						  		</if>
+								<div class="clear"></div>
+						  	</div>
+						  	<div class="appsparent">
+							    <div class="apps">
+							    	<volist name="oauth_list" id="oauth">
+										<a class="ali {$key}" href="{:U('callback/index',array('mod'=>$key,'type'=>'login'))}" title="{$oauth.name}账号登录"></a>
+									</volist>
+								</div>
+							</div>
+					  		<div class="clear"></div>
+						</div>
+					</div>
+					<div class="type_box">
+				    	<div class="err J_errbox"></div>
+				        <div class="inputbox J_focus">
+							<div class="imgbg"></div>
+				        	<input type="text" class="input_login" name="mobile" id="mobile" placeholder="请输入手机号"/> 
+				        </div>
+						<div class="inputbox J_focus">
+						    <div class="imgbg pwd"></div>
+							<input type="text" class="input_login pwd code J_loginword" name="verfy_code" id="verfy_code" placeholder="请输入手机验证码"  />
+							<input class="btn_login code J_hoverbut" type="button" id="getVerfyCode" value="获取验证码" />
+						</div>
+						<div class="txtbox link_gray6">
+							<div class="td1"><label><input name="expire_obile" class="J_expire" checked="checked" type="checkbox" value="1" /> 下次自动登录</label></div>
+							<div class="td2"><a href="{:U('members/user_getpass')}">忘记密码?</a></div>
+						</div>
+		 		        <div class="btnbox">
+		 		        	<input class="btn_login J_hoverbut" type="button" id="J_dologinByMobile" value="登录" />
+		 		        </div>
+	        			<div class="qqbox">
+						  	<div class="qtit">
+						  		<div class="qtit_left">使用合作账号登录</div>
+						  		<div class="qtit_right link_blue"></div>
+						  		<div class="clear"></div>
+						  	</div>
+					  		<div class="appsparent">
+							    <div class="apps">
+							    	<volist name="oauth_list" id="oauth">
+										<a class="ali {$key}" href="{:U('callback/index',array('mod'=>$key,'type'=>'login'))}" title="{$oauth.name}账号登录"></a>
+									</volist>
+								</div>
+							</div>
+					  		<div class="clear"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<input type="hidden" id="J_loginType" value="0">
+	<input type="hidden" id="verify_userlogin" value="{$verify_userlogin}">
+    <input type="hidden" id="J_captcha_varify_send" value="{:C('qscms_captcha_config.varify_mobile')}" />
+    <input type="hidden" id="J_captcha_open" value="{:C('qscms_captcha_open')}" />
+	<input type="button" id="btnCheck" style="display:none;">
+    <input type="button" id="btnCheckLoginMobile" style="display:none;">
+    <input type="button" id="btnCheckLoginName" style="display:none;">
+	<input type="hidden" id="J_sendVerifyType" value="0">
+	<div id="popup-captcha"></div>
+	<include file="public:footer_min" />
+	<script type="text/javascript" src="../public/js/jquery.login.js"></script>
+	<script src="../public/js/members/jquery.common.js" type="text/javascript" language="javascript"></script>
+	<script src="http://static.geetest.com/static/tools/gt.js"></script>
+</body>
+</html>

@@ -1,0 +1,755 @@
+[ 2018-11-28T00:22:05+08:00 ] ::1 /bishe/install.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.074004s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.024001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-28T00:22:10+08:00 ] ::1 /bishe/install.php?m=Home&c=Index&a=step1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8] Undefined variable: s F:\php\wamp64\www\bishe\install\Home\Controller\IndexController.class.php 第 442 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.031002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.032002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-11-28T00:22:17+08:00 ] ::1 /bishe/install.php?m=Home&c=Index&a=step2
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-28T00:23:06+08:00 ] ::1 /bishe/install.php?m=Home&c=index&a=detection_db
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead F:\php\wamp64\www\bishe\install\Home\Controller\IndexController.class.php 第 475 行.
+NOTIC: [2] mysql_connect(): Access denied for user 'bishe'@'localhost' (using password: YES) F:\php\wamp64\www\bishe\install\Home\Controller\IndexController.class.php 第 475 行.
+
+[ 2018-11-28T00:23:07+08:00 ] ::1 /bishe/install.php?m=Home&c=Index&a=step3
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2] Missing argument 4 for Think\Controller::error(), called in F:\php\wamp64\www\bishe\install\Home\Controller\IndexController.class.php on line 74 and defined F:\php\wamp64\www\bishe\ThinkPHP\Library\Think\Controller.class.php 第 186 行.
+NOTIC: [8] Undefined variable: previous F:\php\wamp64\www\bishe\ThinkPHP\Library\Think\Controller.class.php 第 187 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\bishe\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 8 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\bishe\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 9 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\bishe\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 10 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.054003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.056003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-28T00:23:35+08:00 ] ::1 /bishe/install.php?m=Home&c=index&a=detection_db
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead F:\php\wamp64\www\bishe\install\Home\Controller\IndexController.class.php 第 475 行.
+NOTIC: [2] mysql_connect(): Access denied for user 'bishe'@'localhost' (using password: NO) F:\php\wamp64\www\bishe\install\Home\Controller\IndexController.class.php 第 475 行.
+
+[ 2018-11-28T00:23:35+08:00 ] ::1 /bishe/install.php?m=Home&c=Index&a=step3
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Missing argument 4 for Think\Controller::error(), called in F:\php\wamp64\www\bishe\install\Home\Controller\IndexController.class.php on line 74 and defined F:\php\wamp64\www\bishe\ThinkPHP\Library\Think\Controller.class.php 第 186 行.
+NOTIC: [8] Undefined variable: previous F:\php\wamp64\www\bishe\ThinkPHP\Library\Think\Controller.class.php 第 187 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\bishe\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 8 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\bishe\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 9 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\bishe\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 10 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-28T00:23:48+08:00 ] ::1 /bishe/install.php?m=Home&c=index&a=detection_db
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead F:\php\wamp64\www\bishe\install\Home\Controller\IndexController.class.php 第 475 行.
+NOTIC: [2] mysql_connect(): Access denied for user 'bishe'@'localhost' (using password: NO) F:\php\wamp64\www\bishe\install\Home\Controller\IndexController.class.php 第 475 行.
+
+[ 2018-11-28T00:23:49+08:00 ] ::1 /bishe/install.php?m=Home&c=Index&a=step3
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+NOTIC: [2] Missing argument 4 for Think\Controller::error(), called in F:\php\wamp64\www\bishe\install\Home\Controller\IndexController.class.php on line 74 and defined F:\php\wamp64\www\bishe\ThinkPHP\Library\Think\Controller.class.php 第 186 行.
+NOTIC: [8] Undefined variable: previous F:\php\wamp64\www\bishe\ThinkPHP\Library\Think\Controller.class.php 第 187 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\bishe\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 8 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\bishe\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 9 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\bishe\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 10 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-28T00:24:07+08:00 ] ::1 /bishe/install.php?m=Home&c=index&a=detection_db
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead F:\php\wamp64\www\bishe\install\Home\Controller\IndexController.class.php 第 475 行.
+NOTIC: [2] mysql_connect(): Access denied for user 'bishe'@'localhost' (using password: YES) F:\php\wamp64\www\bishe\install\Home\Controller\IndexController.class.php 第 475 行.
+
+[ 2018-11-28T00:24:08+08:00 ] ::1 /bishe/install.php?m=Home&c=Index&a=step3
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Missing argument 4 for Think\Controller::error(), called in F:\php\wamp64\www\bishe\install\Home\Controller\IndexController.class.php on line 74 and defined F:\php\wamp64\www\bishe\ThinkPHP\Library\Think\Controller.class.php 第 186 行.
+NOTIC: [8] Undefined variable: previous F:\php\wamp64\www\bishe\ThinkPHP\Library\Think\Controller.class.php 第 187 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\bishe\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 8 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\bishe\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 9 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\bishe\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 10 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-28T00:40:50+08:00 ] ::1 /recruit1/install.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-28T00:40:54+08:00 ] ::1 /recruit1/install.php?m=Home&c=Index&a=step1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+NOTIC: [8] Undefined variable: s F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php 第 442 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.024001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-11-28T00:40:57+08:00 ] ::1 /recruit1/install.php?m=Home&c=Index&a=step2
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.020001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-11-28T00:41:30+08:00 ] ::1 /recruit1/install.php?m=Home&c=index&a=detection_db
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php 第 475 行.
+NOTIC: [2] mysql_connect(): Access denied for user 'recruit'@'localhost' (using password: YES) F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php 第 475 行.
+
+[ 2018-11-28T00:41:31+08:00 ] ::1 /recruit1/install.php?m=Home&c=Index&a=step3
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+NOTIC: [2] Missing argument 4 for Think\Controller::error(), called in F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php on line 74 and defined F:\php\wamp64\www\recruit1\ThinkPHP\Library\Think\Controller.class.php 第 186 行.
+NOTIC: [8] Undefined variable: previous F:\php\wamp64\www\recruit1\ThinkPHP\Library\Think\Controller.class.php 第 187 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 8 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 9 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 10 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.021001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002001s ]
+
+[ 2018-11-28T00:43:31+08:00 ] ::1 /recruit1/install.php?m=Home&c=index&a=detection_db
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-28T00:43:31+08:00 ] ::1 /recruit1/install.php?m=Home&c=Index&a=step3
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Missing argument 4 for Think\Controller::error(), called in F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php on line 74 and defined F:\php\wamp64\www\recruit1\ThinkPHP\Library\Think\Controller.class.php 第 186 行.
+NOTIC: [8] Undefined variable: previous F:\php\wamp64\www\recruit1\ThinkPHP\Library\Think\Controller.class.php 第 187 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 8 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 9 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 10 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-28T00:44:41+08:00 ] ::1 /recruit1/install.php?m=Home&c=index&a=detection_db
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php 第 475 行.
+NOTIC: [2] mysql_connect(): Access denied for user 'recruit'@'localhost' (using password: YES) F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php 第 475 行.
+
+[ 2018-11-28T00:44:41+08:00 ] ::1 /recruit1/install.php?m=Home&c=Index&a=step3
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Missing argument 4 for Think\Controller::error(), called in F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php on line 78 and defined F:\php\wamp64\www\recruit1\ThinkPHP\Library\Think\Controller.class.php 第 186 行.
+NOTIC: [8] Undefined variable: previous F:\php\wamp64\www\recruit1\ThinkPHP\Library\Think\Controller.class.php 第 187 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 8 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 9 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 10 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-28T00:45:12+08:00 ] ::1 /recruit1/install.php?m=Home&c=index&a=detection_db
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php 第 475 行.
+
+[ 2018-11-28T00:45:16+08:00 ] ::1 /recruit1/install.php?m=Home&c=Index&a=step3
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+NOTIC: [2] Missing argument 4 for Think\Controller::error(), called in F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php on line 74 and defined F:\php\wamp64\www\recruit1\ThinkPHP\Library\Think\Controller.class.php 第 186 行.
+NOTIC: [8] Undefined variable: previous F:\php\wamp64\www\recruit1\ThinkPHP\Library\Think\Controller.class.php 第 187 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 8 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 9 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 10 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-28T00:45:33+08:00 ] ::1 /recruit1/install.php?m=Home&c=index&a=detection_db
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php 第 475 行.
+NOTIC: [2] mysql_connect(): Access denied for user 'root'@'localhost' (using password: YES) F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php 第 475 行.
+
+[ 2018-11-28T00:45:34+08:00 ] ::1 /recruit1/install.php?m=Home&c=Index&a=step3
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Missing argument 4 for Think\Controller::error(), called in F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php on line 74 and defined F:\php\wamp64\www\recruit1\ThinkPHP\Library\Think\Controller.class.php 第 186 行.
+NOTIC: [8] Undefined variable: previous F:\php\wamp64\www\recruit1\ThinkPHP\Library\Think\Controller.class.php 第 187 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 8 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 9 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 10 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-28T00:46:03+08:00 ] ::1 /recruit1/install.php?m=Home&c=index&a=detection_db
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php 第 475 行.
+
+[ 2018-11-28T00:46:05+08:00 ] ::1 /recruit1/install.php?m=Home&c=Index&a=step3
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Missing argument 4 for Think\Controller::error(), called in F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php on line 74 and defined F:\php\wamp64\www\recruit1\ThinkPHP\Library\Think\Controller.class.php 第 186 行.
+NOTIC: [8] Undefined variable: previous F:\php\wamp64\www\recruit1\ThinkPHP\Library\Think\Controller.class.php 第 187 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001001s ]
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 8 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 9 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 10 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-28T00:46:25+08:00 ] ::1 /recruit1/install.php?m=Home&c=index&a=detection_db
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015600s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php 第 475 行.
+NOTIC: [2] mysql_connect(): Access denied for user 'root'@'localhost' (using password: YES) F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php 第 475 行.
+
+[ 2018-11-28T00:46:25+08:00 ] ::1 /recruit1/install.php?m=Home&c=Index&a=step3
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Missing argument 4 for Think\Controller::error(), called in F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php on line 74 and defined F:\php\wamp64\www\recruit1\ThinkPHP\Library\Think\Controller.class.php 第 186 行.
+NOTIC: [8] Undefined variable: previous F:\php\wamp64\www\recruit1\ThinkPHP\Library\Think\Controller.class.php 第 187 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 8 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 9 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 10 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-28T00:47:27+08:00 ] ::1 /recruit1/install.php?m=Home&c=index&a=detection_db
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php 第 475 行.
+NOTIC: [2] mysql_connect(): Access denied for user 'root'@'localhost' (using password: YES) F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php 第 475 行.
+
+[ 2018-11-28T00:47:27+08:00 ] ::1 /recruit1/install.php?m=Home&c=Index&a=step3
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+NOTIC: [2] Missing argument 4 for Think\Controller::error(), called in F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php on line 74 and defined F:\php\wamp64\www\recruit1\ThinkPHP\Library\Think\Controller.class.php 第 186 行.
+NOTIC: [8] Undefined variable: previous F:\php\wamp64\www\recruit1\ThinkPHP\Library\Think\Controller.class.php 第 187 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 8 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 9 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 10 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-28T00:47:51+08:00 ] ::1 /recruit1/install.php?m=Home&c=index&a=detection_db
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php 第 475 行.
+
+[ 2018-11-28T00:47:54+08:00 ] ::1 /recruit1/install.php?m=Home&c=Index&a=step3
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2] Missing argument 4 for Think\Controller::error(), called in F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php on line 74 and defined F:\php\wamp64\www\recruit1\ThinkPHP\Library\Think\Controller.class.php 第 186 行.
+NOTIC: [8] Undefined variable: previous F:\php\wamp64\www\recruit1\ThinkPHP\Library\Think\Controller.class.php 第 187 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 8 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 9 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 10 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-28T00:51:09+08:00 ] ::1 /recruit1/install.php?m=Home&c=index&a=detection_db
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php 第 475 行.
+
+[ 2018-11-28T00:51:12+08:00 ] ::1 /recruit1/install.php?m=Home&c=Index&a=step3
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2] Missing argument 4 for Think\Controller::error(), called in F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php on line 74 and defined F:\php\wamp64\www\recruit1\ThinkPHP\Library\Think\Controller.class.php 第 186 行.
+NOTIC: [8] Undefined variable: previous F:\php\wamp64\www\recruit1\ThinkPHP\Library\Think\Controller.class.php 第 187 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 8 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 9 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 10 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.048003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.050003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-28T00:51:25+08:00 ] ::1 /recruit1/install.php?m=Home&c=index&a=detection_db
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php 第 475 行.
+
+[ 2018-11-28T00:51:28+08:00 ] ::1 /recruit1/install.php?m=Home&c=Index&a=step3
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2] Missing argument 4 for Think\Controller::error(), called in F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php on line 74 and defined F:\php\wamp64\www\recruit1\ThinkPHP\Library\Think\Controller.class.php 第 186 行.
+NOTIC: [8] Undefined variable: previous F:\php\wamp64\www\recruit1\ThinkPHP\Library\Think\Controller.class.php 第 187 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001001s ]
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 8 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 9 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 10 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-28T00:51:58+08:00 ] ::1 /recruit1/install.php?m=Home&c=index&a=detection_db
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php 第 475 行.
+NOTIC: [2] mysql_connect(): Access denied for user 'root'@'localhost' (using password: YES) F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php 第 475 行.
+
+[ 2018-11-28T00:51:58+08:00 ] ::1 /recruit1/install.php?m=Home&c=Index&a=step3
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2] Missing argument 4 for Think\Controller::error(), called in F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php on line 74 and defined F:\php\wamp64\www\recruit1\ThinkPHP\Library\Think\Controller.class.php 第 186 行.
+NOTIC: [8] Undefined variable: previous F:\php\wamp64\www\recruit1\ThinkPHP\Library\Think\Controller.class.php 第 187 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 8 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 9 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 10 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-28T00:52:16+08:00 ] ::1 /recruit1/install.php?m=Home&c=index&a=detection_db
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.015600s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015600s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php 第 475 行.
+NOTIC: [2] mysql_connect(): Access denied for user 'root'@'localhost' (using password: YES) F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php 第 475 行.
+
+[ 2018-11-28T00:52:16+08:00 ] ::1 /recruit1/install.php?m=Home&c=Index&a=step3
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Missing argument 4 for Think\Controller::error(), called in F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php on line 74 and defined F:\php\wamp64\www\recruit1\ThinkPHP\Library\Think\Controller.class.php 第 186 行.
+NOTIC: [8] Undefined variable: previous F:\php\wamp64\www\recruit1\ThinkPHP\Library\Think\Controller.class.php 第 187 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 8 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 9 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 10 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-28T00:54:19+08:00 ] ::1 /recruit1/install.php?m=Home&c=index&a=detection_db
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php 第 475 行.
+NOTIC: [2] mysql_connect(): Access denied for user 'root'@'localhost' (using password: YES) F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php 第 475 行.
+
+[ 2018-11-28T00:54:19+08:00 ] ::1 /recruit1/install.php?m=Home&c=Index&a=step3
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Missing argument 4 for Think\Controller::error(), called in F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php on line 74 and defined F:\php\wamp64\www\recruit1\ThinkPHP\Library\Think\Controller.class.php 第 186 行.
+NOTIC: [8] Undefined variable: previous F:\php\wamp64\www\recruit1\ThinkPHP\Library\Think\Controller.class.php 第 187 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 8 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 9 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 10 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-28T00:55:06+08:00 ] ::1 /recruit1/install.php?m=Home&c=index&a=detection_db
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.015600s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015600s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php 第 475 行.
+NOTIC: [2] mysql_connect(): Access denied for user 'root'@'localhost' (using password: YES) F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php 第 475 行.
+
+[ 2018-11-28T00:55:06+08:00 ] ::1 /recruit1/install.php?m=Home&c=Index&a=step3
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Missing argument 4 for Think\Controller::error(), called in F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php on line 74 and defined F:\php\wamp64\www\recruit1\ThinkPHP\Library\Think\Controller.class.php 第 186 行.
+NOTIC: [8] Undefined variable: previous F:\php\wamp64\www\recruit1\ThinkPHP\Library\Think\Controller.class.php 第 187 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 8 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 9 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 10 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-28T00:55:47+08:00 ] ::1 /recruit1/install.php?m=Home&c=index&a=detection_db
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.015600s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015600s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php 第 475 行.
+NOTIC: [2] mysql_connect(): Access denied for user 'root'@'localhost' (using password: YES) F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php 第 475 行.
+
+[ 2018-11-28T00:55:47+08:00 ] ::1 /recruit1/install.php?m=Home&c=Index&a=step3
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+NOTIC: [2] Missing argument 4 for Think\Controller::error(), called in F:\php\wamp64\www\recruit1\install\Home\Controller\IndexController.class.php on line 74 and defined F:\php\wamp64\www\recruit1\ThinkPHP\Library\Think\Controller.class.php 第 186 行.
+NOTIC: [8] Undefined variable: previous F:\php\wamp64\www\recruit1\ThinkPHP\Library\Think\Controller.class.php 第 187 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 8 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 9 行.
+NOTIC: [8] Undefined variable: page_seo F:\php\wamp64\www\recruit1\install\Runtime\Cache\Home\f8ae721048cb0d1a71093f7844f1589b.php 第 10 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+

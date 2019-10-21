@@ -1,0 +1,64 @@
+<include file="public:header"/>
+
+<div class="toptit">添加个人会员</div>
+<form action="{:U('member_add')}" method="post">
+    <div class="form_main width150">
+        <div class="fl">用户名:</div>
+        <div class="fr">
+            <input name="username" type="text" class="input_text_default middle" maxlength="25" value=""/>
+        </div>
+        <div class="fl">手机号:</div>
+        <div class="fr">
+            <input name="mobile" type="text" class="input_text_default middle" maxlength="11" value=""/>
+        </div>
+        <div class="fl">邮箱地址:</div>
+        <div class="fr">
+            <input name="email" type="text" class="input_text_default middle" maxlength="25" value=""/>
+        </div>
+        <div class="fl">登录密码:</div>
+        <div class="fr">
+            <input name="password" type="password" class="input_text_default middle" maxlength="25" value=""/>
+        </div>
+        <div class="fl">再次输入密码:</div>
+        <div class="fr">
+            <input name="repassword" type="password" class="input_text_default middle" maxlength="25" value=""/>
+        </div>
+        <notempty name="apply['Subsite']">
+            <div class="fl">所属分站:</div>
+            <qscms:subsite 列表名="subsite_list"/>
+            <div class="fr">
+                <div class="imgradio">
+                    <input name="subsite_id" type="hidden" value="{$subsite_list[0]['s_id']}">
+                    <if condition="$visitor['role_id'] eq 1">
+                        <volist name="subsite_list" id="subsite">
+                            <div class="radio <eq name='i' value='1'>select</eq>" data="{$subsite.s_id}" title="{$subsite.s_sitename}">{$subsite.s_sitename}</div>
+                        </volist>
+                    <else/>
+                        <volist name="subsite_list" id="subsite">
+                            <if condition="in_array($subsite['s_id'],$visitor['subsite'])">
+                                <div class="radio <eq name='i' value='1'>select</eq>" data="{$subsite.s_id}" title="{$subsite.s_sitename}">{$subsite.s_sitename}</div>
+                            </if>
+                        </volist>
+                    </if>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </notempty>
+        <div class="fl"></div>
+        <div class="fr">
+            <input type="hidden" name="utype" value="2"/>
+            <input type="submit" class="admin_submit" value="添加"/>
+            <input type="button" class="admin_submit" value="返回" onclick="window.location.href='{:U('member_list')}'"/>
+        </div>
+        <div class="clear"></div>
+    </div>
+</form>
+
+</div>
+<include file="public:footer"/>
+</body>
+<script type="text/javascript">
+    $(document).ready(function () {
+    });
+</script>
+</html>

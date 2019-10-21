@@ -1,0 +1,105 @@
+<include file="public:header" />
+ <div class="toptip link_g">
+  <h2>提示：</h2>
+    <p>
+    请确保配置项填写完整后再开启uc整合开关
+    </p>
+  </div>
+<div class="toptit">设置</div>
+<form action="{:U('uc/setOpen')}" method="post" name="form1" id="form">
+<table width="700" border="0" cellspacing="8" cellpadding="1" style=" margin-bottom:3px; " id="method_sendmail">
+         <tr>
+            <td width="121" align="right">开启UC整合：</td>
+            <td width="560">
+      <label><input name="uc_open" type="radio" value="1"  <if condition="C('qscms_uc_open') eq '1'">checked="checked"</if>/> 开启</label>
+      &nbsp;&nbsp;&nbsp;
+      <label><input name="uc_open" type="radio" value="0"  <if condition="C('qscms_uc_open') eq '0'">checked="checked"</if>/>关闭</label>            </td>
+          </tr>
+      </table>
+    <table width="700" border="0" cellspacing="8" cellpadding="1"  >
+        
+          <tr>
+            <td width="120" align="right">&nbsp;</td>
+            <td> 
+              <input name="save" type="submit" class="admin_submit"    value="保存"/>
+            </td>
+          </tr>
+      </table>
+</form>
+<form action="{:U('uc/index')}" method="post"   name="form1" id="form1">
+ <div class="toptit">配置项</div>
+    <table width="1200" border="0" cellspacing="8" cellpadding="1" style=" margin-bottom:3px; " id="method_sendmail">
+          
+          <tr>
+            <td width="121" align="right">数据库类型 UC_CONNECT：</td>
+            <td width="560"><input name="uc_connect" type="text"  class="input_text_200"  value="{$uc.uc_connect}"  /></td>
+          </tr>
+          <tr>
+            <td width="121" align="right">数据库地址 UC_DBHOST：</td>
+            <td width="560"><input name="uc_dbhost" type="text"  class="input_text_200"  value="{$uc.uc_dbhost}"  /></td>
+          </tr>
+          <tr>
+            <td width="121" align="right">数据库用户名 UC_DBUSER：</td>
+            <td width="560"><input name="uc_dbuser" type="text"  class="input_text_200"  value="{$uc.uc_dbuser}"  /></td>
+          </tr>
+          <tr>
+            <td width="121" align="right">数据库密码 UC_DBPW：  </td>
+            <td width="560"><input name="uc_dbpw" type="text"  class="input_text_200"  value="{$uc.uc_dbpw}"  /></td>
+          </tr>
+          <tr>
+            <td width="121" align="right">数据库名称 UC_DBNAME：  </td>
+            <td width="560"><input name="uc_dbname" type="text"  class="input_text_200"  value="{$uc.uc_dbname}"  /></td>
+          </tr>
+          <tr>
+            <td width="121" align="right">数据库编码 UC_DBCHARSET：  </td>
+            <td width="560"><input name="uc_dbcharset" type="text"  class="input_text_200"  value="{$uc.uc_dbcharset}"  /></td>
+          </tr>
+          <tr>
+            <td width="121" align="right">数据表前缀 UC_DBTABLEPRE：</td>
+            <td width="560"><input name="uc_dbtablepre" type="text"  class="input_text_200"  value="{$uc.uc_dbtablepre}"  /></td>
+          </tr>
+          <tr>
+            <td width="121" align="right">数据库连接 UC_DBCONNECT：</td>
+            <td width="560"><input name="uc_dbconnect" type="text"  class="input_text_200"  value="{$uc.uc_dbconnect}"  /></td>
+          </tr>
+          <tr>
+            <td width="121" align="right">通信密钥 UC_KEY：</td>
+            <td width="560"><input name="uc_key" type="text"  class="input_text_200"  value="{$uc.uc_key}"  /></td>
+          </tr>
+          <tr>
+            <td width="121" align="right">Ucenter地址 UC_API：</td>
+            <td width="560"><input name="uc_api" type="text"  class="input_text_200"  value="{$uc.uc_api}"  /></td>
+          </tr>
+          <tr>
+            <td width="121" align="right">Ucenter编码 UC_CHARSET： </td>
+            <td width="560"><input name="uc_charset" type="text"  class="input_text_200"  value="{$uc.uc_charset}"  /></td>
+          </tr>
+          <tr>
+            <td width="121" align="right">UcenterIP UC_IP：</td>
+            <td width="560"><input name="uc_ip" type="text"  class="input_text_200"  value="{$uc.uc_ip}"  /></td>
+          </tr>
+          <tr>
+            <td width="121" align="right">应用ID UC_APPID：</td>
+            <td width="560"><input name="uc_appid" type="text"  class="input_text_200"  value="{$uc.uc_appid}"  /></td>
+          </tr>
+          <tr>
+            <td width="121" align="right">UC PPP UC_PPP：</td>
+            <td width="560"><input name="uc_ppp" type="text"  class="input_text_200"  value="{$uc.uc_ppp}"  /></td>
+          </tr>
+      </table>
+    <table width="700" border="0" cellspacing="8" cellpadding="1"  >
+        
+          <tr>
+            <td width="120" align="right">&nbsp;</td>
+            <td> 
+              <input name="save" type="submit" class="admin_submit"    value="保存"/>
+            </td>
+          </tr>
+      </table>
+  </form>
+ 
+  
+</div>
+<include file="public:footer" />
+</body>
+</html>

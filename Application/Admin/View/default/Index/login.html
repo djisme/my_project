@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <link rel="shortcut icon" href="{:C('qscms_site_dir')}favicon.ico"/>
+    <meta name="author" content="骑士CMS"/>
+    <meta name="copyright" content="74cms.com"/>
+    <title>网站后台管理中心- Powered by 74CMS</title>
+    <link href="__ADMINPUBLIC__/css/common.css" rel="stylesheet" type="text/css"/>
+</head>
+<body style="background-color:#FFFFFF">
+<div class="login_top">
+    <div class="logo"><img src="__ADMINPUBLIC__/images/login_logo.gif"/></div>
+</div>
+<form id="form1" name="form1" method="post" action="{:U('index/login')}">
+    <div class="login_main">
+        <notempty name="err">
+            <div class="ce">
+                <div class="err" id="J_errbox">{$err}</div>
+            </div>
+        </notempty>
+        <div class="ce">
+            <div class="imgbg"></div>
+            <input name="username" type="text" maxlength="16" id="username" class="linput" placeholder="请输入用户名"/>
+        </div>
+        <div class="ce">
+            <div class="imgbg pwd"></div>
+            <input name="password" type="password" id="admin_pwd" value="" class="linput pwd" placeholder="请输入密码"/>
+        </div>
+        <div class="ce">
+            <input class="btn" type="button" name="Submit" id="J_dologin" value="登录"/>
+            <input type="button" id="btnCheck" style="display:none;">
+        </div>
+    </div>
+    <div id="popup-captcha"></div>
+    <input type="hidden" name="geetest_challenge" class="J_gee_cha" value="">
+    <input type="hidden" name="geetest_validate" class="J_gee_val" value="">
+    <input type="hidden" name="geetest_seccode" class="J_gee_sec" value="">
+</form>
+
+<div class="login_foot link_blue">
+    74cms是一个采用 PHP 和 MySQL 构建的高效人才系统解决方案 <a href="http://ask.74cms.com/" target="_blank">技术论坛</a><br/>
+    Powered by <a href="http://www.74cms.com/" target="_blank"><em>74cms v {:C('QSCMS_VERSION')} </em></a> Copyright &copy;{:date('Y')}
+</div>
+
+<script src="__ADMINPUBLIC__/js/jquery.min.js"></script>
+<script src="http://static.geetest.com/static/tools/gt.js"></script>
+<script language="javascript">
+    function init() {
+        var ctrl = document.getElementById("username");
+        ctrl.focus();
+    }
+    init();
+    $(document).ready(function () {
+        $('#admin_pwd').bind('keypress', function (event) {
+            if (event.keyCode == "13") {
+                $("#J_dologin").click();
+            }
+        });
+        $('#J_dologin').live('click', function () {
+            if ("{$verify_userlogin_admin}" == 1) {
+                $('.geetest_panel').remove();
+                $.ajax({
+                    url: "{:U('home/captcha/index')}?t=" + (new Date()).getTime(),
+                    type: "get",
+                    dataType: "json",
+                    success: function (data) {
+                        initGeetest({
+                            gt: data.gt,
+                            challenge: data.challenge,
+                            offline: !data.success,
+                            new_captcha: data.new_captcha,
+                            product: 'bind'
+                        }, function (captchaObj) {
+                            captchaObj.appendTo("#popup-captcha");
+                            captchaObj.onSuccess(function () {
+                                var captChaResult = captchaObj.getValidate();
+                                $('.J_gee_cha').val(captChaResult.geetest_challenge);
+                                $('.J_gee_val').val(captChaResult.geetest_validate);
+                                $('.J_gee_sec').val(captChaResult.geetest_seccode);
+                                doLogin();
+                            })
+                            captchaObj.onReady(function () {
+                                $("#btnCheck").click();
+                            });
+                            $('#btnCheck').click(function () {
+                                captchaObj.verify();
+                            })
+                            captchaObj.onError(function () {
+                                $('#J_errbox').text("网络错误，请稍候再试！").show();
+                            });
+                        });
+                    },
+                    error: function (data) {
+                        $('#J_errbox').text(data['responseText']).show();
+                    }
+                });
+            } else {
+                doLogin();
+            }
+        });
+
+        function doLogin() {
+            // 提交表单
+            $("#form1").submit();
+        }
+    });
+</script>
+</body>
+</html>

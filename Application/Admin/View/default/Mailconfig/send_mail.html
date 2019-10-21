@@ -1,0 +1,125 @@
+<include file="public:header" />
+	<div class="toptit">发送邮件</div>
+    <span id="submitbox">
+		<form action="{:U('send_mail')}" method="post" name="form" id="form">
+		<input name="uid" type="hidden"  id="uid" value="{$Think.get.uid}" /></td>
+		<table width="100%" border="0" cellspacing="10" cellpadding="1" style=" margin-bottom:3px;">
+          <tr>
+            <td width="100" align="right">收件人地址:</td>
+            <td>
+			<input name="email" type="text"  class="input_text_200" id="email" value="{$Think.get.email}" maxlength="60"/></td>
+          </tr>
+		   <tr>
+            <td width="100" align="right">邮件标题:</td>
+            <td>
+			<input name="subject" type="text"  class="input_text_400" id="email" value="" /></td>
+          </tr>
+		  <tr>
+            <td width="100" align="right" valign="top">邮件内容:</td>
+            <td>
+			  <textarea id="body" name="body" style="width:700px;height:300px;visibility:hidden;"></textarea>
+		    </td>
+          </tr>
+          <tr>
+            <td align="right">&nbsp;</td>
+            <td>
+			<input name="url" type="hidden" value="{$url}" />
+			<input name="check" type="submit" class="admin_submit" id="check" value="立即发送" /></td>
+          </tr>
+        </table>
+	    </form>
+		<if condition="$maillog">
+	 <div class="toptit">邮件发送记录</div>
+	<form action="{:U('del')}" method="post"   name="form1" id="form1">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0"  id="list" class="link_lan">
+    <tr>
+      <td  width="120" class="admin_list_tit admin_list_first">
+     <label id="chkAll"><input type="checkbox" name="" title="全选/反选" id="chk"/>类型</label>	 </td>
+	  <td class="admin_list_tit" width="13%">收件地址</td>
+	  <td  class="admin_list_tit">邮件主题</td>
+      <td  class="admin_list_tit">邮件内容</td>
+      <td width="110"  align="center"  class="admin_list_tit">添加时间</td>	  
+      <td width="110"  align="center"  class="admin_list_tit">发送时间</td>
+      <td width="10%" align="center"  class="admin_list_tit">操作</td>
+    </tr>
+	<volist name="maillog" id="vo">
+	 <tr>
+      <td   class="admin_list admin_list_first">
+     <input type="checkbox" name="id[]"  value="{$vo.m_id}"/>
+     <if condition="$vo['m_type'] eq 1"><span style="color:#FF6600">等待发送</span></if>
+     <if condition="$vo['m_type'] eq 2"><span style="color:#009900">发送成功</span></if>
+     <if condition="$vo['m_type'] eq 3"><span style="color:#666666">发送失败</span></if>
+	  </td>
+	  <td  class="admin_list">
+	  {$vo.m_mail}
+	  </td>
+	  <td   class="admin_list vtip" title="{$vo.m_subject|nl2br}" >
+	  {$vo.m_subject}
+	  </td>
+      <td   class="admin_list vtip" title="{$vo.m_body|nl2br}" >
+	   {$vo.m_body}
+	  </td>
+      <td align="center"  class="admin_list">
+	  {:date('Y-m-d',$vo['m_addtime'])}
+		</td>	  
+      <td align="center"  class="admin_list">
+	  <if condition="$vo['m_sendtime'] eq 0">
+		----
+		<else />
+		{:date('Y-m-d',$vo['m_sendtime'])}
+		</if>
+	  </td>
+      <td align="center"  class="admin_list">
+	  <a href="javascript:void()" class="again_send" id="{$vo.m_id}">重新发送</a>
+	</td>
+	</tr>
+	</volist>
+  </table>
+	<table width="100%" border="0" cellspacing="10"  class="admin_list_btm" >
+		<tr>
+            <td height="30" width="110" align="right" >&nbsp;</td>
+            <td height="30"  >
+              <input type="submit" name="submit22" type="button" class="admin_submit submitdel"    value="删除所选" />
+           </td>
+          </tr>
+	  </table>
+	</form>
+<div class="page link_bk" style="height:20px">{$page}</div>
+</if>
+  </span>
+<span id="hide" style="display: none; color: #009900; padding-left:30px; padding-bottom:80px;">
+ 正在发送邮件.......<br />
+<br />
+</span>
+
+</div>
+<include file="public:footer" />
+<link rel="stylesheet" href="__ADMINPUBLIC__/js/kindeditor/themes/default/default.css" />
+<script charset="utf-8" src="__ADMINPUBLIC__/js/kindeditor/kindeditor-min.js"></script>
+<script charset="utf-8" src="__ADMINPUBLIC__/js/kindeditor/lang/zh_CN.js"></script>
+<script type="text/javascript"> 
+var editor;
+KindEditor.ready(function(K) {
+editor = K.create('textarea[name="body"]', {
+  allowFileManager : true
+});
+K('input[name=Submit2]').click(function(e) {
+  editor.html('');
+});
+});
+$(document).ready(function()
+{
+	$("#check").click(function () {	
+	$("#submitbox").hide();
+	$("#hide").show();	
+	});
+	$(".again_send").click(function(){
+		$(this).html('发送中...');
+		$(this).css('color','red');
+		$id=$(this).attr('id');
+		window.location.href='{:U("again_send")}&id='+$id;
+	})
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<include file="public:header"/>
+
+<div class="toptit">职位订阅设置</div>
+<form action="{:U('jobs_subscribe_config')}" method="post">
+    <div class="form_main width150">
+        <div class="fl">职位订阅频率:</div>
+        <div class="fr">
+            <input name="subscribe_period" type="text" class="input_text_default middle" maxlength="10" value="{:C('qscms_subscribe_period')}" onkeyup="if(event.keyCode !=37 && event.keyCode != 39) value=value.replace(/\D/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/\D/g,''))"/> 天
+        </div>
+        <div class="fl">职位订阅最大数:</div>
+        <div class="fr">
+            <input name="subscribe_num" type="text" class="input_text_default middle" maxlength="10" value="{:C('qscms_subscribe_num')}" onkeyup="if(event.keyCode !=37 && event.keyCode != 39) value=value.replace(/\D/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/\D/g,''))"/> 条
+        </div>
+        <div class="fl"></div>
+        <div class="fr">
+            <input type="submit" class="admin_submit" value="保存"/>
+            <input type="button" class="admin_submit" value="返回" onClick="history.go(-1)"/>
+        </div>
+        <div class="clear"></div>
+    </div>
+</form>
+
+</div>
+<include file="public:footer"/>
+</body>
+<script type="text/javascript">
+    $(document).ready(function () {
+    });
+</script>
+</html>

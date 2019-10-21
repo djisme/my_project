@@ -1,0 +1,163 @@
+<include file="public:header"/>
+<notempty name="apply['Subsite']">
+    <div class="seltpye_y">
+        <div class="tit">所属分站</div>
+        <div class="ct">
+            <div class="txt <neq name='Think.get.subsite_id' value=''>select</neq>">{$Think.get.subsite_cn|default="不限"}</div>
+        </div>
+        <qscms:subsite 列表名="subsite_list"/>
+        <div class="downlist">
+            <li url="{:P(array('subsite_id'=>'','subsite_cn'=>'不限'))}">不限</li>
+            <if condition="$visitor['role_id'] eq 1">
+                <volist name="subsite_list" id="subsite">
+                    <li url="{:P(array('subsite_id'=>$subsite['s_id'],'subsite_cn'=>$subsite['s_sitename']))}">{$subsite.s_sitename}</li>
+                </volist>
+                <else/>
+                <volist name="subsite_list" id="subsite">
+                    <if condition="in_array($subsite['s_id'],$visitor['subsite'])">
+                        <li url="{:P(array('subsite_id'=>$subsite['s_id'],'subsite_cn'=>$subsite['s_sitename']))}">{$subsite.s_sitename}</li>
+                    </if>
+                </volist>
+            </if>
+        </div>
+    </div>
+</notempty>
+<div class="seltpye_y">
+    <div class="tit">处理状态</div>
+    <div class="ct">
+        <div class="txt <neq name='Think.get.status'>select</neq>">{$Think.get.status_cn|default="不限"}</div>
+    </div>
+    <div class="downlist">
+        <li url="{:P(array('status'=>'','status_cn'=>'不限'))}">不限</li>
+        <li url="{:P(array('status'=>'0','status_cn'=>'未处理'))}">未处理<if condition="$count"><span style="color: #ff0000;">({$count})</span></if></li>
+        <li url="{:P(array('status'=>'1','status_cn'=>'已处理'))}">已处理</li>
+    </div>
+</div>
+<div class="seltpye_y">
+    <div class="tit">添加时间</div>
+    <div class="ct">
+        <div class="txt <notempty name='Think.get.settr'>select</notempty>">{$Think.get.settr_cn|default="不限"}</div>
+    </div>
+    <div class="downlist">
+        <li url="{:P(array('settr'=>'','settr_cn'=>'不限'))}">不限</li>
+        <li url="{:P(array('settr'=>'3','settr_cn'=>'三天内'))}">三天内</li>
+        <li url="{:P(array('settr'=>'7','settr_cn'=>'一周内'))}">一周内</li>
+        <li url="{:P(array('settr'=>'30','settr_cn'=>'一月内'))}">一月内</li>
+        <li url="{:P(array('settr'=>'180','settr_cn'=>'半年内'))}">半年内</li>
+        <li url="{:P(array('settr'=>'360','settr_cn'=>'一年内'))}">一年内</li>
+    </div>
+</div>
+<div class="clear"></div>
+
+<form id="form1" name="form1" method="post" action="{:U('delete')}">
+    <div class="list_th">
+        <div class="td" style=" width:10%;">
+            <label id="chkAll" class="left_padding">
+                <input type="checkbox" name="chkAll" id="chk" title="全选/反选"/>真实姓名
+            </label>
+        </div>
+        <div class="td" style=" width:10%;">处理状态</div>
+        <div class="td" style=" width:28%;">申诉描述</div>
+        <div class="td" style=" width:10%;">联系手机</div>
+        <div class="td" style=" width:15%;">联系邮箱</div>
+        <div class="td center" style=" width:15%;">添加时间</div>
+        <div class="td" style=" width:12%;">操作</div>
+        <div class="clear"></div>
+    </div>
+
+    <volist name="list" id="vo">
+        <div class="list_tr link_blue">
+            <div class="td" style=" width:10%;">
+                <div class="left_padding striking">
+                    <input name="id[]" type="checkbox" id="id" value="{$vo['id']}"/>
+                    {$vo.realname|default='-'}
+                </div>
+            </div>
+            <div class="td" style=" width:10%;">
+                <if condition="$vo['status'] eq 1">已处理
+                    <else /><span style="color: #ff0000;">未处理</span>
+                </if>
+            </div>
+            <div class="td vtip" style=" width:28%;" title="{$vo.description|nl2br}">{$vo.description|default='-'}</div>
+            <div class="td" style=" width:10%;">{$vo.mobile|default='-'}</div>
+            <div class="td" style=" width:15%;">{$vo.email|default='-'}</div>
+            <div class="td center" style=" width:15%;">{:admin_date($vo['addtime'])}</div>
+            <div class="td edit" style=" width:12%;">
+                <if condition="$vo['status'] eq 0">
+                    <a href="javascript:;" class="send_email" parameter="id={$vo['id']}&email={$vo['email']}">发送邮件</a>
+                </if>
+                <a href="{:U('delete',array('id'=>$vo['id']))}" class="gray" onclick="return confirm('你确定要删除吗？')">删除</a>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </volist>
+</form>
+
+<empty name="list">
+    <div class="list_empty">没有任何信息！</div>
+</empty>
+
+<div class="list_foot">
+    <div class="btnbox">
+        <input type="button" class="admin_submit" id="ButAudit" value="处理"/>
+        <input type="button" class="admin_submit" id="ButDel" value="删除所选"/>
+    </div>
+    <div class="footso"></div>
+</div>
+<div class="pages">{$page}</div>
+
+</div>
+<include file="public:footer"/>
+
+</body>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //发送邮件
+        $(".send_email").click(function () {
+            var qsDialog = $(this).dialog({
+                title: '帐号申诉回执邮件',
+                loading: true,
+                footer : false
+            });
+            var param = $(this).attr('parameter');
+            var url = "{:U('Ajax/appeal_send_email')}&" + param;
+            $.getJSON(url, function (result) {
+                qsDialog.setContent(result.data);
+            });
+        });
+        //处理
+        $("#ButAudit").click(function () {
+            var data = $("form[name=form1]").serialize();
+            if(data.length == 0){
+                disapperTooltip('remind','请选择申诉记录！');
+            } else {
+                var qsDialog = $(this).dialog({
+                    title: '处理申诉记录',
+                    loading: true,
+                    footer : false
+                });
+                var url = "{:U('Ajax/appeal_audit')}";
+                $.post(url, data, function (result) {
+                    if(result.status == 1){
+                        qsDialog.setContent(result.data);
+                    } else {
+                        qsDialog.hide();
+                        disapperTooltip('remind',result.msg);
+                    }
+                });
+            }
+        });
+        //点击批量删除
+        $("#ButDel").click(function () {
+            var ids = $("input[name='id[]']:checked");
+            if(ids.length == 0){
+                disapperTooltip('remind','请选择申诉记录！');
+            } else {
+                if(confirm('确定删除吗？')){
+                    $("form[name=form1]").submit();
+                }
+            }
+        });
+    });
+</script>
+</html>

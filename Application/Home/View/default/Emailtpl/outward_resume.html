@@ -1,0 +1,47 @@
+<div style="width: 900px;margin: 0 auto;font-size: 14px;">
+<div style="margin-bottom:10px">
+	<div style="float: left;"><a target="_blank" href="<if condition="!$apply['Subsite']">{:C('qscms_site_domain')}</if>{:url_rewrite('QS_resumeshow',array('id'=>$resume_basic['id']),'',false)}">查看详情>></a></div>
+	<div style="float: right;padding-top:10px;">更新时间：{:date("Y-m-d",$resume_basic["refreshtime"])}</div>
+	<div style="clear:both"></div>
+</div>
+<div style="padding-bottom: 10px;">
+	<span style="font-size: 18px;font-weight: 700;">{$resume_basic["fullname"]}</span><span>（{$resume_basic["sex_cn"]}，{$resume_basic["age"]}）</span>
+	<p>学历：{$resume_basic["education_cn"]} | 专业：{$resume_basic["major_cn"]} | 工作经验：{$resume_basic["experience_cn"]} | 现居住地：{$resume_basic["residence"]}</p>
+	<p>手机号码：{$resume_basic["telephone"]} 电子邮箱：{$resume_basic["email"]}</p>
+	<if condition="$resume_basic['tag_arr']">
+	<volist name="resume_basic['tag_arr']" id="vo">
+	<p>
+	<span style="color: #656565;display:inline-block;background-color: #f2f4f7; border: 1px solid #d6d6d7;text-align: center;height:30px;line-height: 30px;margin-right:10px;padding:0 10px">{$vo}</span>
+	</p>
+	</volist>
+</div>
+<div style="padding-bottom: 10px;">
+	<p style="font-size: 16px;font-weight: 700;">求职意向</p>
+	<p>期望职位：{$resume_basic["intention_jobs"]}</p>
+	<p>期望薪资：{$resume_basic["wage_cn"]}</p>
+	<p>期望地区：{$resume_basic["district_cn"]}</p>
+</div>
+<div style="padding-bottom: 10px;">
+	<p style="font-size: 16px;font-weight: 700;">工作经验</p>
+	<notempty name="resume_basic['work_list']">
+		<volist name="resume_basic['work_list']" id="value">
+		<div>
+			<p style="font-size: 14px;font-weight: 700;">{$value["companyname"]}</p>
+			<p>{$value["startyear"]}年{$value["startmonth"]}月-<eq name="value['todate']" value="1">至今<else />{$value['endyear']}年{$value['endmonth']}月</eq> {$value["jobs"]}</p>
+			<div style="float: left;width: 100px;">工作内容：</div>
+			<div style="float: right;width: 800px;">{$value["achievements"]}</div>
+			<div style="clear:both"></div>
+		</div>
+		</volist>
+	<else/>
+		<div>没有填写工作经历</div>
+	</notempty>
+</div>
+<div style="padding-bottom: 10px;">
+	<p style="font-size: 16px;font-weight: 700;">自我描述</p>
+	<p>{$resume_basic["specialty"]}</p>
+</div>
+<div style="text-align: center;margin-top:20px">
+		该简历来自<a target="_blank" href="{:C('qscms_site_domain')}{:C('qscms_site_dir')}">{:C('qscms_site_name')}</a>
+	</div>
+</div>

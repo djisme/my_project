@@ -1,0 +1,83 @@
+<include file="public:header" />
+<div class="toptip">
+    <div class="toptit">提示：</div>
+    <p>此列表为您系统发送的邮件列表。</p>
+</div>
+	<div class="seltpye_x">
+		<div class="left">筛选类型</div>	
+		<div class="right">
+			<a href="{:P(array('state'=>''))}" <if condition="$Think.get.state eq ''">class="select"</if>>不限</a>
+			<a href="{:P(array('state'=>1))}" <if condition="$Think.get.state eq 1">class="select"</if>>发送成功</a>
+			<a href="{:P(array('state'=>2))}" <if condition="$Think.get.state eq 2">class="select"</if>>发送失败</a>
+			<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<form id="form1" name="form1" method="post">
+		<div class="list_th">
+	        <div class="td" style=" width:10%;">
+	            <label id="chkAll" class="left_padding">
+	                <input type="checkbox" name="chkAll" id="chk" title="全选/反选"/>状态
+	            </label>
+	        </div>
+	        <div class="td" style=" width:15%;">发送帐号</div>
+	        <div class="td" style="width:15%;">收件地址</div>
+	        <div class="td" style="width:37%;">邮件主题</div>
+	        <div class="td center" style="width:10%;">发送时间</div>
+	        <div class="td center" style="width:13%;">操作</div>
+	        <div class="clear"></div>
+	    </div>
+	    <volist name="list" id="list">
+			<div class="list_tr link_black">
+				<div class="td" style=" width:10%;">
+                    <div class="left_padding striking">
+                        <input type="checkbox" name="id[]"  value="{$list.id}"/>
+                        <if condition="$list['state'] eq 1"><span style="color: #009900">发送成功</span></if>
+                        <if condition="$list['state'] eq 2"><span style="color: #666666">发送失败</span></if>
+                    </div>
+		        </div>
+		        <div class="td" style=" width:15%;">{$list.send_from}</div>
+		        <div class="td" style="width:15%;">{$list.send_to}</div>
+		        <div class="td vtip" style="width:37%;" title="{$list.subject|nl2br}">{$list.subject}</div>
+		        <div class="td center" style="width:10%;">{:admin_date($list['sendtime'])}</div>
+		        <div class="td center edit" style="width:13%;"><a href="{:U('show',array('id'=>$list['id']))}">查看</a></div>
+		        <div class="clear"></div>
+			</div>
+		</volist>
+	</form>	
+		<empty name="list">
+		    <div class="list_empty">没有任何信息！</div>
+		</empty>
+		<div class="list_foot">
+		    <div class="footso">
+		 <form action="?" method="get">
+		            <div class="sobox">
+		                <input type="hidden" name="m" value="{:C('admin_alias')}">
+		                <input type="hidden" name="c" value="{:CONTROLLER_NAME}">
+		                <input type="hidden" name="a" value="{:ACTION_NAME}">
+		                <input name="key" type="text" class="sinput" value="{$Think.get.key}"/>
+		                <input name="key_type" id="J_key_type_id" type="hidden" value="{$Think.get.key_type|default='1'}" />
+		                <input name="key_type_cn" id="J_key_type_cn" type="hidden" value="{$Think.get.key_type_cn|default='邮件主题'}"/>
+		                <input name="" type="submit" value="" class="sobtn"/>
+		                <div class="sotype" id="J_key_click">{$Think.get.key_type_cn|default='邮件主题'}</div>
+		                <div class="mlist" id="J_mlist">
+		                    <ul>
+		                    	<li id="1" title="邮件主题">邮件主题</li>
+								<li id="2" title="收件地址">收件地址</li>
+								<li id="3" title="发送帐号">发送帐号</li>
+		                    </ul>
+		                </div>
+		            </div>
+		        </form> 
+		    </div>
+		</div>
+		<div class="pages">{$page}</div>
+</div>
+<include file="public:footer" />
+<!-- /*<script type="text/javascript">
+	$(document).ready(function(){
+		showmenu("#key_type_cn","#sehmenu","#key_type");
+	});
+</script>*/ -->
+</body>
+</html>

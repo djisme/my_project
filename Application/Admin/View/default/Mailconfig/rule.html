@@ -1,0 +1,103 @@
+<include file="public:header" />
+  <div class="toptip">
+    <div class="toptit">提示：</div>
+    <p>过多的项目设置邮件通知会消耗系统资源。</p>
+  </div>
+	<form action="{:U('mailconfig/rule')}" method="post"   name="form1" id="form1">
+        <div class="toptit">邮件发送规则</div>
+        <div class="form_main width200">
+            <div class="fl">注册会员：</div>
+            <div class="fr">
+              <div data-code="0,1" class="imgchecked_small <if condition="$info['set_reg'] eq 1">select</if>"><input name="set_reg" type="hidden" value="{$info.set_reg}" /></div>
+              <div class="note">(注册会员成功后发送邮件通知)</div>
+              <div class="clear"></div>
+            </div>
+            <div class="fl">申请职位：</div>
+            <div class="fr">
+              <div data-code="0,1" class="imgchecked_small <if condition="$info['set_applyjobs'] eq 1">select</if>"><input name="set_applyjobs" type="hidden" value="{$info.set_applyjobs}" /></div>
+              <div class="note">(个人申请了职位是否通知企业)</div>
+              <div class="clear"></div>
+            </div>
+            <div class="fl">邀请面试：</div>
+            <div class="fr">
+              <div data-code="0,1" class="imgchecked_small <if condition="$info['set_invite'] eq 1">select</if>"><input name="set_invite" type="hidden" value="{$info.set_invite}" /></div>
+              <div class="note">(企业邀请个人面试是否通知个人)</div>
+              <div class="clear"></div>
+            </div>
+            <div class="fl">新增订单：</div>
+            <div class="fr">
+              <div data-code="0,1" class="imgchecked_small <if condition="$info['set_order'] eq 1">select</if>"><input name="set_order" type="hidden" value="{$info.set_order}" /></div>
+              <div class="note">(会员下充值订单是否邮件通知)</div>
+              <div class="clear"></div>
+            </div>
+            <div class="fl">付款成功：</div>
+            <div class="fr">
+              <div data-code="0,1" class="imgchecked_small <if condition="$info['set_payment'] eq 1">select</if>"><input name="set_payment" type="hidden" value="{$info.set_payment}" /></div>
+              <div class="note">(会员订单付款完成是否邮件通知)</div>
+              <div class="clear"></div>
+            </div>
+            <div class="fl">修改密码：</div>
+            <div class="fr">
+              <div data-code="0,1" class="imgchecked_small <if condition="$info['set_editpwd'] eq 1">select</if>"><input name="set_editpwd" type="hidden" value="{$info.set_editpwd}" /></div>
+              <div class="note">(会员修改密码后是否邮件通知)</div>
+              <div class="clear"></div>
+            </div>
+            <div class="fl">职位审核通过：</div>
+            <div class="fr">
+              <div data-code="0,1" class="imgchecked_small <if condition="$info['set_jobsallow'] eq 1">select</if>"><input name="set_jobsallow" type="hidden" value="{$info.set_jobsallow}" /></div>
+              <div class="note">(职位审核通过是否邮件通知)</div>
+              <div class="clear"></div>
+            </div>
+            <div class="fl">职位审核未通过：</div>
+            <div class="fr">
+              <div data-code="0,1" class="imgchecked_small <if condition="$info['set_jobsnotallow'] eq 1">select</if>"><input name="set_jobsnotallow" type="hidden" value="{$info.set_jobsnotallow}" /></div>
+              <div class="note">(职位审核未通过是否邮件通知)</div>
+              <div class="clear"></div>
+            </div>
+            <div class="fl">营业执照审核通过：</div>
+            <div class="fr">
+              <div data-code="0,1" class="imgchecked_small <if condition="$info['set_licenseallow'] eq 1">select</if>"><input name="set_licenseallow" type="hidden" value="{$info.set_licenseallow}" /></div>
+              <div class="note">(营业执照审核通过是否邮件通知)</div>
+              <div class="clear"></div>
+            </div>
+            <div class="fl">营业执照审核未通过：</div>
+            <div class="fr">
+              <div data-code="0,1" class="imgchecked_small <if condition="$info['set_licensenotallow'] eq 1">select</if>"><input name="set_licensenotallow" type="hidden" value="{$info.set_licensenotallow}" /></div>
+              <div class="note">(营业执照审核未通过是否邮件通知)</div>
+              <div class="clear"></div>
+            </div>
+            <div class="fl">简历审核通过：</div>
+            <div class="fr">
+              <div data-code="0,1" class="imgchecked_small <if condition="$info['set_resumeallow'] eq 1">select</if>"><input name="set_resumeallow" type="hidden" value="{$info.set_resumeallow}" /></div>
+              <div class="note">(个人简历审核通过是否邮件通知)</div>
+              <div class="clear"></div>
+            </div>
+            <div class="fl">简历审核未通过：</div>
+            <div class="fr">
+              <div data-code="0,1" class="imgchecked_small <if condition="$info['set_resumenotallow'] eq 1">select</if>"><input name="set_resumenotallow" type="hidden" value="{$info.set_resumenotallow}" /></div>
+              <div class="note">(个人简历审核未通过是否邮件通知)</div>
+              <div class="clear"></div>
+            </div>
+            <div class="fl">简历头像审核通过：</div>
+            <div class="fr">
+              <div data-code="0,1" class="imgchecked_small <if condition="$info['set_resume_photoallow'] eq 1">select</if>"><input name="set_resume_photoallow" type="hidden" value="{$info.set_resume_photoallow}" /></div>
+              <div class="note">(个人简历头像审核通过是否邮件通知)</div>
+              <div class="clear"></div>
+            </div>
+            <div class="fl">简历头像审核未通过：</div>
+            <div class="fr">
+              <div data-code="0,1" class="imgchecked_small <if condition="$info['set_resume_photonotallow'] eq 1">select</if>"><input name="set_resume_photonotallow" type="hidden" value="{$info.set_resume_photonotallow}" /></div>
+              <div class="note">(个人简历头像审核未通过是否邮件通知)</div>
+              <div class="clear"></div>
+            </div>
+            <div class="fl"></div>
+            <div class="fr">
+                <input type="submit" class="admin_submit" value="保存修改"/>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </form>
+</div>
+<include file="public:footer" />
+</body>
+</html>

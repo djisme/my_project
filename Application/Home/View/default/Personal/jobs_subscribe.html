@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<include file="public:meta" />
+	<link href="../public/css/personal/common.css" rel="stylesheet" type="text/css" />
+	<link href="../public/css/personal/personal_favorites.css" rel="stylesheet" type="text/css" />
+	<link href="../public/css/personal/personal_ajax_dialog.css" rel="stylesheet" type="text/css" />
+	<script src="../public/js/personal/jquery.common.js" type="text/javascript" language="javascript"></script>
+</head>
+<body>
+<include file="public:header_other" />
+<div class="us-top">
+    <div class="us-main">
+        <div class="us-top-box">
+            <form id="ajax_search_location" action="{:U('ajaxCommon/ajax_search_location',array('type'=>'QS_jobslist'))}" method="get">
+                <div class="input-box"><input type="text" name="key" data-original="请输入关键字" value="" placeholder="请输入关键字" autocomplete="off"></div>
+                <div class="se-btn"><input type="submit" value="搜 索"></div>
+                <div class="clear"></div>
+            </form>
+        </div>
+    </div>
+</div>
+	<div class="user_main">
+		<include file="index_left_nav"/>
+		<div class="mainbox">
+			<!--职位切换卡 -->
+			<div class="tab">
+				<a class="li J_hoverbut" href="{:U('personal/jobs_favorites')}">职位收藏夹</a>
+				<a class="li J_hoverbut" href="{:U('personal/attention_com')}" >关注的企业</a>
+				<a class="li select">职位订阅器</a>
+			  	<div class="clear"></div>
+			</div>
+			<!--切换卡结束 -->
+			<div class="resume_tip">
+				<div class="tiptit">小提示</div>
+						<div class="tiptxt link_blue">
+						您最多可以添加<strong class="font_yellow"> {:C('qscms_subscribe_num')} </strong>个职位订阅器，目前已添加<strong  class="font_yellow"> {$total}</strong> 个！
+					</div>
+				</div>
+				<div class="subscribe">
+		 			<volist name="subscribe['list']" id="subscribe">
+						<div class="list J_hoverbut">
+					 		<div class="thisid font_blue">{$subscribe.title}</div>
+							<div class="txt">[职能]{$subscribe.intention_jobs} <if condition="$subscribe['district_cn']"> + [地区]{$subscribe.district_cn}</if> <if condition="$subscribe['key']"> + [关键字]{$subscribe.key}</if></div>
+							<div class="J_subscribeWrap buts link_blue">
+								<div class="td1">
+									<if condition="$subscribe['status']">
+										<span>已订阅</span>，接收频率：{:C('qscms_subscribe_period')}天
+									<else/>
+										已退订
+									</if>
+								</div>
+								<div class="td2">
+									<a href="{:U('personal/jobs_subscribe_edit',array('id'=>$subscribe['id']))}">修改</a>
+									<a class="J_quitSubscribe" href="javascript:;" iid="{$subscribe.id}" subscribe="{$subscribe.status}">
+										<if condition="$subscribe['status']">
+											退订
+										<else/>
+											订阅
+										</if>
+									</a>
+								</div>
+								<div class="clear"></div>
+							</div>
+			                <div class="J_delSubscribe del" iid="{$subscribe.id}" title="删除订阅器"></div>
+				 		</div>
+		 			</volist>
+		    		<div class="list add J_hoverbut">
+	   		 			<div class="addbut" onclick="window.location='{:U('personal/jobs_subscribe_edit')}'">添加职位订阅器</div>
+ 					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+		<div class="clear"></div>
+	</div>
+	<include file="index_footer" />
+	<script type="text/javascript">
+		var is_exe = !1;
+		$('.J_quitSubscribe').die().live('click', function(){
+			if(is_exe) return !0;
+			var u = $(this),f = u.closest('.J_subscribeWrap'),s = u.attr('subscribe') == 0 ? 1 : 0;
+			is_exe = !0;
+			$.getJSON("{:U('Personal/subscribe_switch')}",{id:u.attr('iid'),switchs:s},function(result){
+				if(result.status == 1){
+					if(s){
+						f.find('.td1').html('<span>已订阅</span>，接受频率：{:C('qscms_subscribe_period')}天');
+						u.html('退订').attr('subscribe',1);
+					}else{
+						f.find('.td1').html('已退订');
+						u.html('订阅').attr('subscribe',0);
+
+					}
+				}else{
+					alert(result.msg);
+				}
+				is_exe = !1;
+			});
+		});
+		$('.J_delSubscribe').click(function(){
+			var url = "{:U('Personal/subscribe_del')}";
+			var id = $(this).attr('iid');
+            var qsDialog=$(this).dialog({
+                title: '删除职位订阅',
+                loading: true,
+                border: false,
+                yes: function() {
+                	if(is_exe) return !0;
+					is_exe = !0;
+                	$.post(url,{id:id},function(result){
+		               if(result.status == 1){
+							window.location.reload();
+						}else{
+							disapperTooltip('remind',result.msg);
+						}
+						is_exe = !1;
+		            },'json');
+                }
+            });
+            $.getJSON(url,{id:id},function(result){
+                if(result.status == 1){
+                    qsDialog.setContent(result.data.html);
+                }else{
+                    disapperTooltip('remind',result.msg);
+                }
+            });
+		});
+	</script>
+</body>
+</html>

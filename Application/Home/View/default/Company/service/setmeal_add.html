@@ -1,0 +1,569 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<include file="public:meta" />
+		<link href="../public/css/company/common.css" rel="stylesheet" type="text/css" />
+		<link href="../public/css/company/company_points.css" rel="stylesheet" type="text/css" />
+		<link href="../public/css/company/company_ajax_dialog.css" rel="stylesheet" type="text/css" />
+		<script src="../public/js/company/jquery.common.js" type="text/javascript" language="javascript"></script>
+	</head>
+	<body>
+		<include file="Company:index_header" />
+		<div class="user_main">
+			<div class="mleft">
+				<include file="Company:left_service" />
+			</div>
+			<div class="mright">
+				<form target="_blank" id="cash_pay_form" method="post" action="{:U('setmeal_add_save')}">
+				<div class="user_pagetitle">
+					<div class="pat_l">会员服务</div>
+					<div class="clear"></div>
+				</div>
+				<div class="order_info_group first">
+					<div class="info_float_line1">
+						<div class="left_line">服务名称：</div>
+						<div class="right_line"><span class="service_title">套餐升级</span></div>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<div class="order_info_group">
+					<div class="info_float_line1">
+						<div class="left_line">已选套餐： </div>
+						<div class="right_line">
+							<div class="upgradetc_title for_img icon1 link_blue"><img src="{:attach($setmeal_info['id'].'.png','setmeal_img')}">{$setmeal_info['setmeal_name']}<span class="font_yellow ft16">({$setmeal_info['long']})</span>&nbsp;&nbsp;&nbsp;<a href="{:U('index')}">重新选择</a></div>
+							<div class="upgradetc_content">
+								<div class="arrow"></div>
+								<div class="content_line">
+									<div class="content_left">发布职位数：<span class="blue">{$setmeal_info['jobs_meanwhile']}</span></div>
+									<div class="content_right">下载简历数：<span class="blue">{$setmeal_info['download_resume']}</span></div>
+									<div class="clear"></div>
+								</div>
+								<div class="content_line">
+									<div class="content_left">短信条数：<span class="blue">{$setmeal_info['set_sms']}</span></div>
+									<div class="content_right">赠送{:C('qscms_points_byname')}：<span class="blue">{$setmeal_info['set_points']}</span></div>
+									<div class="clear"></div>
+								</div>
+								<div class="content_line">{$setmeal_info['setmeal_name']}购买增值服务专享折扣 <span class="highlight">{$discount} 折</span></div>
+							</div>
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<div class="order_info_group">
+					<div class="info_float_line1">
+						<div class="left_line">支付方式：</div>
+						<div class="right_line">
+							<if condition="C('qscms_setmeal_by_points') eq 1">
+							<div class="thtab pay_select">
+								<div class="li J_hoverbut select points_tab">{:C('qscms_points_byname')}兑换</div>
+								<div class="li J_hoverbut cash_tab">现金支付</div>
+							  	<div class="clear"></div>
+							</div>
+							</if>
+							<div class="rights J_forpaycash">
+								<!--默认是不做任何选择 没有select -->
+								<volist name="payment" id="vo">
+								<div typename="{$vo['typename']}" class="pays J_hoverbut"><img src="../public/images/pay_{$vo['typename']}.png"   border="0"/><div class="hook"></div></div>
+								</volist>
+								<div class="clear"></div>
+						  	</div>
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<div class="order_info_group forpay" id="points_wrap" style="display:block">
+					<div class="enough">
+						<div class="info_float_line1">
+							<div class="left_line">所需{:C('qscms_points_byname')}：</div>
+							<div class="right_line link_blue"><span class="service_title"><span class="orange need_points"></span></span> {:C('qscms_points_byname')}&nbsp;&nbsp;&nbsp;&nbsp;当前拥有 <span class="orange">{$mypoints}</span> {:C('qscms_points_byname')}，<a href="{:U('points')}">做任务</a> 还可以获得更多{:C('qscms_points_byname')}哦！</div>
+							<div class="clear"></div>
+						</div>
+						<div class="order_info_group">
+							<div class="info_float_line1">
+								<div class="btn_yellow J_hoverbut btn_115_38" id="points_pay_submit">立即兑换</div>
+							</div>
+						</div>
+					</div>
+					<div class="notenough" style="display:none">
+						<div class="info_float_line1">
+							<div class="left_line">所需{:C('qscms_points_byname')}：</div>
+							<div class="right_line link_blue"><span class="service_title"><span class="orange need_points"></span></span> {:C('qscms_points_byname')}&nbsp;&nbsp;&nbsp;&nbsp;当前拥有 <span class="orange">{$mypoints}</span> {:C('qscms_points_byname')}，不足以兑换次服务，建议您 <a href="{:U('points')}">做任务</a> 获得更多{:C('qscms_points_byname')}！</div>
+							<div class="clear"></div>
+						</div>
+						<div class="order_info_group">
+							<div class="info_float_line1">
+								<div class="btn_yellow J_hoverbut btn_115_38 btn_disabled">立即兑换</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="forpay" id="cash_wrap" style="display:none">
+					<if condition="C('qscms_setmeal_by_points') eq 1">
+					<div class="order_info_group">
+						<div class="info_float_line1">
+							<div class="left_line">订单价格：</div>
+							<div class="right_line link_blue">
+								<div><span class="service_title"><span class="orange" id="need_cash"></span></span> 元</div>
+								<if condition="C('qscms_mobile_setmeal_discount_value') gt 0 && C('qscms_setmeal_by_points') eq 1">
+								<div class="small small_notice">
+									<div class="qrtxt">使用手机下订单仅需 <span class="orange">￥{$setmeal_info['mobile_expense']}</span> ，立即扫码穿越到手机></div>
+                                    <div class="qrtrigger"><img src="{:U('Home/Qrcode/index',array('url'=>C('qscms_mobile_discount_qrcode_url')),'','',true)}"></div>
+                                    <div class="clear"></div>
+								</div>
+								</if>
+								<div>
+									<label><input type="checkbox" id="J_integralforcash"/> 使用{:C('qscms_points_byname')}抵现</label><span class="small">（当前拥有<span class="orange">{$mypoints}</span>{:C('qscms_points_byname')}）</span><input name="" type="text" class="input_110_34" id="J_integralforcash_input" onkeyup="if(event.keyCode !=37 && event.keyCode != 39) value=value.replace(/\D/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/\D/g,''))" value=""><span class="small"> {:C('qscms_points_byname')}</span> <span class="orange">&nbsp;&nbsp;-<span id="J_integralforcashvalue"></span></span> 元
+								</div>
+							</div>
+							<div class="clear"></div>
+						</div>
+					</div>
+					</if>
+					<div class="order_info_group">
+						<div class="info_float_line1">
+							<div class="left_line">应付金额：</div>
+							<div class="right_line link_blue">
+								<div><span class="service_title"><span class="orange" id="pay_cash"></span></span> 元</div>
+								<if condition="C('qscms_mobile_setmeal_discount_value') gt 0 && C('qscms_setmeal_by_points') neq 1">
+								<div class="small small_notice">
+									<div class="qrtxt">使用手机下订单仅需 <span class="orange">￥{$setmeal_info['mobile_expense']}</span> ，立即扫码穿越到手机></div>
+                                    <div class="qrtrigger"><img src="{:U('Home/Qrcode/index',array('url'=>C('qscms_mobile_discount_qrcode_url')),'','',true)}"></div>
+                                    <div class="clear"></div>
+								</div>
+								</if>
+							</div>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<!-- <div class="order_info_group">
+						<div class="info_float_line1">
+							<div class="left_line">联系电话：</div>
+							<div class="right_line link_blue">
+								<input type="text" value="{$mobile}" class="input_205_34" name="mobile" id="mobile" placeholder="请输入联系电话">
+							</div>
+							<div class="right_line link_blue" id="getVerfyCode" style="border: 0px #35639F solid;width: 100px;height: 32px;background-color: #5F8DC9;text-align: center;color: #FFFFFF;font-size: 14px;cursor: pointer;">获取验证码</div>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<div class="order_info_group">
+						<div class="info_float_line1">
+							<div class="left_line">验证码：</div>
+							<div class="right_line link_blue">
+								<input type="text" value="" id="verify_code" class="input_205_34" name="mobile_vcode">
+							</div>
+							<div class="clear"></div>
+						</div>
+					</div> -->
+					<div class="order_info_group">
+						<div class="info_float_line1">
+							<div class="btn_yellow J_hoverbut btn_115_38" id="cash_pay_submit">立即支付</div>
+						</div>
+					</div>
+				</div>
+				<!--支付方式名称-->
+				<input type="hidden" name="payment_name" id="payment_name" value="">
+				<!--支付方式-->
+				<input type="hidden" name="pay_type" value="cash">
+				<!--服务id-->
+				<input type="hidden" id="project_id" name="project_id" value="{$setmeal_info['id']}">
+				<!--需要支付的现金-->
+				<input type="hidden" id="amount" name="amount" value="">
+				<!--不抵扣的情况下需要支付的积分-->
+				<input type="hidden" id="total_points" name="total_points" value="{$need_points}">
+				<!--我的积分数-->
+				<input type="hidden" id="mypoints" value="{$mypoints}">
+				<!--是否抵扣-->
+				<input type="hidden" name="is_deductible" id="is_deductible" value="0">
+				<!-- 抵现积分数-->
+				<input type="hidden" name="deductible" id="deductible" value="">
+			</form>
+			</div>
+
+			<div class="clear"></div>
+		</div>
+		<include file="Company:index_footer" />
+		<script type="text/javascript">
+		$(document).ready(function(){
+			var setmeal_by_points = "{:C('qscms_setmeal_by_points')}";
+			if(setmeal_by_points == 1){
+				select_pay_type(0);
+			} else {
+				select_pay_cash();
+			}
+		// 删除隐藏极验表单
+        function clearHideGee() {
+            if ($('.geetest_challenge').length) {
+                $('.geetest_challenge').remove();
+                $('.geetest_validate').remove();
+                $('.geetest_seccode').remove();
+            }
+        }	
+		
+	// 删除隐藏极验表单
+        function clearHideGee() {
+            if ($('.geetest_challenge').length) {
+                $('.geetest_challenge').remove();
+                $('.geetest_validate').remove();
+                $('.geetest_seccode').remove();
+            }
+        }	/**
+         * 发送手机验证码
+         */
+        var regularMobile = qscms.regularMobile;
+        $('#getVerfyCode').on('click', function() {
+            if ($(this).hasClass('btn_lightgray')) return false;
+            var mobileValue = $.trim($('input[name=mobile]').val());
+            var captcha_open = eval($('#J_captcha_open').val());
+            if (mobileValue == '') {
+                disapperTooltip("remind", "请输入手机号码");
+                return false;
+            }
+            if (mobileValue != "" && !regularMobile.test(mobileValue)) {
+                disapperTooltip("remind", "手机号码格式不正确");
+                return false;
+            }
+            if (captcha_open) {
+                $('.geetest_panel').remove();
+                clearHideGee();
+                $.ajax({
+                    url: qscms.root+'?m=Home&c=captcha&t=' + (new Date()).getTime(),
+                    type: "get",
+                    dataType: "json",
+                    success: function (data) {
+                        initGeetest({
+                            gt: data.gt,
+                            challenge: data.challenge,
+                            offline: !data.success,
+                            new_captcha: data.new_captcha,
+                            product: 'bind'
+                        }, function(captchaObj) {
+                            captchaObj.appendTo("#pop");
+                            captchaObj.onSuccess(function() {
+                                var captChaResult = captchaObj.getValidate();
+                                $('#getVerfyCode').addClass('btn_lightgray');
+                                $('#getVerfyCode').removeClass('btn_blue');
+                                $('#getVerfyCode').text('发送中...');
+                                var mobileValue = $.trim($('input[name=mobile]').val());
+                                $.ajax({
+                                    url: "{:U('Home/CompanyService/send_sms')}",
+                                    cache: false,
+                                    async: false,
+                                    type: 'post',
+                                    dataType: 'json',
+                                    data: { sms_type: 'login', mobile: mobileValue,geetest_challenge: captChaResult.geetest_challenge,geetest_validate: captChaResult.geetest_validate,geetest_seccode: captChaResult.geetest_seccode},
+                                    success: function(result) {
+                                        $('#pop').hide();
+                                        disapperTooltip("success", result.msg);
+                                        if (result.status) {
+                                            // 开始倒计时
+                                            var countdown = 180;
+                                            function settime() {
+                                                if (countdown == 0) {
+                                                    $('#getVerfyCode').removeClass('btn_lightgray');
+                                                    $('#getVerfyCode').addClass('btn_blue');
+                                                    $('#getVerfyCode').text('获取验证码');
+                                                    countdown = 180;
+                                                    return;
+                                                } else {
+                                                    $('#getVerfyCode').addClass('btn_lightgray');
+                                                    $('#getVerfyCode').removeClass('btn_blue');
+                                                    $('#getVerfyCode').text('重新发送' + countdown + '秒');
+                                                    countdown--;
+                                                }
+                                                setTimeout(function() {
+                                                    settime()
+                                                },1000)
+                                            }
+                                            settime();
+                                        } else {
+                                            $('#getVerfyCode').removeClass('btn_lightgray');
+                                            $('#getVerfyCode').addClass('btn_blue');
+                                            $('#getVerfyCode').text('获取验证码');
+                                            $('#pop').hide();
+                                            disapperTooltip("remind", result.msg);
+                                        }
+                                    }
+                                });
+                            });
+                            captchaObj.onReady(function () {
+                                $("#btnCheck").click();
+                            });
+                            $('#btnCheck').click(function () {
+                                captchaObj.verify();
+                            })
+                        });
+                    }
+                });
+            } else {
+                sendVerfy();
+            }
+        })
+        /**
+         * 发送手机验证码
+         */
+        function sendVerfy() {
+            $('#getVerfyCode').addClass('btn_lightgray');
+            $('#getVerfyCode').removeClass('btn_blue');
+            $('#getVerfyCode').text('发送中...');
+            var mobileValue = $.trim($('input[name=mobile]').val());
+            $.ajax({
+                url: "{:U('Home/CompanyService/send_sms')}",
+                cache: false,
+                async: false,
+                type: 'post',
+                dataType: 'json',
+                data: { sms_type: 'login', mobile: mobileValue},
+                success: function(result) {
+                    $('#pop').hide();
+                    disapperTooltip("success", result.msg);
+                    if (result.status) {
+                        // 开始倒计时
+                        var countdown = 180;
+                        function settime() {
+                            if (countdown == 0) {
+                                $('#getVerfyCode').removeClass('btn_lightgray');
+                                $('#getVerfyCode').addClass('btn_blue');
+                                $('#getVerfyCode').text('获取验证码');
+                                countdown = 180;
+                                return;
+                            } else {
+                                $('#getVerfyCode').addClass('btn_lightgray');
+                                $('#getVerfyCode').removeClass('btn_blue');
+                                $('#getVerfyCode').text('重新发送' + countdown + '秒');
+                                countdown--;
+                            }
+                            setTimeout(function() {
+                                settime()
+                            },1000)
+                        }
+                        settime();
+                    } else {
+                        $('#getVerfyCode').removeClass('btn_lightgray');
+                        $('#getVerfyCode').addClass('btn_blue');
+                        $('#getVerfyCode').text('获取验证码');
+                        $('#pop').hide();
+                        disapperTooltip("remind", result.msg);
+                    }
+                }
+            });
+        }
+			//支付方式切换（积分还是现金）
+			$('.thtab .li').click(function(event) {
+				$(this).addClass('select').siblings().removeClass('select');
+				var positionValue = $('.thtab .li').index(this);
+				$('.forpay').eq(positionValue).show().siblings('.forpay').hide();
+				$('.J_forpaycash').hide();
+				if (positionValue > 0) {
+					$('.J_forpaycash').show();
+				};
+			});
+			//选择payment
+			$(".pays").click(function(){
+				$(this).siblings().removeClass('select');
+				$(this).addClass('select');
+				$("#payment_name").val($(this).attr("typename"));
+			});
+
+			//积分支付提交
+			$("#points_pay_submit").click(function(){
+				var confirmDialog = $(this).dialog({
+	        		title: '温馨提示',
+					loading: true,
+					showFooter: false,
+					yes: function () {
+	                    ajax_pay('points');
+	                }
+				});
+				$.getJSON("{:U('confirm_pay_setmeal')}",function(result){
+					confirmDialog.showFooter(true);
+					confirmDialog.setBtns(['开通套餐', '取消']);
+					confirmDialog.setContent(result.data.html);
+				});
+			});
+			//现金支付提交
+		    $("#cash_pay_submit").click(function(){
+				if(!$("#payment_name").val() && parseFloat($("#amount").val())>0){
+					disapperTooltip("remind","请选择支付方式！");
+					return false;
+				}
+				if(parseFloat($("#amount").val())==0.0){
+					var confirmDialog = $(this).dialog({
+		        		title: '温馨提示',
+						loading: true,
+						showFooter: false,
+						yes: function () {
+		                    ajax_pay('points');
+		                }
+					});
+					$.getJSON("{:U('confirm_pay_setmeal')}",function(result){
+						confirmDialog.showFooter(true);
+						confirmDialog.setBtns(['开通套餐', '取消']);
+						confirmDialog.setContent(result.data.html);
+					});
+				}else{
+					var confirmDialog = $(this).dialog({
+		        		title: '温馨提示',
+						loading: true,
+						showFooter: false,
+						yes: function () {
+		                    if($("#payment_name").val()=='wxpay'){
+								var qsDialog = $(this).dialog({
+					        		title: '微信支付',
+									loading: true,
+									showFooter: false
+								});
+								$.ajax({
+					                cache: true,
+					                type: "POST",
+					                url:"{:U('setmeal_add_save')}",
+					                data:$('#cash_pay_form').serialize(),
+					                async: false,
+					                dataType:"json",
+					                success: function(result) {
+					                    if(result.status==1){
+					                    	qsDialog.setContent("<img src='"+result.data+"' alt='扫描二维码' width='250' height='250' />");
+											window.setInterval(run, 5000);
+					                    }else{
+					                    	qsDialog.setContent('<div class="confirm">' + result.msg + '</div>');
+											return false;
+					                    }
+					                }
+					            });
+							}else{
+								if($("#payment_name").val()=='remittance'){
+					        		$("#cash_pay_form").removeAttr('target');
+					        	}else{
+									var url = "{:U('CompanyService/confirm_pay_status')}";
+									var qsDialog=$(this).dialog({
+										title: '确认支付',
+										loading: true,
+										border: false,
+										yes: function() {
+											window.location.href="{:U('CompanyService/order_list')}";
+										},
+										cancel:function(){
+											window.location.href="{:U('CompanyService/order_list')}";
+										}
+									});
+									$.getJSON(url,function(result){
+						        		if(result.status == 1){
+						        			qsDialog.setContent(result.data.html);
+						        			qsDialog.setBtns(['支付完成', '遇到问题']);
+						        		}else{
+						        			disapperTooltip('remind',result.msg);
+						        		}
+						        	});
+						        }
+								$("#cash_pay_form").submit();
+							}
+		                }
+					});
+					$.getJSON("{:U('confirm_pay_setmeal')}",function(result){
+						confirmDialog.showFooter(true);
+						confirmDialog.setBtns(['开通套餐', '取消']);
+						confirmDialog.setContent(result.data.html);
+					});
+				}
+			});
+			$('#J_integralforcash_input').keyup(function() {
+				var mypoints = parseInt($("#mypoints").val());
+				var current_points = parseInt($("#total_points").val());
+				var minpointsValue = mypoints >= current_points ? current_points : mypoints;
+				var thisvalue = $(this).val();
+				if (thisvalue > minpointsValue) {
+					$('#J_integralforcash_input').val(minpointsValue);
+				};
+				$('#J_integralforcashvalue').text(($('#J_integralforcash_input').val()/parseInt("{$payment_rate}")).toFixed(2));
+				$('#deductible').val($('#J_integralforcash_input').val());
+				if($('#J_integralforcash').is(':checked')){
+					$("#pay_cash").text((parseFloat($('#need_cash').text())-parseFloat($('#J_integralforcashvalue').text())).toFixed(2));
+					$('#amount').val((parseFloat($('#need_cash').text())-parseFloat($('#J_integralforcashvalue').text())).toFixed(2));
+				}
+			});
+			$('#J_integralforcash').click(function() {
+				if ($('#J_integralforcash').is(':checked')) {
+					$("#pay_cash").text((parseFloat($('#need_cash').text())-parseFloat($('#J_integralforcashvalue').text())).toFixed(2));
+					$('#amount').val((parseFloat($('#need_cash').text())-parseFloat($('#J_integralforcashvalue').text())).toFixed(2));
+					$('#is_deductible').val('1');
+				} else {
+					$("#pay_cash").html(parseFloat($('#need_cash').text()).toFixed(2));
+					$('#amount').val(parseFloat($('#need_cash').text()).toFixed(2));
+					$('#is_deductible').val('0');
+				}
+			});
+			// 购买套餐不允许使用积分抵现
+			function select_pay_cash(){
+				$("#points_wrap").hide();
+				$("#cash_wrap").show();
+				$(".J_forpaycash").show();
+				var need_cash = parseFloat("{$setmeal_info['expense']}");
+				$("#amount").val(need_cash.toFixed(2));
+				$("#pay_cash").html(need_cash.toFixed(2));
+			}
+			function select_pay_type(no_change_tab){
+				var mypoints = parseInt($("#mypoints").val());
+				var current_points = parseInt($("#total_points").val());
+				if(mypoints<current_points){
+					if(no_change_tab==0){
+						$(".pay_select .li").removeClass('select');
+						$(".cash_tab").addClass('select');
+						$("#points_wrap").hide();
+						$("#cash_wrap").show();
+						$(".J_forpaycash").show();
+					}
+					$('#J_integralforcash_input').val(mypoints);
+					$('#deductible').val(mypoints);
+					$(".enough").hide();
+					$(".notenough").show();
+				}else{
+					if(no_change_tab==0){
+						$(".pay_select .li").removeClass('select');
+						$(".points_tab").addClass('select');
+						$("#cash_wrap").hide();
+						$(".J_forpaycash").hide();
+						$("#points_wrap").show();
+					}
+					$('#J_integralforcash_input').val(current_points);
+					$('#deductible').val(current_points);
+					$(".enough").show();
+					$(".notenough").hide();
+				}
+				$(".need_points").html(current_points);
+				var need_cash = parseFloat("{$setmeal_info['expense']}");
+				$("#need_cash").html(need_cash.toFixed(2));
+				$("#amount").val(need_cash.toFixed(2));
+				$('#J_integralforcashvalue').text(($('#J_integralforcash_input').val()/parseInt("{$payment_rate}")).toFixed(2));
+				if ($('#J_integralforcash').is(':checked')) {
+					$("#pay_cash").text((parseFloat($('#need_cash').text())-parseFloat($('#J_integralforcashvalue').text())).toFixed(2));
+					$('#amount').val((parseFloat($('#need_cash').text())-parseFloat($('#J_integralforcashvalue').text())).toFixed(2));
+				} else {
+					$("#pay_cash").html(need_cash.toFixed(2));
+					$('#amount').val(need_cash.toFixed(2));
+				}
+			}
+		    function run(){
+	            $.getJSON("{:U('check_weixinpay_notify')}",function(result){
+	                if(result.status==1){
+	                   location.href=result.data;
+	                }
+	            });
+	        }
+	        function ajax_pay(pay_type){
+				var project_id = $("#project_id").val();
+				var payment_name = "points";
+				$.post("{:U('setmeal_add_save')}",{pay_type:pay_type,project_id:project_id,payment_name:payment_name},function(result){
+					if(result.status==1){
+						disapperTooltip("success", "兑换成功！");
+						setTimeout(function () {
+	                        location.href=qscms.root+'?m=Home&c=CompanyService&a=order_pay_finish&order_id='+result.data;
+	                    }, 2000);
+					}else{
+						disapperTooltip("remind", result.msg);
+						return false;
+					}
+				},'json');
+	        }
+	    });
+		</script>
+	</body>
+</html>

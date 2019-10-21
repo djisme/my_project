@@ -1,0 +1,33 @@
+<include file="public:header" />
+<span id="submitbox">
+<form action="{:U('mailconfig/testing')}" method="post"   name="form1" id="form1">
+	<div class="toptit">发送测试邮件</div>
+	<div class="form_main width120">
+		<div class="fl">收件人地址：</div>
+        <div class="fr">
+            <input name="email" type="text" maxlength="30" class="input_text_default" value=""/>
+        </div>
+        <div class="fl"></div>
+        <div class="fr">
+            <input name="save" type="submit" class="admin_submit" id="check" value="立即测试"/>
+        </div>
+		<div class="clear"></div>
+	</div>
+</form>
+</span>
+<span id="hide" style="display: none; color: #009900; padding-left:30px; padding-bottom:80px;">
+ 正在发送.......<br />
+<br />
+</span>
+</div>
+<include file="public:footer" />
+<script type="text/javascript"> 
+	$(document).ready(function(){
+		$("#check").click(function () {	
+			$("#submitbox").hide();
+			$("#hide").show();	
+		});
+	});
+</script>
+</body>
+</html>

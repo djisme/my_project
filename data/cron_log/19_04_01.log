@@ -1,0 +1,18 @@
+[ 2019-04-01T11:09:01+08:00 ] ::1 /recruit/index.php?m=&c=resume&a=resume_list
+INFO: Cron:ClearPromotion Runat 2019-04-01 11:09:01 Use 0.028068 s 
+Cron:ClearExpiredSetmeal Runat 2019-04-01 11:09:01 Use -0.000094 s 
+
+[ 2019-04-01T11:10:26+08:00 ] ::1 /recruit/index.php?m=Home&c=Members&a=register
+INFO: Cron:AutoRefreshResume Runat 2019-04-01 11:10:26 Use 0.012532 s 
+Cron:AutoRefreshJobs Runat 2019-04-01 11:10:26 Use -0.000093 s 
+
+[ 2019-04-01T12:01:38+08:00 ] ::1 /recruit/index.php?m=admin&c=safety&a=index&type=captcha
+INFO: Cron:ClearPromotion Runat 2019-04-01 12:01:38 Use 0.027921 s 
+Cron:ClearExpiredSetmeal Runat 2019-04-01 12:01:38 Use -0.000089 s 
+
+[ 2019-04-01T14:04:54+08:00 ] ::1 /recruit/
+INFO: Cron:ClearPromotion Runat 2019-04-01 14:04:54 Use 0.018044 s 
+Cron:AutoRefreshResume Runat 2019-04-01 14:04:54 Use -0.000070 s 
+Cron:AutoRefreshJobs Runat 2019-04-01 14:04:54 Use -0.002428 s 
+Cron:ClearExpiredSetmeal Runat 2019-04-01 14:04:54 Use -0.003508 s 
+

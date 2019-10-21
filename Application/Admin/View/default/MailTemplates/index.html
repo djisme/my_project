@@ -1,0 +1,28 @@
+<include file="public:header" />
+	<div class="toptip">
+    	<div class="toptit">提示：</div>
+		<p>你可以用HTML美化邮件内容模板。</p>
+		<p>当默认模板库有更新时，你可以点击“模板同步”按钮更新当前模板。默认模板库文件目录：/Application/Common/qscmslib/mailtpl/</p>
+	</div>
+	<div class="toptit">邮件发送模板</div>
+	<div class="form_main width200">
+		<form action="{:U('sync')}" method="post" name="form1" id="form1">
+		<volist name="list" id="list">
+			<div class="fl">{$list.name}：</div>
+	        <div class="fr link_blue">
+				<div class="imgradio">
+					<a href="{:U('MailTemplates/edit',array('id'=>$list['id']))}">[编辑模板]</a>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="alias[]" value="{$list.alias}">
+				</div>
+	        </div>
+        </volist>
+        <div class="fl"></div>
+        <div class="fr">
+            <input name="save" type="submit" class="admin_submit" value="模板同步" onclick="javascript:confirm('模板同步将会覆盖你自定义的内容，确定要进行此操作吗？');"/>
+        </div>
+		<div class="clear"></div>
+		</form>
+	</div>
+</div>
+<include file="public:footer" />
+</body>
+</html>

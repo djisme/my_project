@@ -1,0 +1,46 @@
+<div class="admin_management">
+<form id="subsite_form" name="form1" method="post" action="">
+    <div class="mantit">请选择分站：</div>
+    <div style="padding: 10px 0;padding-left: 20px;">
+        <ul style="margin:0px; padding:3px; list-style:none">
+            <qscms:subsite 列表名="subsite_list"/>
+            <volist name="subsite_list" id="subsite">
+                <if condition="$key neq 0">
+                    <li  class="user_box_li">
+                        <label>
+                            <input name="sid[]" type="checkbox"  value="{$subsite.s_id}" <if condition="in_array($subsite['s_id'],$subsites)">checked="checked"</if>/>{$subsite.s_sitename}
+                        </label>
+                    </li>
+                </if>
+            </volist>
+            <li class="clear" style="list-style:none; display:none"></li>
+        </ul>
+        <div class="clear"></div>
+    </div>
+    <if condition="!$subsite_list">
+        <div class="admin_list_no_info">还没有任何分站信息！</div>
+    </if>
+    <div class="width120">
+        <div class="fl"></div>
+        <div class="fr" style="padding-left: 25px;">
+            <input type="hidden" name="aid" value="{$Think.get.id}">
+            <input type="submit" class="admin_submit" id="ajaxSubsiteBtn" value="确定"/>
+        </div>
+        <div class="clear"></div>
+    </div>
+</form>
+</div>
+<script type="text/javascript">
+    $('#ajaxSubsiteBtn').die().live('click',function(){
+        $.post("{:U('Admin/set_subsite')}",$('#subsite_form').serialize(),function(result){
+            if(result.status == 1){
+              disapperTooltip('success',result.msg);
+              $('.modal_backdrop').remove();
+              $('.modal').remove();
+            }else{
+              disapperTooltip('remind',result.msg);
+            }
+        },'json');
+        return !1;
+    });
+</script>

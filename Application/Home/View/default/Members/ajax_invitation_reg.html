@@ -1,0 +1,57 @@
+<div class="invitation_register">
+	<div class="top_info_group">
+        <div class="icon_box"></div>
+        <div class="txt_box">
+            <div>每邀请一位好友成功注册，您就可以获得 <span class="yellow_light">{$task_info['points']}</span> {:C('qscms_points_byname')}！</div>
+            <div>赶快通过以下方式分享给好友赚取{:C('qscms_points_byname')}吧！</div>
+        </div>
+        <div class="clear"></div>      
+    </div>
+    <div class="dashed_line"></div>
+    <div class="share_group bdsharebuttonbox" data-tag="share_1">
+        <div class="share_group_cell">
+            <a href="javascript:;" class="cell_box icon1">
+                <div class="hover_box">
+                    <div class=""><img src="{:C('qscms_site_dir')}index.php?m=Home&c=Qrcode&a=index&url={:urlencode($invitation_url)}" alt=""></div>
+                    <div class="txt">用微信“扫一扫”</div>
+                </div>
+                <div class="arrow"></div>
+            </a>
+            <div class="des">微信</div>
+        </div>
+        <div class="share_group_cell">
+            <a class="cell_box icon2 bds_sqq" data-cmd="sqq"></a>
+            <div class="des">QQ</div>
+        </div>
+        <div class="share_group_cell">
+            <a class="cell_box icon3 bds_qzone" data-cmd="qzone"></a>
+            <div class="des">QQ空间</div>
+        </div>
+        <div class="share_group_cell">
+            <a href="javascript:;" class="cell_box icon4 qshowa" url="{$invitation_url}"></a>
+            <div class="des" id="J_forcopytxt">复制链接</div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<script src="../../public/js/company/jquery.zclip.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $('.invitation_register .cell_box').hover(function() {
+        $(this).addClass('open');
+    }, function() {
+        $(this).removeClass('open');
+    });
+    window._bd_share_config = {
+        common : {
+            bdText : "邀请注册",   
+            bdDesc : "大家都在用{:C('qscms_site_name')}找工作，真的很不错，忍不住想推荐给你，快去注册吧！",   
+            bdUrl : "{$invitation_url}",  
+            bdPic : "{:C('qscms_site_domain')}{:attach(C('qscms_logo_other'),'resource')}"
+        },
+        share : [{
+            "tag" : "share_1",
+            "bdCustomStyle":"{$css}"
+        }]
+    }
+    with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>

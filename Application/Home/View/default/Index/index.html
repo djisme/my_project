@@ -1,0 +1,478 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<include file="public:meta" />
+	<link href="{:C('TPL_PUBLIC_DIR')}/css/common.css" rel="stylesheet" type="text/css" />
+	<link href="{:C('TPL_PUBLIC_DIR')}/css/index.css" rel="stylesheet" type="text/css" />
+    <link href="{:C('TPL_PUBLIC_DIR')}/css/common_ajax_dialog.css" rel="stylesheet" type="text/css" />
+	<link href="{:C('TPL_PUBLIC_DIR')}/css/slider/themes/default/default.css" rel="stylesheet" type="text/css" />
+	<link href="{:C('TPL_PUBLIC_DIR')}/css/slider/nivo-slider.css" rel="stylesheet" type="text/css" />
+	<script src="{:C('TPL_PUBLIC_DIR')}/js/jquery.common.js" type="text/javascript" language="javascript"></script>
+</head>
+<body>
+    <include file="public:header_other" />
+    <div class="ni-top-group">
+        <div class="ni-top-container">
+            <div class="ni-top-left">
+                <div class="main-sty">
+                    <div class="sty-cell J_sli select" data-type="QS_jobslist">找工作<div class="sty-aow"></div></div>
+                    <div class="sty-cell J_sli" data-type="QS_resumelist">招人才<div class="sty-aow"></div></div>
+                    <div class="sty-cell J_sli" data-type="QS_companylist">搜企业<div class="sty-aow"></div></div>
+                    <notempty name="apply['Store']">
+                    <div class="sty-cell J_sli" data-type="QS_store">门店招聘<div class="sty-aow"></div></div>
+                    </notempty>
+                    <notempty name="apply['Parttime']">
+                    <div class="sty-cell J_sli" data-type="QS_parttime">搜兼职<div class="sty-aow"></div></div>
+                    </notempty>
+                    <notempty name="apply['House']">
+                    <div class="sty-cell J_sli" data-type="QS_house_rent">租房<div class="sty-aow"></div></div>
+                    </notempty>
+                    <notempty name="apply['Gworker']">
+                    <div class="sty-cell J_sli" data-type="QS_gworker">普工<div class="sty-aow"></div></div>
+                    </notempty>
+                    <div class="clear"></div>
+                </div>
+                <div class="main-sip">
+                    <div class="ip-group">
+                        <form id="ajax_search_location">
+                            <div class="ip-box"><input type="text" name="key" id="top_search_input" value="" placeholder="请输入关键字" /></div>
+                            <div class="ip-btn"><input id="top_search_btn" type="submit" class="sobut J_hoverbut" value="搜  索" /></div>
+                            <input type="hidden" name="act" id="top_search_type" value="QS_jobslist" />
+                        </form>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="sip-sco">
+                    <div class="sco-box" id="J_msgbox">
+                        <ul id="J_ajax_scroll"></ul>
+                    </div>
+                    <script type="text/javascript">
+                        var ajaxScrollHtml = '';
+                        $.getJSON('{:U("Index/ajax_scroll")}',function(result){
+                            if (result.status) {
+                                var dataArr = result.data;
+                                for (var i = 0; i < dataArr.length; i++) {
+                                    if (dataArr[i]['utype'] == '1') {
+                                        if (dataArr['type'] = 'add') {
+                                            ajaxScrollHtml += '<li><div class="log-s-line"><div class="lsl-left"><a target="_blank" href="'+dataArr[i]['company_url']+'">'+dataArr[i]['companyname']+'</a> 发布了 <a target="_blank" href="'+dataArr[i]['job_url']+'">'+dataArr[i]['jobs_name']+'</a></div><div class="lsl-right">'+dataArr[i]['time_cn']+'</div><div class="clear"></div></div></li>';
+                                        } else {
+                                            ajaxScrollHtml += '<li><div class="log-s-line"><div class="lsl-left"><a target="_blank" href="'+dataArr[i]['company_url']+'">'+dataArr[i]['companyname']+'</a> 刷新了 <a target="_blank" href="'+dataArr[i]['job_url']+'">'+dataArr[i]['jobs_name']+'</a></div><div class="lsl-right">'+dataArr[i]['time_cn']+'</div><div class="clear"></div></div></li>';
+                                        }
+                                    } else {
+                                        if (dataArr[i]['type'] = 'add') {
+                                            ajaxScrollHtml += '<li><div class="log-s-line"><div class="lsl-left"><a target="_blank" href="'+dataArr[i]['url']+'">'+dataArr[i]['fullname']+'</a> 发布了新简历</div><div class="lsl-right">'+dataArr[i]['time_cn']+'</div><div class="clear"></div></div></li>';
+                                        } else {
+                                            ajaxScrollHtml += '<li><div class="log-s-line"><div class="lsl-left"><a target="_blank" href="'+dataArr[i]['url']+'">'+dataArr[i]['fullname']+'</a> 刷新了简历</div><div class="lsl-right">'+dataArr[i]['time_cn']+'</div><div class="clear"></div></div></li>';
+                                        }
+                                    }
+                                }
+                                $('#J_ajax_scroll').html(ajaxScrollHtml);
+                            }
+                        })
+                    </script>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="index-plug-group">
+                <div class="plug-box">
+                    <notempty name="apply['Store']">
+                    <a target="_blank" href="{:url_rewrite('QS_store')}" class="plug-cell"><div class="plug-img store"></div><div class="plug-name">门店招聘</div><div class="h-line"></div></a>
+                    </notempty>
+                    <notempty name="apply['Parttime']">
+                    <a target="_blank" href="{:url_rewrite('QS_parttime')}" class="plug-cell"><div class="plug-img parttime"></div><div class="plug-name">兼职招聘</div><div class="h-line"></div></a>
+                    </notempty>
+                    <notempty name="apply['House']">
+                    <a target="_blank" href="{:url_rewrite('QS_house_rent')}" class="plug-cell"><div class="plug-img house"></div><div class="plug-name">附近租房</div><div class="h-line"></div></a>
+                    </notempty>
+                    <notempty name="apply['Allowance']">
+                    <a target="_blank" href="{:url_rewrite('QS_jobslist',array('search_cont'=>'allowance'))}" class="plug-cell"><div class="plug-img allowance"></div><div class="plug-name">红包职位</div><div class="h-line"></div></a>
+                    </notempty>
+                    <notempty name="apply['Gworker']">
+                    <a target="_blank" href="{:url_rewrite('QS_gworker')}" class="plug-cell"><div class="plug-img gworker"></div><div class="plug-name">普工招聘</div><div class="h-line"></div></a>
+                    </notempty>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <!-- 格子广告 -->
+    <qscms:ad 列表名="ad" 广告位名称="QS_indexcenterrecommend" 职位数量="12" 广告数量="15"/>
+    <notempty name="ad['list']">
+        <div class="im-a-group">
+            <volist name="ad['list']" id="ad_info" key="k">
+                <div class="im-a-cell c{$k} J_hoverbut">
+                    <div class="imgbox">
+                        <notempty name="ad_info['company']['companyname']">
+                            <div class="showinfo pie_about">
+                                <div class="comname substring link_yellow"><a target="_blank" href="{$ad_info.href}">{$ad_info['company']['companyname']}</a></div>
+                                <notempty name="ad_info['company']['jobs']">
+                                    <div class="jobslist link_gray6">
+                                        <volist name="ad_info[company]['jobs']" id="jobs">
+                                            <div class="jli substring"><a target="_blank" href="{$jobs.jobs_url}">{$jobs.jobs_name}</a></div>
+                                        </volist>
+                                    </div>
+                                </notempty>
+                                <notempty name="ad_info['company']['jobs_count']">
+                                    <div class="count">
+                                        <div class="v">共有{$ad_info['company']['jobs_count']}个职位</div>
+                                        <div class="more link_blue"><a target="_blank" href="{:url_rewrite('QS_companyjobs',array('id'=>$ad_info['company']['id']))}">查看全部</a></div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </notempty>
+                            </div>
+                        </notempty>
+                        <a href="{$ad_info.href}" target="_blank" title="{$ad_info.title}">
+                            <img src="{:attach($ad_info['content'],'ads')}" border="0"/>
+                        </a>
+                    </div>
+                </div>
+            </volist>
+            <div class="clear"></div>
+        </div>
+    </notempty>
+    <!-- 格子广告 end -->
+    <!-- 头部横幅广告 -->
+    <qscms:ad 列表名="ad" 广告位名称="QS_indextopimg" 广告数量="2"/>
+    <notempty name="ad['list']">
+        <volist name="ad['list']" id="ad_info">
+            <div class="im12_80">
+                <a href="{$ad_info.href}" target="_blank" title="{$ad_info.title}">
+                    <img src="{:attach($ad_info['content'],'ads')}" border="0" />
+                </a>
+            </div>
+        </volist>
+    </notempty>
+    <!-- 头部横幅广告 end -->
+    <!-- 最新招聘 急聘专区 公告 招聘会-->
+    <div class="bic-split-18"></div>
+    <div class="ni-m-container-hj">
+        <div class="hiring-job">
+            <div class="hj-top">
+                <div class="hj-top-left">最新招聘</div>
+                <a class="hj-top-right" target="_blank" href="{:url_rewrite('QS_jobslist')}">更多</a>
+                <div class="clear"></div>
+            </div>
+            <div class="hj-jobs">
+                <qscms:company_jobs_list 列表名="new_jobs" 分页显示="1" 职位数量="1" 排序="rtime" 显示数目="15"/>
+                <volist name="new_jobs['list']" id="company" key="k">
+                    <div class="hj-jli j{$k}">
+                        <volist name="company['jobs']" id="jobs">
+                            <div class="hj-spl-18"></div>
+                            <div class="hj-main-line">
+                                <div class="hj-line-jn"><a target="_blank" href="{$jobs.jobs_url}" title="{$jobs.jobs_name}">{$jobs.jobs_name}</a></div>
+                                <div class="hj-line-wa">{$jobs.wage_cn}</div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="hj-spl"></div>
+                            <div class="hj-main-line">
+                                <div class="hj-line-jn link_gray9"><a target="_blank" href="{$company.company_url}" title="{$company.companyname}">{$company.companyname}</a></div>
+                                <div class="hj-line-time">{$jobs.refreshtime_cn}</div>
+                                <div class="clear"></div>
+                            </div>
+                        </volist>
+                    </div>
+                </volist>
+            </div>
+        </div>
+        <div class="hot-job">
+            <div class="ht-top">
+                <div class="ht-top-left">急聘专区</div>
+                <a class="ht-top-right" target="_blank" href="{:url_rewrite('QS_jobslist',array('emergency'=>1))}">更多</a>
+                <div class="clear"></div>
+            </div>
+            <div class="ht-eme">
+                <div class="slide">
+                    <qscms:jobs_list 列表名="emergency_jobs" 紧急招聘="1" 显示数目="6"/>
+                    <volist name="emergency_jobs['list']" id="jobs">
+                        <div class="sli">
+                            <div class="tit substring link_gray6"><a target="_blank" href="{$jobs.jobs_url}">{$jobs.jobs_name}</a></div>
+                            <div class="salary substring">{$jobs.wage_cn}</div>
+                            <div class="clear"></div>
+                        </div>
+                    </volist>
+                </div>
+            </div>
+            <div class="ht-not">
+                <div class="noticestab">
+                    <div class="tli select">公告</div>
+                    <notempty name="apply['Jobfair']">
+                        <div class="tli last">招聘会</div>
+                    </notempty>
+                    <notempty name="apply['Seniorjobfair']">
+                        <div class="tli last">招聘会</div>
+                    </notempty>
+                    <div class="clear"></div>
+                </div>
+                <div class="notice_showtabs first">
+                    <ul class="link_gray6">
+                        <qscms:notice_list 列表名="notice_list" 显示数目="4" 分类="1"/>
+                        <volist name="notice_list['list']" id="notice">
+                            <li class="substring new"><a href="{$notice.url}" target="_blank">{$notice.title}</a></li>
+                        </volist>
+                    </ul>
+                </div>
+                <notempty name="apply['Jobfair']">
+                    <div class="notice_showtabs">
+                        <!--招聘会 -->
+                        <ul class="link_gray6">
+                            <qscms:jobfair_list 列表名="jobfair_list" 显示数目="4" 排序="ordid:desc"/>
+                            <volist name="jobfair_list['list']" id="jobfair">
+                                <li class="substring new"><a href="{$jobfair['url']}" target="_blank">{$jobfair.title}</a></li>
+                            </volist>
+                        </ul>
+                    </div>
+                </notempty>
+                <notempty name="apply['Seniorjobfair']">
+                    <div class="notice_showtabs">
+                        <!--招聘会 -->
+                        <ul class="link_gray6">
+                            <qscms:senior_jobfair_list 列表名="jobfair_list" 显示数目="4" 排序="ordid:desc"/>
+                            <volist name="jobfair_list['list']" id="jobfair">
+                                <li class="substring new"><a href="{$jobfair['url']}" target="_blank">{$jobfair.title}</a></li>
+                            </volist>
+                        </ul>
+                    </div>
+                </notempty>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <!-- 急聘专区 热门职位 end -->
+    <!-- 明星雇主 -->
+    <qscms:ad 列表名="ad" 广告位名称="QS_star_employer" 广告数量="20"/>
+    <notempty name="ad['list']">
+        <div class="bic-split-18"></div>
+        <div class="star_employer_box" stats="0">
+            <i class="star_tips"></i>
+            <i class="star_refresh" id="js_star_refresh"></i>
+            <if condition="count($ad['list']) gt 10">
+                <i class="star_more" id="js_star_more"></i>
+            </if>
+            <ul id="star_company_logos_ul">
+                <volist name="ad['list']" id="ad_info">
+                    <li>
+                        <a target="_blank" href="{$ad_info.href}" title="{$ad_info.title}" <if condition="!$ad_info.company">class="no_com"</if>><img src="{:attach($ad_info['content'],'ads')}"><if condition="$ad_info.company"><span>{$ad_info.company.companyname}</span></if></a>
+                    </li>
+                </volist>
+            </ul>
+            <script type="text/javascript">
+                $("#js_star_refresh").on("click", function(){
+                    var starBox = $(".star_employer_box"),
+                        page = Number(starBox.attr('page')) || 2;
+                    $.ajax({
+                        type : "get",
+                        url :"{:U('home/ajaxCommon/star_employer')}",
+                        data :{stats:starBox.attr('stats') || 0,page:page},
+                        success : function(r){
+                            if(r.status){
+                                if(r.data.isfull){
+                                    starBox.attr('page',1);
+                                }else{
+                                    starBox.attr('page',page+=1);
+                                }
+                                var html = "";
+                                $.each(r.data.list,function(i,n){
+                                    html += "<li>";
+                                    if (n.company) {
+                                        html += '<a target="_blank" href="'+n.href+'"><img src="'+n.content+'" /><span>'+n.company.companyname+'</span></a>';
+                                    } else {
+                                        html += '<a target="_blank" href="'+n.href+'" class="no_com"><img src="'+n.content+'" /></a>';
+                                    }
+                                    html += "</li>";
+                                });
+                                $("#star_company_logos_ul").html(html);
+                            }
+                        }
+                    });
+                });
+                //查看更多
+                $("#js_star_more").on("click",function(){
+                    var starBox = $(".star_employer_box");
+                    if(starBox.hasClass("star_employer_more")) {
+                        starBox.removeClass("star_employer_more").attr('stats',0);
+                    }else{
+                        starBox.addClass("star_employer_more").attr('stats',1);
+                    }
+                    return false;
+                });
+            </script>
+        </div>
+    </notempty>
+    <!-- 明星雇主 end -->
+    <!--红包职位-->
+    <if condition="C('apply.Allowance')">
+        <div class="bic-split-18"></div>
+        <div class="some-job-group alo">
+            <a target="_blank" href="{:url_rewrite('QS_jobslist',array('search_cont'=>'allowance'))}" class="some-more">查看更多</a>
+            <div class="some-job-icon"></div>
+            <div class="some-job-jg">
+                <qscms:jobs_list 列表名="jobslist" 搜索内容="allowance" 显示数目="8" 排序="rtime"/>
+                <volist name="jobslist['list']" id="vo" key="k">
+                    <div class="sjj-cell a{$k}">
+                        <div class="sjj-cell-right">
+                            <div class="alo-num substring">{$vo['allowance_info']['per_amount']}元</div>
+                        </div>
+                        <div class="sjj-cell-left">
+                            <div class="sj-cn"><a target="_blank" href="{$vo['jobs_url']}">{$vo['jobs_name']}</a></div>
+                            <div class="c-sp-9"></div>
+                            <div class="sj-line substring">学历：{$vo['education_cn']}&nbsp;&nbsp;|&nbsp;&nbsp;经验：{$vo['experience_cn']}&nbsp;&nbsp;|&nbsp;&nbsp;<span class="font_yellow">{$vo['wage_cn']}</span></div>
+                            <div class="c-sp-14"></div>
+                            <div class="sj-line font_gray9 substring">更新时间：{:date("Y-m-d",$vo['refreshtime'])}</div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </volist>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </if>
+    <!--红包职位 end-->
+    <!-- 中部横幅广告 -->
+    <qscms:ad 列表名="ad" 广告位名称="QS_indexcenter" 广告数量="1"/>
+    <notempty name="ad['list']">
+        <div class="im12_80">
+            <volist name="ad['list']" id="ad_info">
+                <a href="{$ad_info.href}" title="{$ad_info.title}" target="_blank">
+                    <img src="{:attach($ad_info['content'],'ads')}" border="0"/>
+                </a>
+            </volist>
+        </div>
+    </notempty>
+    <!-- 中部横幅广告 end -->
+    <!-- 推荐简历 -->
+    <div class="bic-split-18"></div>
+    <div class="some-job-group new-resume J_change_parent">
+        <a href="javascript:;" class="out-flag f3 J_change_batch" data-url="{:U('AjaxCommon/resume_list')}">换<br/>一<br/>批</a>
+        <a target="_blank" href="{:url_rewrite('QS_resumelist')}" class="some-more">查看更多</a>
+        <div class="some-job-icon"></div>
+        <div class="some-job-jg">
+            <div class="ajax_loading"><div class="ajaxloadtxt"></div></div>
+            <qscms:resume_list 列表名="recommend_resume" 照片="1" 显示数目="8" 排序="rtime"/>
+            <div class="J_change_result">
+                <volist name="recommend_resume['list']" id="resume">
+                    <div class="sjj-cell a{$i}">
+                        <div class="sjj-cell-left">
+                            <div class="sj-cn"><a target="_blank" href="{$resume.resume_url}">{$resume.fullname}</a></div>
+                            <div class="c-sp-9"></div>
+                            <div class="sj-line substring">学历：{$resume.education_cn}&nbsp;&nbsp;|&nbsp;&nbsp;经验：{$resume.experience_cn}&nbsp;&nbsp;|&nbsp;&nbsp;<span class="font_yellow">{:date("Y-m-d",$resume['refreshtime'])}</span></div>
+                            <div class="c-sp-14"></div>
+                            <div class="sj-line font_gray9 substring">{$resume.intention_jobs}</div>
+                        </div>
+                        <div class="sjj-cell-right"><a target="_blank" href="{$resume.resume_url}"><img src="{$resume.photosrc}"></a></div>
+                        <div class="clear"></div>
+                    </div>
+                </volist>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <!-- 推荐简历 end -->
+    <!-- 职场资讯 -->
+    <div class="bic-split-18"></div>
+    <div class="some-job-group news">
+        <a target="_blank" href="{:url_rewrite('QS_news')}" class="some-more">查看更多</a>
+        <div class="some-job-icon"></div>
+        <div class="new-cate-group">
+            <div class="ncg-top">
+                <qscms:classify 列表名="article_category" 类型="QS_article" id="1" 显示数目="7"/>
+                <volist name="article_category" id="category">
+                    <div class="J_news_list_title ncg-top-cell <if condition="$i eq 1">select</if>" cid="{$key}">{$category}</div>
+                </volist>
+                <div class="clear"></div>
+            </div>
+            <div class="ncg-con-group J_news_content">
+                <div class="ajax_loading"><div class="ajaxloadtxt"></div></div>
+                <div class="J_news_txt">
+                    <volist name="article_category" id="category" offset="0" length="1">
+                        <qscms:news_list 列表名="article_list" 显示数目="15" 资讯小类="$key"/>
+                    </volist>
+                    <notempty name="article_list">
+                        <div class="ncg-con-left">
+                            <div class="ncg-img-cell">
+                                <div class="img-b"><a target="_blank" href="{$article_list['list'][0]['url']}"><img src="{$article_list['list'][0]['img']}"></a></div>
+                                <div class="img-t"><a target="_blank" href="{$article_list['list'][0]['url']}" title="{$article_list['list'][0]['title']}">{$article_list['list'][0]['title']}</a></div>
+                            </div>
+                            <div class="ncg-img-cell">
+                                <div class="img-b"><a target="_blank" href="{$article_list['list'][1]['url']}"><img src="{$article_list['list'][1]['img']}"></a></div>
+                                <div class="img-t"><a target="_blank" href="{$article_list['list'][1]['url']}" title="{$article_list['list'][1]['title']}">{$article_list['list'][1]['title']}</a></div>
+                            </div>
+                        </div>
+                        <div class="ncg-con-right">
+                            <volist name="article_list['list']" id="article" offset="2" length="10">
+                                <div class="ncr-line">
+                                    <div class="ncr-line-left"><a target="_blank" href="{$article.url}" style="<if condition="$article['tit_color']">color:{$article.tit_color};</if><if condition="$article['tit_b'] gt 0">font-weight:bold</if>" title="{$article.title}">{$article.title}</a></div>
+                                    <div class="ncr-line-right">{:date("Y-m-d",$article['addtime'])}</div>
+                                    <div class="clear"></div>
+                                </div>
+                            </volist>
+                        </div>
+                    </notempty>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="new-hot-group">
+            <div class="new-hot-top">热点资讯</div>
+            <div class="nhg-line-con">
+                <qscms:news_list 列表名="hot_news" 显示数目="10" 属性="2"/>
+                <volist name="hot_news['list']" id="news">
+                    <div class="nhg-line">
+                        <div class="nhg-line-left n{$i}">{$i}</div>
+                        <div class="nhg-line-right"><a target="_blank" href="{$news.url}" style="<if condition="$news['tit_color']">color:{$news.tit_color};</if><if condition="$news['tit_b'] gt 0">font-weight:bold</if>">{$news.title}</a></div>
+                        <div class="clear"></div>
+                    </div>
+                </volist>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <!-- 职场资讯 end -->
+    <include file="public:footer_index" />
+    <div class="bt_guider J_bt_guider">
+        <p class="shadow"></p>
+        <div class="bt_guider_wrap">
+            <div class="guider_icon"></div>
+            <a href="javascript:;" class="guider_close J_bt_gui_close"></a>
+            <div class="gm_qr_code">
+                <div class="qr_code_box">
+                    <img src="<if condition="C('qscms_index_bottom_wx')">{:attach(C('qscms_index_bottom_wx'),'resource')}<else/>{:C('qscms_site_dir')}index.php?m=Home&c=Qrcode&a=index&url={:urlencode(build_mobile_url())}</if>" alt="触屏端">
+                </div>
+                <div class="hs_6"></div>
+                <div class="qr_other">扫一扫手机也能找工作</div>
+            </div>
+            <div class="gm_gr_sha"></div>
+            <div class="guider_main">
+                <div class="gm_left">
+                    <div class="hs_16"></div>
+                    <div class="gm_site_name">{:C('qscms_index_bottom_title')}</div>
+                    <div class="hs_12"></div>
+                    <div class="gm_other">{:C('qscms_index_bottom_info')}</div>
+                </div>
+                <div class="gm_right">
+                    <div class="hs_20"></div>
+                    <a href="javascript:;" id="J_reg" class="gm_btn">立即加入</a>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $('.J_bt_gui_close').click(function () {
+                $('.J_bt_guider').hide();
+            })
+        </script>
+    </div>
+    <script type="text/javascript" src="{:C('TPL_PUBLIC_DIR')}/js/jquery.modal.dialog.js"></script>
+    <script type="text/javascript" src="{:C('TPL_PUBLIC_DIR')}/js/jquery.index.js"></script>
+    <script src="http://static.geetest.com/static/tools/gt.js"></script>
+    <if condition="$apply['Recommend'] and $isRecommend">
+        <script type="text/javascript" src="__ROOT__/{$Think.APP_NAME}/Recommend/View/default/public/Recommend.js"></script>
+        <link href="__ROOT__/{$Think.APP_NAME}/Recommend/View/default/public/plugin-recomment.css" rel="stylesheet" type="text/css" />
+    </if>
+    <script type="text/javascript">
+        $('.h-line:last').remove();
+    </script>
+</body>
+</html>

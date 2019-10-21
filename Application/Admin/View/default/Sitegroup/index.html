@@ -1,0 +1,125 @@
+<include file="public:header"/>
+<div class="toptip">
+    <div class="toptit">提示：</div>
+    <p>开启站群功能前，请确保UC功能已关闭，分站已关闭，站点用户(Members)信息全部同步至站群系统！</p>
+</div>
+<form action="{:U('sitegroup/index')}" method="post" enctype="multipart/form-data" name="form1" id="form1">
+    <div class="toptit">网站配置</div>
+    <div class="form_main width200">
+        <div class="fl">是否开启：</div>
+        <div class="fr">
+            <div class="imgradio">
+                <input name="sitegroup_open" type="hidden" value="{:C('qscms_sitegroup_open')}">
+                <div class="radio <if condition="C('qscms_sitegroup_open') eq 1">select</if>" data="1">可用</div>
+                <div class="radio <if condition="C('qscms_sitegroup_open') eq 0">select</if>" data="0">禁用</div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="fl">站群系统域名：</div>
+        <div class="fr">
+            <input name="sitegroup_domain" type="text" class="input_text_default" maxlength="100" value="{:C('qscms_sitegroup_domain')}" placeholder="结尾不要加 &quot; / &quot;" />
+        </div>
+        <div class="fl">站群系统ID：</div>
+        <div class="fr">
+            <input name="sitegroup_id" type="text" class="input_text_default" maxlength="100" value="{:C('qscms_sitegroup_id')}"/>
+        </div>
+        <div class="fl">密钥：</div>
+        <div class="fr">
+            <input name="sitegroup_secret_key" type="text" class="input_text_default" maxlength="32" value="{:C('qscms_sitegroup_secret_key')}"/>
+        </div>
+        <div class="fl"></div>
+        <div class="fr">
+            <input type="submit" class="admin_submit" value="保存修改"/>
+        </div>
+        <div class="clear"></div>
+    </div>
+</form>
+</div>
+<include file="public:footer"/>
+<script type="text/javascript">
+  var uploadUrl = "{:U('Upload/form_upload')}";
+</script>
+<script src="__ADMINPUBLIC__/js/ajaxfileupload.js"></script>
+<script src="__ADMINPUBLIC__/js/fileupload.js"></script>
+<script>
+    // 上传网站首页Logo
+    $.upload('#J_upload_logo_home_btn',{name:'logo_home',dir:'resource'},function(result){
+        if(result.error == 1){
+            var htmlResult = '<img src="'+ result.url.src +'" align=absmiddle>';
+            $('#J_upload_logo_home_btn').closest('.J-file-input-box').find('.file-input-src .img').html(htmlResult);
+            $('#J_upload_logo_home_btn').closest('.J-file-input-box').find('.file-input-save-name').val(result.url.savename);
+            if ($('#J_upload_logo_home_btn').hasClass('file-input-block')) {
+              $('#J_upload_logo_home_btn').closest('.J-file-input-box').find('.file-input-src').removeClass('hid');
+              var $delObj = $('#J_upload_logo_home_btn').closest('.J-file-input-box').find('.file-input-del');
+              $('#J_upload_logo_home_btn').remove();
+              $delObj.attr('id', "J_upload_logo_home_change_btn");
+              $.upload('#J_upload_logo_home_change_btn',{name:'logo_home',dir:'resource'},function(result){
+                if(result.error == 1){
+                  var htmlResult = '<img src="'+ result.url.src +'" align=absmiddle>';
+                  $('#J_upload_logo_home_change_btn').closest('.J-file-input-box').find('.file-input-src .img').html(htmlResult);
+                  $('#J_upload_logo_home_change_btn').closest('.J-file-input-box').find('.file-input-save-name').val(result.url.savename);
+                } else {
+                  disapperTooltip("remind", "上传失败："+result.message);
+                }
+              })
+            }
+        } else {
+            disapperTooltip("remind", "上传失败："+result.message);
+        }
+    })
+
+
+    // 上传网站会员中心Logo
+    $.upload('#J_upload_logo_user_btn',{name:'logo_user',dir:'resource'},function(result){
+      if(result.error == 1){
+        var htmlResult = '<img src="'+ result.url.src +'" align=absmiddle>';
+        $('#J_upload_logo_user_btn').closest('.J-file-input-box').find('.file-input-src .img').html(htmlResult);
+        $('#J_upload_logo_user_btn').closest('.J-file-input-box').find('.file-input-save-name').val(result.url.savename);
+        if ($('#J_upload_logo_user_btn').hasClass('file-input-block')) {
+          $('#J_upload_logo_user_btn').closest('.J-file-input-box').find('.file-input-src').removeClass('hid');
+          var $delObj = $('#J_upload_logo_user_btn').closest('.J-file-input-box').find('.file-input-del');
+          $('#J_upload_logo_user_btn').remove();
+          $delObj.attr('id', "J_upload_logo_user_change_btn");
+          $.upload('#J_upload_logo_user_change_btn',{name:'logo_user',dir:'resource'},function(result){
+            if(result.error == 1){
+              var htmlResult = '<img src="'+ result.url.src +'" align=absmiddle>';
+              $('#J_upload_logo_user_change_btn').closest('.J-file-input-box').find('.file-input-src .img').html(htmlResult);
+              $('#J_upload_logo_user_change_btn').closest('.J-file-input-box').find('.file-input-save-name').val(result.url.savename);
+            } else {
+              disapperTooltip("remind", "上传失败："+result.message);
+            }
+          })
+        }
+      } else {
+        disapperTooltip("remind", "上传失败："+result.message);
+      }
+    })
+
+    // 上传网站其它页Logo
+    $.upload('#J_upload_logo_other_btn',{name:'logo_other',dir:'resource'},function(result){
+      if(result.error == 1){
+        var htmlResult = '<img src="'+ result.url.src +'" align=absmiddle>';
+        $('#J_upload_logo_other_btn').closest('.J-file-input-box').find('.file-input-src .img').html(htmlResult);
+        $('#J_upload_logo_other_btn').closest('.J-file-input-box').find('.file-input-save-name').val(result.url.savename);
+        if ($('#J_upload_logo_other_btn').hasClass('file-input-block')) {
+          $('#J_upload_logo_other_btn').closest('.J-file-input-box').find('.file-input-src').removeClass('hid');
+          var $delObj = $('#J_upload_logo_other_btn').closest('.J-file-input-box').find('.file-input-del');
+          $('#J_upload_logo_other_btn').remove();
+          $delObj.attr('id', "J_upload_logo_other_change_btn");
+          $.upload('#J_upload_logo_other_change_btn',{name:'logo_other',dir:'resource'},function(result){
+            if(result.error == 1){
+              var htmlResult = '<img src="'+ result.url.src +'" align=absmiddle>';
+              $('#J_upload_logo_other_change_btn').closest('.J-file-input-box').find('.file-input-src .img').html(htmlResult);
+              $('#J_upload_logo_other_change_btn').closest('.J-file-input-box').find('.file-input-save-name').val(result.url.savename);
+            } else {
+              disapperTooltip("remind", "上传失败："+result.message);
+            }
+          })
+        }
+      } else {
+        disapperTooltip("remind", "上传失败："+result.message);
+      }
+    })
+</script>
+</body>
+</html>

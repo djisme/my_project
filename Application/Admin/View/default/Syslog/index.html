@@ -1,0 +1,75 @@
+<include file="public:header" />
+<div class="toptip">
+    <div class="toptit">提示：</div>
+    <p>您可以通过错误日志查看系统运行错误信息。</p>
+</div>
+	<div class="seltpye_x">
+		<div class="left">日志类型</div>	
+		<div class="right">
+			<a href="{:P(array('type_id'=>'','l_type'=>''))}" <if condition="$Think.get.l_type eq ''">class="select"</if>>不限</a>
+			<a href="{:P(array('type_id'=>'','l_type'=>1))}" <if condition="$Think.get.l_type eq 1">class="select"</if>>MYSQL</a>
+			<a href="{:P(array('type_id'=>'','l_type'=>2))}" <if condition="$Think.get.l_type eq 2">class="select"</if>>MAIL</a> 
+			<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="seltpye_x">
+		<div class="left">创建时间</div>	
+		<div class="right">
+			<a href="{:P(array('settr'=>''))}" <if condition="$Think.get.settr eq ''">class="select"</if>>不限</a>
+			<a href="{:P(array('settr'=>3))}" <if condition="$Think.get.settr eq 3">class="select"</if>>三天内</a>
+			<a href="{:P(array('settr'=>7))}" <if condition="$Think.get.settr eq 7">class="select"</if>>一周内</a>
+			<a href="{:P(array('settr'=>30))}" <if condition="$Think.get.settr eq 30">class="select"</if>>一月内</a>
+			<a href="{:P(array('settr'=>180))}" <if condition="$Think.get.settr eq 180">class="select"</if>>半年内</a>
+			<a href="{:P(array('settr'=>360))}" <if condition="$Think.get.settr eq 360">class="select"</if>>一年内</a>
+			<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<form id="form1" name="form1" method="post" action="{:U('syslog/delete')}">
+		<div class="list_th">
+	        <div class="td" style=" width:8%;">
+	            <label id="chkAll" class="left_padding">
+	                <input type="checkbox" name="chkAll" id="chk" title="全选/反选"/>类型
+	            </label>
+	        </div>
+	        <div class="td center" style=" width:8%;">创建时间</div>
+	        <div class="td center" style=" width:8%;"> IP </div>
+	        <div class="td center" style=" width:8%;"> IP归属地</div>
+	        <div class="td" style=" width:23%;">文件</div>
+	        <div class="td" style=" width:40%;">错误描述</div>
+	        <div class="clear"></div>
+	    </div>
+		<table width="100%" border="0" cellpadding="0" cellspacing="0" id="list" class="link_lan">
+		    <volist name="list" id="list">
+		    	<div class="list_tr link_black">
+			    	<div class="td" style=" width:8%;">
+			            <div class="left_padding striking">
+			                <input name="l_id[]" type="checkbox" id="id" value="{$list.l_id}"/>
+							{$list.l_type_name}
+			            </div>
+			        </div>
+			        <div class="td center" style=" width:8%;">{:admin_date($list['l_time'])}&nbsp;</div>
+			        <div class="td center" style=" width:8%;">{$list.l_ip}&nbsp;</div>
+			        <div class="td center" style=" width:8%;">{$list.l_address|default="未知"}</div>
+			        <div class="td center" style=" width:23%;">{:urldecode($list['l_page'])}&nbsp;</div>
+			        <div class="td vtip" style="width:40%;" title="{$list.l_str}">{$list.l_str}</div>
+			        <div class="clear"></div>
+			    </div>
+			</volist>
+    	</table>
+		<empty name="list">
+		    <div class="list_empty">没有任何信息！</div>
+		</empty>
+		<div class="list_foot">
+			<div class="btnbox">
+		        <input type="submit" class="admin_submit" id="ButDel"  value="删除所选"/>
+				<input type="button" class="admin_submit" id="ButPidel"  value="批量删除" onClick="window.location='{:U('syslog/pidel_syslog')}'"/>
+		    </div>
+		</div>
+	</form>
+	<div class="pages">{$page}</div>
+</div>
+<include file="public:footer" />
+</body>
+</html>

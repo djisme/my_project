@@ -1,0 +1,28 @@
+<div class="dialog_box">
+    <form action="{:U('Ajax/ajax_send_email')}" method="post" name="form" id="form">
+        <input name="uid" type="hidden" id="uid" value="{$Think.get.uid}"/>
+        <table width="100%" border="0" cellspacing="10" cellpadding="1" style=" margin-bottom:3px;">
+            <tr>
+                <td width="70" align="right">收件人地址:</td>
+                <td>
+                    <input name="email" type="text" class="input_text_default small" id="email" value="{$email}"
+                           maxlength="60"/>
+                </td>
+            </tr>
+            <tr>
+                <td width="70" align="right">邮件标题:</td>
+                <td><input name="subject" type="text" class="input_text_default middle" value=""/></td>
+            </tr>
+            <tr>
+                <td width="70" align="right" valign="middle">邮件内容:</td>
+                <td>
+                    <textarea id="body" name="body" class="input_text_default middle" style="height:80px;"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">&nbsp;</td>
+                <td><input name="Submit2" type="submit" class="admin_submit" id="check" value="立即发送"/></td>
+            </tr>
+        </table>
+    </form>
+</div>

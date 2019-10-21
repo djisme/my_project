@@ -1,0 +1,31 @@
+<include file="public:header" />
+<form action="{:U('text/edit')}" method="post" name="form1" id="form1">
+    <div class="toptit">会员注册协议</div>
+    <div class="form_main">
+        <div class="fl"></div>
+        <div class="fr">
+            <textarea name="value" class="input_text_default" style=" width:700px;height:400px; font-size:12px; line-height:180%" id="agreement">{$agreement.value}</textarea>
+        </div>
+        <div class="fl"></div>
+        <div class="fr">
+            <input type="hidden" name="id" value="{$agreement.id}">
+            <input type="submit" class="admin_submit" value="保存修改"/>
+        </div>
+        <div class="clear"></div>
+    </div>
+</form>
+</div>
+<include file="public:footer" />
+<link rel="stylesheet" href="__ADMINPUBLIC__/js/kindeditor/themes/default/default.css" />
+<script charset="utf-8" src="__ADMINPUBLIC__/js/kindeditor/kindeditor-min.js"></script>
+<script charset="utf-8" src="__ADMINPUBLIC__/js/kindeditor/lang/zh_CN.js"></script>
+<script>
+  var editor;
+  KindEditor.ready(function(K) {
+    editor = K.create('textarea[name="value"]', {
+      uploadJson : "?m={:C('admin_alias')}&c=upload&a=index",
+      allowFileManager : true});
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<include file="public:header" />
+<div class="toptip">
+    <div class="toptit">提示：</div>
+    <p>你可以用HTML美化邮件内容。</p>
+</div> 
+<div class="toptit">新增邮件任务</div>
+<form id="form1" name="form1" method="post"   action="{:U('mailqueue_batchadd')}" >
+    <div class="form_main width150">
+        <div class="fl">收件会员：</div>
+        <div class="fr">
+          <div class="imgradio">
+              <input name="selutype" type="hidden" value="">
+              <div class="radio select" data="0" title="不限">不限</div>
+              <div class="radio" data="1" title="企业会员">企业会员</div>
+              <div class="radio" data="2" title="个人会员">个人会员</div>
+              <div class="clear"></div>
+          </div>
+        </div>
+        <div class="fl">筛选条件：</div>
+        <div class="fr">
+          <div class="imgradio">
+              <input name="selsettr" type="hidden" value="">
+              <div class="radio select" data="0" title="不限">不限</div>
+              <div class="radio" data="7" title="一周未登录">一周未登录</div>
+              <div class="radio" data="30" title="一月未登录">一月未登录</div>
+              <div class="clear"></div>
+          </div>
+        </div>
+        <div class="fl">邮件标题：</div>
+        <div class="fr">
+            <input name="m_subject" type="text" maxlength="100" class="input_text_default" value=""/>
+        </div>
+        <div class="fl"></div>
+        <div class="fr">
+            <volist name="label" id="li">
+                <div id="{$li[0]}" class="sellabel">{$li[1]}</div>
+            </volist>
+            <div class="clear"></div>
+        </div>
+        <div class="fl">邮件内容：</div>
+        <div class="fr">
+            <textarea name="m_body" class="input_text_default" id="m_body" style="width:700px; height:200px; font-size:12px; line-height:180%"></textarea>
+        </div>
+        <div class="fl"></div>
+        <div class="fr">
+         <input name="submit3" type="submit" class="admin_submit"    value="添加"/>
+            <input name="submit22" type="button" class="admin_submit"    value="返回" onclick="Javascript:window.history.go(-1)"/>
+        </div>
+        <div class="clear"></div>
+    </div>
+</form>
+</div>
+<include file="public:footer" />
+<script type="text/javascript" src="../public/js/jquery.caretInsert.js"></script>
+<link rel="stylesheet" href="../public/js/kindeditor/themes/default/default.css" />
+<script charset="utf-8" src="../public/js/kindeditor/kindeditor-min.js"></script>
+<script charset="utf-8" src="../public/js/kindeditor/lang/zh_CN.js"></script>
+<script language="JavaScript" type="text/javascript">
+var editor;
+KindEditor.ready(function(K) {
+editor = K.create('textarea[name="m_body"]', {
+allowFileManager : true
+});
+});
+(function($)
+{
+$(".sellabel").hover(function(){$(this).css("background-color","#ffffff");},function()  {$(this).css("background-color","#F4FAFF");});
+$('.sellabel[align!="left"]').unbind("click").click(function(){
+$('#m_subject').setCaret();
+$('#m_subject').insertAtCaret($(this).attr("id"));
+});
+$('.sellabel[align="left"]').unbind("click").click(function(){
+$('#m_subject').unbind();
+editor.insertHtml($(this).attr("id"));
+//$('#templates_value').insertAtCaret($(this).attr("id"));
+});
+})($);
+</script>
+</body>
+</html>

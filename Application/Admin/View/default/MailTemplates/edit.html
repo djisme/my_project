@@ -1,0 +1,57 @@
+<include file="public:header" />
+	<div class="toptip">
+    	<div class="toptit">提示：</div>
+		<p>你可以用HTML美化邮件内容模板。</p>
+	</div>
+<form action="{:U('MailTemplates/edit')}" method="post"   name="form1" id="form1">
+	<div class="toptit">编辑邮件模板 - <span style="color:#0066CC">{$info.name}</span></div>
+	<div class="form_main width150">
+		<div class="fl">邮件标题模版：</div>
+        <div class="fr">
+            <input name="title" type="text" id="title" maxlength="150" class="input_text_default" value="{$info.title}"/>
+        </div>
+        <div class="fl"></div>
+        <div class="fr">
+            <textarea name="value" class="input_text_default" style="width:680px; height:260px; font-size:12px; line-height:180%" id="templates_value">{$info.value}</textarea>
+        </div>
+        <div class="fl"></div>
+        <div class="fr">
+            <input name="id" type="hidden" value="{$info.id}" />
+			<input type="submit" class="admin_submit" value="保存修改"/>
+			<input type="button" class="admin_submit" value="返 回" onclick="window.location='{:U('MailTemplates/index')}'"/>
+        </div>
+		<div class="clear"></div>
+	</div>
+</form>
+</div>
+<include file="public:footer" />
+<link rel="stylesheet" href="__ADMINPUBLIC__/js/kindeditor/themes/default/default.css" />
+<script charset="utf-8" src="__ADMINPUBLIC__/js/kindeditor/kindeditor-min.js"></script>
+<script charset="utf-8" src="__ADMINPUBLIC__/js/kindeditor/lang/zh_CN.js"></script>
+<script type="text/javascript" src="__ADMINPUBLIC__/js/jquery.caretInsert.js"></script>
+<script language="JavaScript" type="text/javascript">
+	$(function(){
+		var editor;
+		KindEditor.ready(function(K) {
+			editor = K.create('textarea[id="templates_value"]', {
+				uploadJson : "?m={:C('admin_alias')}&c=upload&a=index",
+				allowFileManager : true
+			});
+		});
+		$(".sellabel").hover(function(){
+			$(this).css("background-color","#ffffff");
+		},function(){
+			$(this).css("background-color","#F4FAFF");
+		});
+		$('.sellabel[align!="left"]').unbind("click").click(function(){ 
+			$('#title').setCaret();
+			$('#title').insertAtCaret($(this).attr("id"));
+		});
+		$('.sellabel[align="left"]').unbind("click").click(function(){ 
+			$('#title').unbind();
+			editor.insertHtml($(this).attr("id"));
+		});
+	});  
+</script> 
+</body>
+</html>

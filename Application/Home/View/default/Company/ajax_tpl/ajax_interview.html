@@ -1,0 +1,151 @@
+<div class="interview_dialog">
+	<div class="tip">
+		<strong>{$apply.fullname}</strong> 您好：<br>
+		<if condition="$is_apply eq 1">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;感谢您关注 {$company_profile['companyname']}！我们诚挚邀请您来参加面试，请您务必准时到达面试地点，如果时间上有变化请尽快与我们联系。
+		<else />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;经过我司HR的初步筛选，认为你与我们的职位要求很匹配，现诚挚邀请你来我司面谈。请准时出席，如时间上有变化也请尽快与我们联系。
+		</if>
+	</div>
+	<form id="J_interviewWrap">
+		<div class="content">
+			<div class="td1">
+				<span class="asterisk"></span>&nbsp;面试职位：
+			</div>
+			<div class="td2 J_dropdown J_listitme_parent">
+				<div class="J_listitme_text select_input select_300_34">
+					<if condition="$apply['is_apply'] eq 2">
+						{$jobs[$apply['jobs_id']]['jobs_name']|default=$default_jobs['jobs_name']}
+					<else/>
+						{$default_jobs['jobs_name']|default="请选择"}
+					</if>
+				</div>
+				<div class="dropdowboxview J_dropdown_menu">
+		            <div class="dropdow_innerview">
+		                <ul class="nav_box">
+		                	<volist name="jobs" id="job">
+		                		<li><a class="J_listitme" href="javascript:;" data-code="{$job.id}">{$job.jobs_name}</a></li>
+							</volist>
+		                </ul>
+		            </div>
+		        </div>
+				<input class="J_listitme_code" name="jobs_id" id="jobs_id" type="hidden" value="<if condition="$apply['is_apply'] eq 2">{$jobs[$apply['jobs_id']]['id']|default=$default_jobs['jobs_id']}<else/>{$default_jobs['jobs_id']}</if>"/>
+			</div>
+			<div class="clear"></div>
+			<div class="td1">
+				<span class="asterisk"></span>&nbsp;面试时间：
+			</div>
+			<div class="td2">
+				<div>
+					<input class="J_listitme_code select_input_date" name="date" id="date" value="" placeholder="请选择日期" />
+				</div>
+				<div class="select_input am_or_pm J_dropdown J_listitme_parent">
+					<span class="J_listitme_text">上午</span>
+					<div class="dropdowbox4 J_dropdown_menu">
+			            <div class="dropdow_inner4 w80">
+			                <ul class="nav_box">
+			                	<li><a class="J_listitme J_morafter" href="javascript:;" data-code="1">上午</a></li>
+			                	<li><a class="J_listitme J_morafter" href="javascript:;" data-code="2">下午</a></li>
+			                </ul>
+			            </div>
+			        </div>
+					<input class="J_listitme_code" name="ap" type="hidden" value="1"/>
+				</div>
+				<div class="select_input time J_dropdown J_listitme_parent">
+					<span class="J_listitme_text J_forafmor_txt">请选择</span>
+					<div class="dropdowbox4 J_dropdown_menu">
+			            <div class="dropdow_inner4 w100">
+			                <ul class="nav_box">
+			                	<li class="J_forafternoon"><a class="J_listitme" href="javascript:;" data-code="2">2：00</a></li>
+			                	<li class="J_forafternoon"><a class="J_listitme" href="javascript:;" data-code="3">3：00</a></li>
+			                	<li class="J_forafternoon"><a class="J_listitme" href="javascript:;" data-code="4">4：00</a></li>
+			                	<li class="J_forafternoon"><a class="J_listitme" href="javascript:;" data-code="5">5：00</a></li>
+			                	<li class="J_formorning"><a class="J_listitme" href="javascript:;" data-code="8">8：00</a></li>
+			                	<li class="J_formorning"><a class="J_listitme" href="javascript:;" data-code="9">9：00</a></li>
+			                	<li class="J_formorning"><a class="J_listitme" href="javascript:;" data-code="10">10：00</a></li>
+			                	<li class="J_formorning"><a class="J_listitme" href="javascript:;" data-code="11">11：00</a></li>
+			                </ul>
+			            </div>
+			        </div>
+					<input class="J_listitme_code J_forafmor_code" name="time" type="hidden" value="0"/>
+				</div>
+				<div class="clear"></div>
+				
+			</div>
+			<div class="clear"></div>
+			<div class="td1">
+				<span class="asterisk"></span>&nbsp;面试地点：
+			</div>
+			<div class="td2">
+				<input type="text" value="{$apply.address|default=$apply.district_cn}" class="input_300_34" name="address">
+			</div>
+			<div class="clear"></div>
+			<div class="td1">
+				<span class="asterisk"></span>&nbsp;联系人：
+			</div>
+			<div class="td2">
+				<input type="text" value="{$apply.contact}" class="input_300_34" name="contact">
+			</div>
+			<div class="clear"></div>
+			<div class="td1">
+				<span class="asterisk"></span>&nbsp;联系电话：
+			</div>
+			<div class="td2">
+				<div class="select_input contact_type J_dropdown J_listitme_parent">
+					<span class="J_listitme_text">手机</span>
+					<div class="dropdowbox4 J_dropdown_menu">
+			            <div class="dropdow_inner4 w80">
+			                <ul class="nav_box">
+			                	<li><a class="J_listitme tel_type" href="javascript:;" data-code="{$apply.telephone}">手机</a></li>
+			                	<li><a class="J_listitme tel_type" href="javascript:;" data-code="{$apply.landline_tel}">座机</a></li>
+			                </ul>
+			            </div>
+			        </div>
+				</div>
+				<input type="text" class="contact" value="{$apply.telephone}" name="telephone">
+			</div>
+			<div class="clear"></div>
+			<div class="td1">
+				&nbsp;备注：
+			</div>
+			<div class="td2">
+				<input type="text" placeholder="最多输入40个字！" class="input_300_34" name="notes">
+			</div>
+			<div class="clear"></div>
+		</div>
+		<if condition="C('qscms_sms_open') eq 1">
+		<div class="notice link_blue">
+			<if condition="C('qscms_company_sms') eq 1 && $visitor['sms_num'] eq 0">
+			<label>
+				<input name="sms_notice" type="checkbox" value="1" disabled>&nbsp;同时发送短信通知
+				<span>
+					（需要发送<strong>1</strong>条，短信剩余<strong>{$visitor.sms_num}</strong>条。<eq name="visitor['sms_num']" value="0"><a href="{:U('companyService/increment_add',array('cat'=>'sms'))}">立即购买</a></eq>）
+				</span>
+			</label>
+			<else />
+			<label><input name="sms_notice" type="checkbox" value="1" checked="checked">&nbsp;同时发送短信通知</label>
+			</if>
+		</div>
+		</if>
+		<input name="resume_id" type="hidden" value="{$apply.resume_id}"/>
+	</form>
+</div>
+<script type="text/javascript">
+	$(".tel_type").click(function(){
+		$(".contact").val($(this).attr('data-code'));
+	});
+	// 面试时间上下午切换
+	$('.J_forafternoon').hide();
+	$('.J_morafter').die().live('click', function(event) {
+		$('.J_forafmor_txt').text('请选择');
+		$('.J_forafmor_code').val('0');
+		var thisCode = $(this).data('code');
+		if (thisCode > 1) {
+			$('.J_forafternoon').show();
+			$('.J_formorning').hide();
+		} else {
+			$('.J_formorning').show();
+			$('.J_forafternoon').hide();
+		}
+	});
+</script>

@@ -1,0 +1,104 @@
+<div class="modify_user_dialog">
+	<div class="tip">
+		短信到达需要1~2分钟，若长时间未收到请点击重新发送！
+	</div>
+	<div id="J_mobileWrap" class="content">
+		<div class="err J_errbox"></div>
+		<div class="td1"><span class="asterisk"></span>&nbsp;手机号码：</div>
+		<div class="td2">
+			<input type="text" data-original="{$visitor.mobile}" value="{$visitor.mobile}" class="input_245_34" name="mobile">
+			<input type="hidden" name="audit_mobile" id="audit_mobile" value="{$audit}">
+		</div>
+		<div class="clear"></div>
+		<div class="td1"><span class="asterisk"></span>&nbsp;验证码：</div>
+		<div class="td2">
+			<div class="code">
+				<input type="text" class="" name="verifycode">
+			</div>
+	        <div class="codebtn"><input type="button" id="J_mobileVerifyCode" class="btn_verficode J_hoverbut" value="获取验证码"></div>
+			<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+<div id="popup-captcha"></div>
+<input type="hidden" id="btnCheck" />
+<script type="text/javascript">
+
+
+	var timer,ountdownVal = 180,
+	ountdown = function(){
+		ountdownVal--;
+		if(ountdownVal<=0){
+			clearInterval(timer);
+			$('#J_mobileVerifyCode').val('获取验证码').removeClass('disabled').prop('disabled', 0);
+		}else{
+			$('#J_mobileVerifyCode').val('重新发送'+ ountdownVal +'秒').addClass('disabled').prop('disabled', !0);
+		}
+	};
+	var regularMobileAuth = qscms.regularMobile; // 验证手机号正则
+	$('#J_mobileVerifyCode').click(function(){
+		var mobile = $.trim($('#J_mobileWrap input[name="mobile"]').val());
+		var audit = $.trim($('input[name="audit_mobile"]').val());
+		if(mobile == ''){
+			$('#J_mobileWrap .J_errbox').text('手机号不能不空！').show();
+			return false;
+		}
+		if (mobile != "" && !regularMobileAuth.test(mobile)) {
+			$('#J_mobileWrap .J_errbox').text('手机号码格式不正确！').show();
+			return false;
+		}
+		if (eval(audit)) {
+			if (mobile == $('#J_mobileWrap input[name="mobile"]').data('original')) {
+				$('#J_mobileWrap .J_errbox').text('你的手机号 ' + mobile + ' 已经通过认证！').show();
+				return false;
+			}
+		}
+		$('#J_mobileWrap .J_errbox').text('').hide();
+		<if condition="C('qscms_captcha_open') eq 1 && C('qscms_captcha_config.varify_mobile') eq 1">
+            $('.geetest_panel').remove();
+            $.ajax({
+                url: "{:U('/captcha')}?m=Home&c=Captcha&t=" + (new Date()).getTime(),
+                type: "get",
+                dataType: "json",
+                success: function (data) {
+                    initGeetest({
+                        gt: data.gt,
+                        challenge: data.challenge,
+                        offline: !data.success,
+                        new_captcha: data.new_captcha,
+                        product: 'bind'
+                    }, function(captchaObj) {
+                        captchaObj.appendTo("#popup-captcha");
+                        captchaObj.onSuccess(function() {
+                            var captChaResult = captchaObj.getValidate();
+                            $.post("{:U('Members/send_mobile_code')}",{mobile:$.trim($('#J_mobileWrap input[name="mobile"]').val()),geetest_challenge: captChaResult.geetest_challenge,geetest_validate: captChaResult.geetest_validate,geetest_seccode: captChaResult.geetest_seccode},function(result){
+                                if(result.status == 1){
+                                    disapperTooltip('success',result.msg);
+                                    timer=setInterval(ountdown,1000);
+                                }else{
+                                    $('#J_mobileWrap .J_errbox').text(result.msg).show();
+                                }
+                            },'json');
+                        })
+                        captchaObj.onReady(function () {
+                            $("#btnCheck").click();
+                        });
+                        $('#btnCheck').click(function () {
+                            captchaObj.verify();
+                        })
+                    });
+                }
+            });
+        <else/>
+            $.post("{:U('Members/send_mobile_code')}",{mobile:mobile},function(result){
+				if(result.status == 1){
+					disapperTooltip('success',result.msg);
+					timer=setInterval(ountdown,1000);
+				}else{
+					$('#J_mobileWrap .J_errbox').text(result.msg).show();
+				}
+			},'json');
+        </if>
+	});
+</script>

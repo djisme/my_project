@@ -1,0 +1,32 @@
+<include file="public:header" />
+<div class="toptip">
+    <div class="toptit">提示：</div>
+    <p class="link_green_line">融云是国内首家专业的即时通讯云服务提供商，专注为互联网、移动互联网开发者提供免费的即时通讯基础能力和云端服务<a href="http://www.rongcloud.cn" target="_blank">马上申请</a></p>
+</div>
+<div class="toptit">基本配置</div>
+<form action="{:U('config/edit')}" method="post" enctype="multipart/form-data" name="form1" id="form1">
+	<div class="form_main width150">
+		<div class="fl">开启融云在线聊天：</div>
+		<div class="fr">
+          <div data-code="0,1" class="imgchecked_small <if condition="C('qscms_rongyun_open') eq 1">select</if>"><input name="rongyun_open" type="hidden" value="1"></div>
+          <div class="clear"></div>
+        </div>
+		<div class="fl">app_key：</div>
+		<div class="fr">
+			<input name="rongyun_appkey" type="text" maxlength="40" class="input_text_default middle" value="{:C('qscms_rongyun_appkey')}"/>
+		</div>
+		<div class="fl">app_secret</div>
+		<div class="fr">
+			<input name="rongyun_appsecret" type="text" maxlength="40" class="input_text_default middle" value="{:C('qscms_rongyun_appsecret')}"/>
+		</div>
+		<div class="fl"></div>
+		<div class="fr">
+			<input name="submit" type="submit" class="admin_submit"    value="保存修改"/>
+		</div>
+		<div class="clear"></div>
+	</div>
+</form>
+</div>
+<include file="public:footer" />
+</body>
+</html>

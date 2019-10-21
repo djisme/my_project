@@ -1,0 +1,107 @@
+<include file="public:header" />
+ <div class="seltpye_x">
+    <div class="left">添加时间</div>  
+    <div class="right">
+    <a href="{:P(array('addtime'=>''))}" <if condition="$Think.get.addtime eq ''">class="select"</if>>不限</a>
+    <a href="{:P(array('addtime'=>'3'))}" <if condition="$Think.get.addtime eq '3'">class="select"</if>>三天内</a>
+    <a href="{:P(array('addtime'=>'7'))}" <if condition="$Think.get.addtime eq '7'">class="select"</if>>一周内</a>
+    <a href="{:P(array('addtime'=>'30'))}" <if condition="$Think.get.addtime eq '30'">class="select"</if>>一月内</a>
+    <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+  <form id="form1" name="form1" method="post" action="{:U('subscribe/delete')}">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0" class="link_lan" id="list">
+    <tr>
+      <td height="26" class="admin_list_tit admin_list_first" >
+      <label id="chkAll"><input type="checkbox" name=" " title="全选/反选" id="chk"/>接收邮箱</label>
+    </td>
+      <td  class="admin_list_tit">订阅关键字</td>
+     <td width="20%"   class="admin_list_tit"> 意向职位 </td>
+      <td width="20%"    align="center" class="admin_list_tit"> 意向地区 </td>
+      <td width="10%"    align="center" class="admin_list_tit">发送周期</td>
+      <td width="10%"   align="center" class="admin_list_tit" >添加时间</td>
+      <td width="10%"    align="center" class="admin_list_tit" >操作</td>
+    </tr>
+    <volist name="list" id="vo">
+      <tr>
+      <td  class="admin_list admin_list_first">
+        <input name="id[]" type="checkbox" id="id" value="{$vo.id}"/>    
+    {$vo.email}
+      </td>
+     <td  class="admin_list" >
+    {$vo.search_name}
+     </td>
+      <td  class="admin_list" >
+    {$vo.intention_jobs}
+     </td>
+        <td align="center"  class="admin_list">
+    {$vo.district_cn}   
+    </td>
+        <td align="center"  class="admin_list">
+    {$vo.days}
+    </td>
+        <td align="center"  class="admin_list">
+    {$vo.addtime|date="Y-m-d",###}
+    </td>
+        <td align="center"  class="admin_list">
+    <a href="{:U('delete',array('id'=>$vo['id']))}" onclick="return confirm('你确定要删除吗？')">删除</a></td>
+      </tr>
+     </volist>
+    </table>
+  </form>
+  <if condition="!$list">
+  <div class="admin_list_no_info">没有任何信息！</div>
+  </if> 
+<table width="100%" border="0" cellspacing="10"  class="admin_list_btm">
+<tr>
+        <td>
+    <input name="ButDel" type="button" class="admin_submit" id="ButDel"  value="删除"/>
+    </td>
+        <td width="305" align="right">
+    <form id="formseh" name="formseh" method="get" action="">  
+          <input type="hidden" name="m" value="{:C('admin_alias')}">
+          <input type="hidden" name="c" value="{:CONTROLLER_NAME}">
+          <input type="hidden" name="a" value="{:ACTION_NAME}">
+      <div class="seh">
+          <div class="keybox"><input name="key" type="text"   value="{$Think.get.key}" /></div>
+          <div class="selbox">
+          <input name="key_type_cn"  id="key_type_cn" type="text" value="{$Think.get.key_type_cn|default="意向职位"}" readonly="true"/>
+            <div>
+                <input name="key_type" id="key_type" type="hidden" value="{$Think.get.key_type|default="1"}" />
+                        <div id="sehmenu" class="seh_menu">
+                            <ul>
+                            <li id="1" title="意向职位">意向职位</li>
+                            <li id="2" title="意向地区">意向地区</li>
+                            <li id="3" title="接收邮箱">接收邮箱</li>
+                            </ul>
+                        </div>
+            </div>        
+        </div>
+        <div class="sbtbox">
+        <input type="submit" name="" class="sbt" id="sbt" value="搜索"/>
+        </div>
+        <div class="clear"></div>
+      </div>
+      </form>
+      </td>
+      </tr>
+  </table>
+<div class="qspage">{$page}</div>
+</div>
+<include file="public:footer" />
+<script type="text/javascript">
+$(document).ready(function()
+{
+  showmenu("#key_type_cn","#sehmenu","#key_type");
+  //删除
+  $("#ButDel").click(function(){
+    if (confirm('你确定要删除吗？'))
+    {
+      $("form[name=form1]").submit()
+    }
+  }); 
+});
+</script>
+</body>
+</html>

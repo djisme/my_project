@@ -1,0 +1,21 @@
+<h3>添加商品</h3>
+<ul>
+	<volist name="menuList" id="menu">
+		<if condition="$menu['is_parent'] eq 1">
+			<li>
+				<div class="parentIcoWrap">
+					<a href="javascript:;" class="J_switchs parentTitle"><span class="parentIco iconFont"></span>{$menu.name}</a>
+				</div>
+				<ul>
+					<volist name="menu['sub']" id="val">
+						<li><a href="javascript:;" data-uri="{:U($val['module_name'].'/'.$val['action_name'], array('menuid'=>$val['id']))}{$val.data}" data-id="{$val.id}" hidefocus="true">{$val.name}</a></li>
+					</volist>
+				</ul>
+			</li>
+		<else/>
+			<li>
+				<a href="javascript:;" data-uri="{:U($menu['module_name'].'/'.$menu['action_name'], array('menuid'=>$menu['id']))}{$menu.data}" data-id="{$menu.id}" hidefocus="true">{$menu.name}</a>
+			</li>
+		</if>
+	</volist>
+</ul>

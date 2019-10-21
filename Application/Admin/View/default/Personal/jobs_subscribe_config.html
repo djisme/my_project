@@ -1,0 +1,24 @@
+<include file="public:header" />
+<div class="toptit">职位订阅设置</div>
+<form id="form1" name="form1" method="post" action="{:U('jobs_subscribe_config')}">
+<table width="100%" border="0" cellspacing="6" cellpadding="0">
+  <tr>
+    <td width="120" align="right">职位订阅频率:</td>
+    <td><input name="subscribe_period" type="text" class="input_text_200"  value="{:C('qscms_subscribe_period')}"/></td>
+  </tr>
+  <tr>
+    <td width="120" align="right">职位订阅最大数:</td>
+    <td><input name="subscribe_num" type="text" class="input_text_200"  value="{:C('qscms_subscribe_num')}"/></td>
+  </tr>
+  <tr>
+    <td width="120"> </td>
+    <td>
+  <input type="submit" name="submit" value="保存" class="admin_submit" />
+  </td>
+  </tr>
+</table>
+</form>
+  </div>
+<include file="public:footer" />
+</body>
+</html>

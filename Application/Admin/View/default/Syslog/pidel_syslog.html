@@ -1,0 +1,51 @@
+<include file="public:header" />
+    <div class="toptip">
+        <div class="toptit">提示：</div>
+        <p>请输入筛选条件,删除后将不可恢复,谨慎操作！</p>
+    </div>
+	<form id="form1" name="form1" method="post" action="{:U('syslog/pidel_syslog')}">
+        <div class="form_main width120">
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 错误类型：</div>
+            <div class="fr txt">
+                <input name="l_type[]" type="checkbox"  checked="checked" value="1"/>MYSQL
+                <input name="l_type[]" type="checkbox"  checked="checked"  value="2"/>MAIL
+            </div>
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 开始时间：</div>
+            <div class="fr">
+                <input name="starttime" type="text" class="input_text_default middle date_input" value=""/>
+            </div>
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 结束时间：</div>
+            <div class="fr">
+                <input name="endtime" type="text" class="input_text_default middle date_input" value=""/>
+            </div>
+            <div class="fl"></div>
+            <div class="fr">
+                <input type="button" class="admin_submit" id="ButPidel"  value="批量删除"/>
+                <input type="button" class="admin_submit" id="goback"  value="取消" onClick="window.location='{:U('syslog/index')}'"/>
+            </div>
+            <div class="clear"></div>
+        </div>
+	<span id="OpPi"></span>
+	</form>
+</div>
+</div>
+<include file="public:footer" />
+<link href="__ADMINPUBLIC__/css/date_input.css" rel="stylesheet" type="text/css" />
+<script src="__ADMINPUBLIC__/js/jquery.date_input.js" type='text/javascript' language="javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		//点击批量删除
+		$("#ButPidel").click(function(){
+			if (confirm('你确定要删除吗？'))
+			{
+				$("form[name=form1]").submit()
+			}
+		});
+		//日期
+		$(function() { 
+		    $(".date_input").date_input();
+		});
+	});
+</script>
+</body>
+</html>

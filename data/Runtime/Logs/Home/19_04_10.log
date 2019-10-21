@@ -1,0 +1,5 @@
+[ 2019-04-10T11:26:55+08:00 ] ::1 /recruit/Application/Admin/View/default/public/images/admin_main_bg.gif
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000546s ]
+

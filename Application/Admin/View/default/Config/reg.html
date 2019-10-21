@@ -1,0 +1,66 @@
+<include file="public:header" />
+<form action="{:U('config/edit')}" method="post"  name="form1" id="form1">
+    <div class="toptit">注册设置</div>
+    <div class="form_main width200">
+    <div class="fl">关闭会员注册：</div>
+    <div class="fr">
+        <div data-code="0,1" class="imgchecked_small <if condition="C('qscms_closereg') eq 1">select</if>"><input name="closereg" type="hidden" value="{:C('qscms_closereg')}" /></div>
+        <div class="clear"></div>
+    </div>
+    <div class="fl">开启密码输入：</div>
+    <div class="fr">
+        <div data-code="0,1" class="imgchecked_small <if condition="C('qscms_register_password_open') eq 1">select</if>"><input name="register_password_open" type="hidden" value="{:C('qscms_register_password_open')}" /></div>
+        <div class="clear"></div>
+    </div>
+    <div class="fl">手机注册用户名前缀：</div>
+    <div class="fr">
+        <input name="reg_prefix" type="text" class="input_text_default small" maxlength="10" value="{:C('qscms_reg_prefix')}"/>
+        <label class="no-fl-note">（手机注册会自动生成用户名，生成规则：随机字符+手机号，如:user_18636535353）</label>
+    </div>
+    <div class="fl">邮箱注册用户名前缀：</div>
+    <div class="fr">
+        <input name="email_reg_prefix" type="text" class="input_text_default small" maxlength="10" value="{:C('qscms_email_reg_prefix')}"/>
+        <label class="no-fl-note">（邮箱注册会自动生成用户名，生成规则：随机字符+邮箱，如:user_1234qqcom）</label>
+    </div>
+    <div class="fl">第三方注册生成用户名前缀：</div>
+    <div class="fr">
+        <input name="third_reg_prefix" type="text" class="input_text_default small" maxlength="10" value="{:C('qscms_third_reg_prefix')}"/>
+        <label class="no-fl-note">第三方注册是指微信注册，QQ注册后生成的用户名</label>
+    </div>
+    <div class="fl">快速注册生成密码：</div>
+    <div class="fr">
+        <div class="imgradio J_job_pw_type">
+            <input name="reg_password_tpye" type="hidden" value="{:C('qscms_reg_password_tpye')}">
+            <div class="radio <if condition="C('qscms_reg_password_tpye') eq 1">select</if>" data="1" title="与用户名相同">与用户名相同</div>
+        <div class="radio <if condition="C('qscms_reg_password_tpye') eq 2">select</if>" data="2" title="随机密码">随机密码</div>
+    <div class="radio <if condition="C('qscms_reg_password_tpye') eq 3">select</if>" data="3" title="指定密码">指定密码</div>
+    <div class="clear"></div>
+    </div>
+    </div>
+    <div id="config_reg_password" <if condition="C('qscms_reg_password_tpye') neq 3">style="display:none"</if>>
+    <div class="fl">输入指定密码：</div>
+    <div class="fr">
+        <input name="reg_weixin_password" type="text" class="input_text_default small" maxlength="16" value="{:C('qscms_reg_weixin_password')}"/>
+    </div>
+    </div>
+    <div class="fl"></div>
+    <div class="fr">
+        <input type="submit" class="admin_submit" value="保存修改"/>
+    </div>
+
+    <div class="clear"></div>
+    </div>
+</form>
+</div>
+<include file="public:footer" />
+<script type="text/javascript">
+  $('.J_job_pw_type .radio').click(function(){
+    if($(this).attr('data') == 3){
+      $('#config_reg_password').show();
+    }else{
+      $('#config_reg_password').hide();
+    }
+  })
+</script>
+</body>
+</html>

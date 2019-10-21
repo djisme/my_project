@@ -1,0 +1,135 @@
+<include file="public:header"/>
+
+<notempty name="apply['Subsite']">
+    <div class="seltpye_x">
+        <div class="left">所属分站</div>
+        <qscms:subsite 列表名="subsite_list"/>
+        <div class="right">
+            <a href="{:P(array('subsite_id'=>''))}" <eq name='Think.get.subsite_id' value=''>class="select"</eq>>不限</a>
+            <if condition="$visitor['role_id'] eq 1">
+                <volist name="subsite_list" id="subsite">
+                    <a href="{:P(array('subsite_id'=>$subsite['s_id']))}" <if condition="$Think.get.subsite_id eq $subsite['s_id']">class="select"</if>>{$subsite.s_sitename}</a>
+                </volist>
+            <else/>
+                <volist name="subsite_list" id="subsite">
+                    <if condition="in_array($subsite['s_id'],$visitor['subsite'])">
+                        <a href="{:P(array('subsite_id'=>$subsite['s_id']))}" <if condition="$Think.get.subsite_id eq $subsite['s_id']">class="select"</if>>{$subsite.s_sitename}</a>
+                    </if>
+                </volist>
+            </if>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</notempty>
+<div class="seltpye_x">
+    <div class="left">添加时间</div>
+    <div class="right">
+        <a href="{:P(array('addtime'=>''))}" <eq name='Think.get.addtime' value=''>class="select"</eq>>不限</a>
+        <a href="{:P(array('addtime'=>'3'))}" <eq name='Think.get.addtime' value='3'>class="select"</eq>>三天内</a>
+        <a href="{:P(array('addtime'=>'7'))}" <eq name='Think.get.addtime' value='7'>class="select"</eq>>一周内</a>
+        <a href="{:P(array('addtime'=>'30'))}" <eq name='Think.get.addtime' value='30'>class="select"</eq>>一月内</a>
+        <a href="{:P(array('addtime'=>'180'))}" <eq name='Think.get.addtime' value='180'>class="select"</eq>>半年内</a>
+        <a href="{:P(array('addtime'=>'360'))}" <eq name='Think.get.addtime' value='360'>class="select"</eq>>一年内</a>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+
+<form id="form1" name="form1" method="post" action="{:U('subscribe_del')}">
+    <div class="list_th">
+        <div class="td" style=" width:20%;">
+            <label id="chkAll" class="left_padding">
+                <input type="checkbox" name="chkAll" id="chk" title="全选/反选"/>接收邮箱
+            </label>
+        </div>
+        <div class="td" style=" width:13%;">订阅关键字</div>
+        <div class="td" style=" width:15%;">意向职位</div>
+        <div class="td" style=" width:15%;">意向行业</div>
+        <div class="td" style=" width:10%;">意向薪资</div>
+        <div class="td" style=" width:12%;">意向地区</div>
+        <div class="td center" style=" width:10%;">添加时间</div>
+        <div class="td" style=" width:5%;">操作</div>
+        <div class="clear"></div>
+    </div>
+
+    <volist name="list" id="vo">
+        <div class="list_tr link_black">
+            <div class="td" style=" width:20%;">
+                <div class="left_padding striking">
+                    <input name="id[]" type="checkbox" id="id" value="{$list.id}"/>{$vo.email}
+                </div>
+            </div>
+            <div class="td" style=" width:13%;">
+                <notempty name="vo['key']">{:cut_str($vo['key'],12,0,'')}<else/>-</notempty>
+            </div>
+            <div class="td" style=" width:15%;">
+                <notempty name="vo['intention_jobs']">{:cut_str($vo['intention_jobs'],12,0,'')}<else/>-</notempty>
+            </div>
+            <div class="td" style=" width: 15%;">
+                <notempty name="vo['trade_cn']">{:cut_str($vo['trade_cn'],12,0,'')}<else/>-</notempty>
+            </div>
+            <div class="td" style=" width:10%;">
+                <notempty name="vo['wage_cn']">{$vo['wage_cn']}<else/>-</notempty>
+            </div>
+            <div class="td" style=" width:12%;">
+                <notempty name="vo['district_cn']">{:cut_str($vo['district_cn'],12,0,'')}<else/>-</notempty>
+            </div>
+            <div class="td center" style=" width:10%;">{:admin_date($vo['addtime'])}</div>
+            <div class="td edit" style=" width:5%;">
+                <a href="{:U('subscribe_del',array('id'=>$vo['id']))}" onclick="return confirm('你确定要删除吗？')" class="gray">删除</a>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </volist>
+</form>
+
+<empty name="list">
+    <div class="list_empty">没有任何信息！</div>
+</empty>
+
+<div class="list_foot">
+    <div class="btnbox">
+        <input type="button" class="admin_submit" id="ButDel" value="删除"/>
+    </div>
+
+    <div class="footso">
+        <form action="?" method="get">
+            <div class="sobox">
+                <input type="hidden" name="m" value="{:C('admin_alias')}">
+                <input type="hidden" name="c" value="{:CONTROLLER_NAME}">
+                <input type="hidden" name="a" value="{:ACTION_NAME}">
+                <input name="key" type="text" class="sinput" value="{$Think.get.key}"/>
+                <input name="key_type" id="J_key_type_id" type="hidden" value="{$Think.get.key_type|default='1'}" />
+                <input name="key_type_cn" id="J_key_type_cn" type="hidden" value="{$Think.get.key_type_cn|default='意向职位'}"/>
+                <input name="" type="submit" value="" class="sobtn"/>
+                <div class="sotype" id="J_key_click">{$Think.get.key_type_cn|default='意向职位'}</div>
+                <div class="mlist" id="J_mlist">
+                    <ul>
+                        <li id="1" title="意向职位">意向职位</li>
+                        <li id="2" title="意向行业">意向行业</li>
+                        <li id="3" title="意向地区">意向地区</li>
+                        <li id="4" title="接收邮箱">接收邮箱</li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="pages">{$page}</div>
+
+</div>
+<include file="public:footer"/>
+
+</body>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //点击批量删除
+        $("#ButDel").click(function () {
+            if (confirm('你确定要删除吗？')) {
+                $("form[name=form1]").submit();
+            }
+        });
+    });
+</script>
+</html>

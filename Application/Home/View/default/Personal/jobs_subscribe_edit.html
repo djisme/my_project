@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<include file="public:meta" />
+	<link href="../public/css/personal/common.css" rel="stylesheet" type="text/css" />
+	<link href="../public/css/personal/personal_favorites.css" rel="stylesheet" type="text/css" />
+	<link href="../public/css/personal/personal_ajax_dialog.css" rel="stylesheet" type="text/css" />
+	<script src="../public/js/personal/jquery.common.js" type="text/javascript" language="javascript"></script>
+    <qscms:load type="category" search="1"/>
+</head>
+<body>
+<include file="public:header_other" />
+<div class="us-top">
+    <div class="us-main">
+        <div class="us-top-box">
+            <form id="ajax_search_location" action="{:U('ajaxCommon/ajax_search_location',array('type'=>'QS_jobslist'))}" method="get">
+                <div class="input-box"><input type="text" name="key" data-original="请输入关键字" value="" placeholder="请输入关键字" autocomplete="off"></div>
+                <div class="se-btn"><input type="submit" value="搜 索"></div>
+                <div class="clear"></div>
+            </form>
+        </div>
+    </div>
+</div>
+	<div class="user_main">
+		<include file="index_left_nav" />
+		<div class="mainbox">
+			<!--职位切换卡 -->
+			<div class="tab">
+				<a class="li J_hoverbut" href="{:U('personal/jobs_favorites')}">职位收藏夹</a>
+				<a class="li J_hoverbut" href="{:U('personal/attention_com')}" >关注的企业</a>
+				<a class="li select">职位订阅器</a>
+			  	<div class="clear"></div>
+			</div>
+			<!--切换卡结束 -->
+			<form id="" class="" action="{:U('personal/subscribe_edit')}" method="post">
+				<div class="subscribe_add J_focus">
+				    <table border="0" align="center" cellpadding="0" cellspacing="0" class="b_table">
+				    	<tr>
+				        	<td class="w1">订阅名称：</td>
+							<td>
+								<input name="title" id="title" type="text" class="input_205_34" value="<if condition="$subscribe['title']">{$subscribe.title}<else />职位订阅{:date('Ymd')}</if>"/>
+							</td>
+							<td  class="w1">关键字：</td>
+							<td>
+								<input name="key" id="key" type="text" class="input_205_34" value="{$subscribe.key}"/>
+							</td>
+						</tr>
+				    	<tr>
+				        	<td class="w1">行业分类：</td>
+							<td>
+								<div class="input_205_34_div1 J_hoverinput" id="J_showmodal_trade" data-title="请选择行业分类" data-multiple="false" data-maxnum="3" data-width="682">
+									<span title="" class="result J_resuletitle_trade">{$subscribe.trade_cn|default='请选择'}</span>
+									<input class="J_resultcode_trade" name="trade" id="trade" type="hidden" value="{$subscribe.trade}">
+									<div class="clear"></div>
+								</div>
+							</td>
+							<td class="w1">职能分类：</td>
+							<td>
+						  		<div class="input_205_34_div1 J_hoverinput" id="J_showmodal_jobs" data-title="请选择职能分类" data-multiple="true" data-maxnum="3" <if condition="C('qscms_category_jobs_level') gt 2">data-width="667"<else/>data-width="520"</if> data-category="{:C('qscms_category_jobs_level')}">
+						  			<span title="" class="result J_resuletitle_jobs">{$subscribe.intention_jobs|default='请选择'}</span>
+						  			<input class="J_resultcode_jobs" name="intention_jobs_id" id="intention_jobs_id" type="hidden" value="{$subscribe.intention_jobs_id}">
+						  			<div class="clear"></div>
+						  		</div>
+							</td>
+						</tr>
+				    	<tr>
+				    		<td class="w1">工作地点：</td>
+							<td>
+						    	<div class="input_205_34_div1 J_hoverinput" data-toggle="funCityModal" data-title="请选择工作地区" data-multiple="true" data-maximum="3" data-width="760">
+                    <span title="" class="result J_resuletitle_city">{$subscribe.district_cn|default='请选择'}</span>
+                    <input class="J_resultcode_city" name="district" id="district" type="hidden" value="{$subscribe.district}" keep="{$subscribe.district}">
+                    <div class="clear"></div>
+                  </div>
+							</td>
+							<td class="w1">薪资范围：</td>
+							<td>
+						    	<div class="input_205_34_div J_hoverinput J_dropdown J_listitme_parent">
+						    		<span class="J_listitme_text">{$subscribe.wage_cn|default='请选择'}</span>
+						    		<div class="dropdowbox10 J_dropdown_menu">
+							            <div class="dropdow_inner10">
+							                <ul class="nav_box">
+							                	<volist name="wage" id="wage">
+							                		<li><a class="J_listitme" href="javascript:;" data-code="{$key}" title="{$wage}">{$wage}</a></li>
+												</volist>
+							                </ul>
+							            </div>
+							        </div>
+							        <input class="J_listitme_code" name="wage" id="wage" type="hidden" value="{$subscribe.wage}"/>
+						    	</div>
+							</td>
+						</tr>
+				    	<tr>
+				        	<td class="w1">接收邮箱：</td>
+							<td colspan="3">{$visitor.email}</td>
+						</tr>
+			        </table>
+					<div class="butbox">
+				   		<div class="td1">
+				   			<input name="id" id="id" type="hidden" value="{$subscribe.id}">
+				   			<input type="button" id="J_savesubscribe"  class="but_blue_115 J_hoverbut" value="保存" />
+				   		</div>
+						<div class="td1">
+							<input type="reset"  class="but_gray_115 J_hoverbut J_hide_itemsform" value="取消" onclick="window.location='{:U('personal/jobs_subscribe')}'"/>
+						</div>
+						<div class="clear"></div>
+					</div>
+			    </div>
+			</form>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<include file="index_footer" />
+	<script type="text/javascript" src="../public/js/jquery.modal.userselectlayer.js"></script>
+	<script type="text/javascript" src="../public/js/jquery.user.city.js"></script>
+	<script type="text/javascript">
+		// 保存
+		$('#J_savesubscribe').live('click', function() {
+			var idValue = $.trim($('#id').val());
+			var titleValue = $.trim($('#title').val());
+			var keyValue = $.trim($('#key').val());
+			var tradeValue = $.trim($('#trade').val());
+			var intentionJobsValue = $.trim($('#intention_jobs_id').val());
+			var districtValue = $.trim($('#district').val());
+			var wageValue = $.trim($('#wage').val());
+			if (intentionJobsValue == "") {
+				disapperTooltip("remind", "请选择职能分类");
+				return false;
+			}
+
+			// 提交表单
+			$.ajax({
+				url: "{:U('Personal/jobs_subscribe_edit')}",
+				type: 'POST',
+				dataType: 'json',
+				data: {id: idValue, title: titleValue, key: keyValue, trade: tradeValue, intention_jobs_id: intentionJobsValue, district: districtValue, wage: wageValue}
+			})
+			.done(function(data) {
+				if (parseInt(data.status)) {
+					window.location.href = "{:U('jobs_subscribe')}";
+				} else {
+					disapperTooltip("remind", data.msg);
+				}
+			})
+			.fail(function() {
+				disapperTooltip("remind", "更新失败请重新提交");
+			});
+		});
+	</script>
+</body>
+</html>
